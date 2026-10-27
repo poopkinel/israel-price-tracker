@@ -1,0 +1,210 @@
+[
+ {
+  "id": "fox",
+  "platform": "shopify",
+  "seen": 3155,
+  "on_sale": 818,
+  "changes": 3155,
+  "status": "ok",
+  "seconds": 20
+ },
+ {
+  "id": "megasport",
+  "platform": "shopify",
+  "seen": 1767,
+  "on_sale": 1222,
+  "changes": 1767,
+  "status": "ok",
+  "seconds": 9
+ },
+ {
+  "id": "factory54",
+  "platform": "shopify",
+  "seen": 18438,
+  "on_sale": 817,
+  "changes": 18438,
+  "status": "ok",
+  "seconds": 75
+ },
+ {
+  "id": "commeilfaut",
+  "platform": "shopify",
+  "seen": 652,
+  "on_sale": 232,
+  "changes": 652,
+  "status": "ok",
+  "seconds": 5
+ },
+ {
+  "id": "gertrud",
+  "platform": "shopify",
+  "seen": 547,
+  "on_sale": 373,
+  "changes": 547,
+  "status": "ok",
+  "seconds": 3
+ },
+ {
+  "id": "netaefrati",
+  "platform": "shopify",
+  "seen": 350,
+  "on_sale": 167,
+  "changes": 350,
+  "status": "ok",
+  "seconds": 2
+ },
+ {
+  "id": "ronenchen",
+  "platform": "shopify",
+  "seen": 747,
+  "on_sale": 742,
+  "changes": 747,
+  "status": "ok",
+  "seconds": 5
+ },
+ {
+  "id": "salinka",
+  "platform": "woocommerce",
+  "seen": 353,
+  "on_sale": 37,
+  "changes": 353,
+  "status": "ok",
+  "seconds": 22
+ },
+ {
+  "id": "princessa",
+  "platform": "woocommerce",
+  "seen": 500,
+  "on_sale": 142,
+  "changes": 500,
+  "status": "ok",
+  "seconds": 14
+ },
+ {
+  "id": "idigital",
+  "platform": "shopify",
+  "seen": 2053,
+  "on_sale": 0,
+  "changes": 2053,
+  "status": "ok",
+  "seconds": 9
+ },
+ {
+  "id": "gadgetline",
+  "platform": "shopify",
+  "seen": 3208,
+  "on_sale": 280,
+  "changes": 3208,
+  "status": "ok",
+  "seconds": 16
+ },
+ {
+  "id": "cwc",
+  "platform": "woocommerce",
+  "status": "error",
+  "error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+  "seconds": 0
+ },
+ {
+  "id": "payngo",
+  "platform": "magento",
+  "status": "error",
+  "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.payngo.co.il/graphql",
+  "seconds": 0
+ },
+ {
+  "id": "homecenter",
+  "platform": "shopify",
+  "seen": 22282,
+  "on_sale": 7666,
+  "changes": 22282,
+  "status": "ok",
+  "seconds": 91
+ },
+ {
+  "id": "foxhome",
+  "platform": "shopify",
+  "seen": 1318,
+  "on_sale": 1301,
+  "changes": 1318,
+  "status": "ok",
+  "seconds": 6
+ },
+ {
+  "id": "shilav",
+  "platform": "shopify",
+  "seen": 6399,
+  "on_sale": 0,
+  "changes": 6399,
+  "status": "ok",
+  "seconds": 26
+ },
+ {
+  "id": "nammal",
+  "platform": "woocommerce",
+  "seen": 464,
+  "on_sale": 112,
+  "changes": 464,
+  "status": "ok",
+  "seconds": 9
+ },
+ {
+  "id": "cookbake",
+  "platform": "woocommerce",
+  "status": "error",
+  "error": "PermissionError: robots.txt disallows the WooCommerce Store API",
+  "seconds": 0
+ },
+ {
+  "id": "betili",
+  "platform": "magento",
+  "seen": 5678,
+  "on_sale": 4815,
+  "changes": 5678,
+  "status": "ok",
+  "seconds": 34
+ },
+ {
+  "id": "ahava",
+  "platform": "shopify",
+  "seen": 188,
+  "on_sale": 37,
+  "changes": 188,
+  "status": "ok",
+  "seconds": 1
+ },
+ {
+  "id": "dealcosmetics",
+  "platform": "shopify",
+  "seen": 5357,
+  "on_sale": 146,
+  "changes": 5357,
+  "status": "ok",
+  "seconds": 28
+ },
+ {
+  "id": "laline",
+  "platform": "shopify",
+  "seen": 411,
+  "on_sale": 0,
+  "changes": 411,
+  "status": "ok",
+  "seconds": 2
+ },
+ {
+  "id": "newpharm",
+  "platform": "woocommerce",
+  "seen": 340,
+  "on_sale": 81,
+  "changes": 340,
+  "status": "ok",
+  "seconds": 10
+ },
+ {
+  "id": "drugstore",
+  "platform": "magento",
+  "status": "error",
+  "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.drugstore.co.il/graphql",
+  "seconds": 0
+ }
+]
