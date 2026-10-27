@@ -1,0 +1,32 @@
+[
+  {"id": "fox", "name": "פוקס", "category": "אופנה", "platform": "shopify", "base": "https://fox.co.il"},
+  {"id": "megasport", "name": "מגה ספורט", "category": "אופנה", "platform": "shopify", "base": "https://www.megasport.co.il"},
+  {"id": "factory54", "name": "פקטורי 54", "category": "אופנה", "platform": "shopify", "base": "https://factory54.co.il"},
+  {"id": "commeilfaut", "name": "קום איל פו", "category": "אופנה", "platform": "shopify", "base": "https://comme-il-faut.com"},
+  {"id": "gertrud", "name": "גרטרוד", "category": "אופנה", "platform": "shopify", "base": "https://gertrudshop.com"},
+  {"id": "netaefrati", "name": "נטע אפרתי", "category": "אופנה", "platform": "shopify", "base": "https://netaefrati.com"},
+  {"id": "ronenchen", "name": "רונן חן", "category": "אופנה", "platform": "shopify", "base": "https://ronenchen.co.il"},
+  {"id": "salinka", "name": "סלינקה", "category": "אופנה", "platform": "woocommerce", "base": "https://salinka.co.il"},
+  {"id": "princessa", "name": "פרינססה פאשן", "category": "אופנה", "platform": "woocommerce", "base": "https://www.princessafashion.com"},
+
+  {"id": "idigital", "name": "איידיגיטל", "category": "חשמל ואלקטרוניקה", "platform": "shopify", "base": "https://www.idigital.co.il"},
+  {"id": "gadgetline", "name": "גאדג'טליין", "category": "חשמל ואלקטרוניקה", "platform": "shopify", "base": "https://www.gadgetline.co.il"},
+  {"id": "cwc", "name": "עולם הקולנוע והחשמל", "category": "חשמל ואלקטרוניקה", "platform": "woocommerce", "base": "https://www.cwc.co.il"},
+  {"id": "payngo", "name": "מחסני חשמל", "category": "חשמל ואלקטרוניקה", "platform": "magento", "base": "https://www.payngo.co.il",
+   "note": "המחיר הישן קיים בנתונים אבל לפעמים לא מוצג לקונה; לבדוק חזותית לפני מסקנות"},
+
+  {"id": "homecenter", "name": "הום סנטר", "category": "בית וריהוט", "platform": "shopify", "base": "https://www.homecenter.co.il"},
+  {"id": "foxhome", "name": "פוקס הום", "category": "בית וריהוט", "platform": "shopify", "base": "https://www.foxhome.co.il"},
+  {"id": "shilav", "name": "שילב", "category": "בית וריהוט", "platform": "shopify", "base": "https://www.shilav.co.il",
+   "note": "מציגה הנחות שלא נמצאות בנתונים; הספירה כאן חסרה"},
+  {"id": "nammal", "name": "הנמל", "category": "בית וריהוט", "platform": "woocommerce", "base": "https://www.nammalonline.co.il"},
+  {"id": "cookbake", "name": "קוק אנד בייק", "category": "בית וריהוט", "platform": "woocommerce", "base": "https://www.cook-bake.co.il",
+   "note": "מציגה הנחות שלא נמצאות בנתונים; הספירה כאן חסרה"},
+  {"id": "betili", "name": "ביתילי", "category": "בית וריהוט", "platform": "magento", "base": "https://www.betili-shop.com"},
+
+  {"id": "ahava", "name": "אהבה", "category": "קוסמטיקה ופארם", "platform": "shopify", "base": "https://www.ahava.co.il"},
+  {"id": "dealcosmetics", "name": "דיל קוסמטיקס", "category": "קוסמטיקה ופארם", "platform": "shopify", "base": "https://www.dealcosmetics.co.il"},
+  {"id": "laline", "name": "ללין", "category": "קוסמטיקה ופארם", "platform": "shopify", "base": "https://www.laline.co.il"},
+  {"id": "newpharm", "name": "ניו פארם", "category": "קוסמטיקה ופארם", "platform": "woocommerce", "base": "https://newpharm.co.il"},
+  {"id": "drugstore", "name": "דראגסטור", "category": "קוסמטיקה ופארם", "platform": "magento", "base": "https://www.drugstore.co.il"}
+]

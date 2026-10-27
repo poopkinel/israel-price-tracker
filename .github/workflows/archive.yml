@@ -1,0 +1,48 @@
+name: save discounted pages to the Wayback Machine
+
+on:
+  schedule:
+    - cron: "30 2 * * *"    # after the daily collection
+    - cron: "0 9 * * *"
+    - cron: "0 15 * * *"
+  workflow_dispatch:
+    inputs:
+      max_saves:
+        description: "Max pages to submit in this run"
+        required: false
+        default: "2500"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: archive
+  cancel-in-progress: false
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 345
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Save pages
+        env:
+          IA_ACCESS_KEY: ${{ secrets.IA_ACCESS_KEY }}
+          IA_SECRET_KEY: ${{ secrets.IA_SECRET_KEY }}
+          MAX_SAVES: ${{ github.event.inputs.max_saves || '2500' }}
+          TIME_BUDGET_MIN: "320"
+        run: python -m tracker.archive
+      - name: Commit log
+        if: always()
+        run: |
+          git config user.name "price-tracker-bot"
+          git config user.email "price-tracker-bot@users.noreply.github.com"
+          git add data/archive
+          git diff --cached --quiet && exit 0
+          git commit -m "data: archive log $(date -u +%F)"
+          for i in 1 2 3 4 5; do git pull --rebase --autostash && git push && exit 0; sleep 15; done
+          exit 1
