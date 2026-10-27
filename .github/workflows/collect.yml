@@ -3,6 +3,9 @@ name: collect prices (daily)
 on:
   schedule:
     - cron: "15 0 * * *"   # 02:15 Israel time (winter), 03:15 (summer)
+  push:
+    branches: [main]
+    paths: ["tracker/**", "stores.json", ".github/workflows/collect.yml"]
   workflow_dispatch:
     inputs:
       stores:
