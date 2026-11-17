@@ -40,7 +40,7 @@ product_id,title,url,price,compare_at,on_sale,discount_pct,first_seen,last_seen,
 16396,גופיית בייסיק שלי &#8211; ירקרק,https://www.princessafashion.com/shop/clothes/shirts/tops/basic-sleevless-shely-light-green/,89.00,89.00,0,,2026-10-27,2026-11-17,,2026-11-17
 16419,חולצת קרופ בייסיק כריות מילי קצרה &#8211; שחורה,https://www.princessafashion.com/shop/clothes/shirts/basic-shirts/crop-basic-shirt-mili-black/,129.00,129.00,0,,2026-10-27,2026-11-17,,2026-11-17
 16729,חולצה מכופתרת פמי &#8211; כחולה,https://www.princessafashion.com/shop/clothes/shirts/button-shirts/buttons-shirt-pami-blue/,169.00,269.00,1,37,2026-10-27,2026-11-17,2026-10-27,
-16813,בגד ים שלם דול פרינסס &#8211; לבן &#8211; Doll Princess,https://www.princessafashion.com/shop/swimwear/shapewear-swimwear/doll-princess-all-white/,359.00,599.00,1,40,2026-10-27,2026-11-17,2026-10-27,
+16813,בגד ים שלם דול פרינסס &#8211; לבן &#8211; Doll Princess,https://www.princessafashion.com/shop/clothes/white-collection/doll-princess-all-white/,359.00,599.00,1,40,2026-10-27,2026-11-17,2026-10-27,
 16819,בגד ים שלם דול פרינסס &#8211; מנומר &#8211; Doll Princess,https://www.princessafashion.com/shop/swimwear/shapewear-swimwear/doll-princess-tiger/,359.00,599.00,1,40,2026-10-27,2026-11-17,2026-10-27,
 16825,בגד ים שלם דול פרינסס &#8211; סגול סגלגל &#8211; Doll Princess,https://www.princessafashion.com/shop/swimwear/shapewear-swimwear/doll-princess-purple-light-purple/,359.00,599.00,1,40,2026-10-27,2026-11-17,2026-10-27,
 17049,בגד גוף ספי &#8211; שחור,https://www.princessafashion.com/shop/clothes/shirts/leotard-shirts/leotard-sefi-black/,149.00,149.00,0,,2026-10-27,2026-11-17,,2026-11-17
@@ -136,9 +136,9 @@ product_id,title,url,price,compare_at,on_sale,discount_pct,first_seen,last_seen,
 37662,בגד ים שלם רויאל פרינסס &#8211; חום נצנצים &#8211; Royal Princess,https://www.princessafashion.com/shop/swimwear/shapewear-swimwear/onepiece-swimwear-royal-princess-brown/,389.00,649.00,1,40,2026-10-27,2026-11-17,2026-10-27,
 37668,בגד ים שלם רויאל פרינסס &#8211; טורקיז אייטיז &#8211; Royal Princess,https://www.princessafashion.com/shop/swimwear/shapewear-swimwear/onepiece-swimwear-royal-princess-turquoise/,389.00,649.00,1,40,2026-10-27,2026-11-17,2026-10-27,
 37676,בגד ים שלם רויאל פרינסס &#8211; פיץ׳ &#8211; Royal Princess,https://www.princessafashion.com/shop/swimwear/shapewear-swimwear/onepiece-swimwear-royal-princess-peach/,389.00,649.00,1,40,2026-10-27,2026-10-29,2026-10-27,
-37682,בגד ים שלם ליידי פרינסס &#8211; הדפס ג׳ינס &#8211; Lady Princess,https://www.princessafashion.com/shop/swimwear/shapewear-swimwear/onepiece-swimwear-lady-princess-jeans-print/,389.00,649.00,1,40,2026-10-27,2026-11-17,2026-10-27,
-37687,בגד ים שלם ליידי פרינסס &#8211; שנהב מנומר &#8211; Lady Princess,https://www.princessafashion.com/shop/swimwear/shapewear-swimwear/onepiece-swimwear-lady-princess-jeans-off-white-tiger/,389.00,649.00,1,40,2026-10-27,2026-11-17,2026-10-27,
-37692,בגד ים שלם ליידי פרינסס &#8211; ג׳ינס &#8211; Lady Princess,https://www.princessafashion.com/shop/swimwear/shapewear-swimwear/onepiece-swimwear-lady-princess-blue-jeans/,389.00,649.00,1,40,2026-10-27,2026-11-17,2026-10-27,
+37682,בגד ים שלם ליידי פרינסס &#8211; הדפס ג׳ינס &#8211; Lady Princess,https://www.princessafashion.com/shop/swimwear/one-piece-swimwear/onepiece-swimwear-lady-princess-jeans-print/,389.00,649.00,1,40,2026-10-27,2026-11-17,2026-10-27,
+37687,בגד ים שלם ליידי פרינסס &#8211; שנהב מנומר &#8211; Lady Princess,https://www.princessafashion.com/shop/swimwear/one-piece-swimwear/onepiece-swimwear-lady-princess-jeans-off-white-tiger/,389.00,649.00,1,40,2026-10-27,2026-11-17,2026-10-27,
+37692,בגד ים שלם ליידי פרינסס &#8211; ג׳ינס &#8211; Lady Princess,https://www.princessafashion.com/shop/swimwear/one-piece-swimwear/onepiece-swimwear-lady-princess-blue-jeans/,389.00,649.00,1,40,2026-10-27,2026-11-17,2026-10-27,
 37697,בגד ים שלם ליידי פרינסס &#8211; אדום &#8211; Lady Princess,https://www.princessafashion.com/shop/swimwear/shapewear-swimwear/onepiece-swimwear-lady-princess-red/,389.00,649.00,1,40,2026-10-27,2026-11-17,2026-10-27,
 38333,גופיית קרופ סי &#8211; בז׳,https://www.princessafashion.com/shop/clothes/shirts/tops/sleeveless-crop-c-beige/,59.00,79.00,1,25,2026-10-27,2026-11-17,2026-10-27,
 38362,מכנס קצר בלינג &#8211; לבן פסים כחולים,https://www.princessafashion.com/shop/clothes/pants/short-pants/short-pants-bling-white-w-blue-stripes/,209.00,209.00,0,,2026-10-27,2026-11-17,,2026-11-17
@@ -252,7 +252,7 @@ product_id,title,url,price,compare_at,on_sale,discount_pct,first_seen,last_seen,
 50789,ג׳קט זמש לורי &#8211; בורדו,https://www.princessafashion.com/shop/clothes/jackets/suede-jacket-lori-bordo/,249.00,349.00,1,29,2026-10-27,2026-11-17,2026-10-27,
 50890,טייץ ארוך סריג אולין &#8211; שחור,https://www.princessafashion.com/shop/clothes/pants/long-pants/long-tights-olin-black/,169.00,169.00,0,,2026-10-27,2026-11-17,,2026-11-17
 51360,חצאית מיני ליאן &#8211; משובץ שחור,https://www.princessafashion.com/shop/clothes/skirts/mini-skirts/mini-skirt-lian-black-squares/,159.00,229.00,1,31,2026-10-27,2026-11-17,2026-10-27,
-51364,מכנס ג׳ינס שרוך עומר &#8211; לבן,https://www.princessafashion.com/shop/clothes/pants/long-pants/jeans-pants-omer-white/,349.00,349.00,0,,2026-10-27,2026-11-17,,2026-11-17
+51364,מכנס ג׳ינס שרוך עומר &#8211; לבן,https://www.princessafashion.com/shop/clothes/pants/jeans-pants/jeans-pants-omer-white/,349.00,349.00,0,,2026-10-27,2026-11-17,,2026-11-17
 51372,חולצת בייסיק כריות ליביה &#8211; בז׳,https://www.princessafashion.com/shop/clothes/shirts/basic-shirts/basic-t-shirt-libia-beige/,179.00,179.00,0,,2026-10-27,2026-11-17,,2026-11-17
 52336,חולצת קרופ אבזם נילי &#8211; לבנה,https://www.princessafashion.com/shop/clothes/shirts/crop-shirts/crop-shirt-nili-white/,259.00,259.00,0,,2026-10-27,2026-11-17,,2026-11-17
 52348,אוברול ארוך מחויט טקילה &#8211; בז׳,https://www.princessafashion.com/shop/clothes/overalls/long-overalls/long-overall-taqila-beige/,449.00,449.00,0,,2026-10-27,2026-11-17,,2026-11-17
