@@ -138,15 +138,24 @@ def main() -> int:
     batch = targets[:max_saves]
     log_lock = threading.Lock()
     counts: dict[str, int] = {}
+    fails = [0]  # consecutive failures; a long streak means the archive stopped accepting us
 
     def work(t):
         if time.time() > deadline:
             saver.stop.set()
+        if saver.stop.is_set():
+            return  # not logged, so the page stays due for the next run
         res, job = saver.save(t["url"])
+        if res == "skipped":
+            return
         row = dict(t, date=day, result=res, job_id=job, submitted_at=dt.datetime.utcnow().isoformat(timespec="seconds"))
         with log_lock:
             append_csv(ARCHIVE_LOG / f"{day}.csv", [row], LOG_FIELDS)
             counts[res.split(":")[0]] = counts.get(res.split(":")[0], 0) + 1
+            fails[0] = 0 if res in ("submitted", "saved", "recent") else fails[0] + 1
+            if fails[0] >= 25 and not saver.stop.is_set():
+                print(f"stopping: {fails[0]} failures in a row (last: {res}); the rest stays due for the next run", flush=True)
+                saver.stop.set()
             n = sum(counts.values())
             if n % 100 == 0:
                 print(n, counts, flush=True)
