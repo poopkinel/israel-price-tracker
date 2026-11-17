@@ -2,65 +2,65 @@
  {
   "id": "fox",
   "platform": "shopify",
-  "seen": 2917,
-  "on_sale": 2487,
-  "changes": 21,
+  "seen": 2918,
+  "on_sale": 2488,
+  "changes": 1,
   "status": "ok",
   "seconds": 19
  },
  {
   "id": "megasport",
   "platform": "shopify",
-  "seen": 1677,
+  "seen": 1669,
   "on_sale": 869,
-  "changes": 10,
+  "changes": 0,
   "status": "ok",
   "seconds": 7
  },
  {
   "id": "factory54",
   "platform": "shopify",
-  "seen": 16391,
+  "seen": 16388,
   "on_sale": 756,
-  "changes": 182,
+  "changes": 0,
   "status": "ok",
-  "seconds": 66
+  "seconds": 68
  },
  {
   "id": "commeilfaut",
   "platform": "shopify",
-  "seen": 643,
-  "on_sale": 421,
-  "changes": 2,
+  "seen": 644,
+  "on_sale": 422,
+  "changes": 1,
   "status": "ok",
-  "seconds": 3
+  "seconds": 4
  },
  {
   "id": "gertrud",
   "platform": "shopify",
-  "seen": 541,
+  "seen": 545,
   "on_sale": 350,
-  "changes": 9,
+  "changes": 4,
   "status": "ok",
   "seconds": 3
  },
  {
   "id": "netaefrati",
   "platform": "shopify",
-  "seen": 381,
+  "seen": 374,
   "on_sale": 162,
-  "changes": 0,
+  "changes": 3,
   "status": "ok",
-  "seconds": 2
+  "seconds": 3
  },
  {
   "id": "ronenchen",
   "platform": "shopify",
-  "seen": 791,
-  "on_sale": 443,
-  "changes": 6,
+  "seen": 790,
+  "on_sale": 444,
+  "changes": 1,
   "status": "ok",
-  "seconds": 4
+  "seconds": 5
  },
  {
   "id": "salinka",
@@ -78,7 +78,7 @@
   "on_sale": 140,
   "changes": 0,
   "status": "ok",
-  "seconds": 15
+  "seconds": 17
  },
  {
   "id": "idigital",
@@ -93,7 +93,7 @@
   "id": "gadgetline",
   "platform": "shopify",
   "seen": 3248,
-  "on_sale": 283,
+  "on_sale": 284,
   "changes": 3,
   "status": "ok",
   "seconds": 14
@@ -115,38 +115,38 @@
  {
   "id": "homecenter",
   "platform": "shopify",
-  "seen": 21889,
-  "on_sale": 7057,
-  "changes": 107,
+  "seen": 21902,
+  "on_sale": 7064,
+  "changes": 13,
   "status": "ok",
-  "seconds": 89
+  "seconds": 99
  },
  {
   "id": "foxhome",
   "platform": "shopify",
-  "seen": 1289,
-  "on_sale": 1274,
-  "changes": 9,
+  "seen": 1280,
+  "on_sale": 1276,
+  "changes": 4,
   "status": "ok",
   "seconds": 6
  },
  {
   "id": "shilav",
   "platform": "shopify",
-  "seen": 6474,
+  "seen": 6476,
   "on_sale": 0,
-  "changes": 1,
+  "changes": 3,
   "status": "ok",
-  "seconds": 26
+  "seconds": 27
  },
  {
   "id": "nammal",
   "platform": "woocommerce",
-  "seen": 487,
+  "seen": 485,
   "on_sale": 113,
-  "changes": 7,
+  "changes": 1,
   "status": "ok",
-  "seconds": 10
+  "seconds": 12
  },
  {
   "id": "cookbake",
@@ -158,11 +158,11 @@
  {
   "id": "betili",
   "platform": "magento",
-  "seen": 5589,
-  "on_sale": 4811,
-  "changes": 24,
+  "seen": 5632,
+  "on_sale": 4878,
+  "changes": 127,
   "status": "ok",
-  "seconds": 31
+  "seconds": 33
  },
  {
   "id": "ahava",
@@ -171,23 +171,23 @@
   "on_sale": 45,
   "changes": 0,
   "status": "ok",
-  "seconds": 1
+  "seconds": 2
  },
  {
   "id": "dealcosmetics",
   "platform": "shopify",
-  "seen": 5357,
-  "on_sale": 524,
-  "changes": 24,
+  "seen": 5368,
+  "on_sale": 525,
+  "changes": 6,
   "status": "ok",
-  "seconds": 26
+  "seconds": 22
  },
  {
   "id": "laline",
   "platform": "shopify",
-  "seen": 370,
+  "seen": 367,
   "on_sale": 370,
-  "changes": 370,
+  "changes": 0,
   "status": "ok",
   "seconds": 2
  },
@@ -198,7 +198,7 @@
   "on_sale": 81,
   "changes": 0,
   "status": "ok",
-  "seconds": 9
+  "seconds": 11
  },
  {
   "id": "drugstore",
