@@ -151,6 +151,10 @@ class SaverTest(unittest.TestCase):
              mock.patch.object(s, "_throttle"):
             self.assertEqual(s.save("https://x/b"), ("daily-limit", ""))
         self.assertTrue(s.stop.is_set())
+        s.stop.clear()
+        msg = {"message": "The same snapshot had been made 69 hours, 47 minutes ago. You can make new capture of this URL after 72 hours."}
+        with mock.patch.object(s.s, "post", return_value=FakeResp(msg)), mock.patch.object(s, "_throttle"):
+            self.assertEqual(s.save("https://x/c"), ("recent", ""))
 
 
 if __name__ == "__main__":

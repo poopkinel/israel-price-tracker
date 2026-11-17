@@ -86,7 +86,7 @@ class Saver:
             self._throttle()
             try:
                 if self.authed:
-                    r = self.s.post(SAVE, data={"url": url, "if_not_archived_within": "3d", "skip_first_archive": "1"}, timeout=60)
+                    r = self.s.post(SAVE, data={"url": url, "if_not_archived_within": "2d", "skip_first_archive": "1"}, timeout=60)
                 else:
                     r = self.s.get(f"{SAVE}/{url}", timeout=180)
             except requests.RequestException as e:
@@ -114,7 +114,7 @@ class Saver:
                     self._pause(30)
                     last = "busy"
                     continue
-                if "already" in msg or "within" in msg:
+                if "already" in msg or "within" in msg or "same snapshot" in msg:
                     return "recent", ""
                 return f"error:{msg[:60] or r.status_code}", ""
             # anonymous: success is a redirect/200 to the snapshot
