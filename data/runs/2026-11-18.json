@@ -2,26 +2,26 @@
  {
   "id": "fox",
   "platform": "shopify",
-  "seen": 2918,
-  "on_sale": 2488,
-  "changes": 0,
+  "seen": 2705,
+  "on_sale": 2525,
+  "changes": 39,
   "status": "ok",
-  "seconds": 19
+  "seconds": 21
  },
  {
   "id": "megasport",
   "platform": "shopify",
-  "seen": 1671,
-  "on_sale": 868,
-  "changes": 2,
+  "seen": 1672,
+  "on_sale": 874,
+  "changes": 10,
   "status": "ok",
-  "seconds": 7
+  "seconds": 9
  },
  {
   "id": "factory54",
   "platform": "shopify",
-  "seen": 16513,
-  "on_sale": 758,
+  "seen": 16585,
+  "on_sale": 774,
   "changes": 13,
   "status": "ok",
   "seconds": 68
@@ -51,14 +51,14 @@
   "on_sale": 157,
   "changes": 0,
   "status": "ok",
-  "seconds": 5
+  "seconds": 3
  },
  {
   "id": "ronenchen",
   "platform": "shopify",
   "seen": 792,
   "on_sale": 444,
-  "changes": 1,
+  "changes": 0,
   "status": "ok",
   "seconds": 4
  },
@@ -67,9 +67,9 @@
   "platform": "woocommerce",
   "seen": 347,
   "on_sale": 37,
-  "changes": 0,
+  "changes": 4,
   "status": "ok",
-  "seconds": 18
+  "seconds": 12
  },
  {
   "id": "princessa",
@@ -78,7 +78,7 @@
   "on_sale": 140,
   "changes": 0,
   "status": "ok",
-  "seconds": 14
+  "seconds": 17
  },
  {
   "id": "idigital",
@@ -87,14 +87,14 @@
   "on_sale": 0,
   "changes": 0,
   "status": "ok",
-  "seconds": 10
+  "seconds": 9
  },
  {
   "id": "gadgetline",
   "platform": "shopify",
   "seen": 3248,
   "on_sale": 284,
-  "changes": 0,
+  "changes": 1,
   "status": "ok",
   "seconds": 14
  },
@@ -103,7 +103,7 @@
   "platform": "woocommerce",
   "status": "error",
   "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.cwc.co.il/wp-json/wc/store/v1/products?per_page=100&page=1",
-  "seconds": 0
+  "seconds": 1
  },
  {
   "id": "payngo",
@@ -115,36 +115,36 @@
  {
   "id": "homecenter",
   "platform": "shopify",
-  "seen": 21893,
-  "on_sale": 7064,
-  "changes": 181,
+  "seen": 21898,
+  "on_sale": 7066,
+  "changes": 6,
   "status": "ok",
   "seconds": 99
  },
  {
   "id": "foxhome",
   "platform": "shopify",
-  "seen": 1279,
-  "on_sale": 1263,
-  "changes": 0,
+  "seen": 1283,
+  "on_sale": 1266,
+  "changes": 4,
   "status": "ok",
   "seconds": 6
  },
  {
   "id": "shilav",
   "platform": "shopify",
-  "seen": 6476,
+  "seen": 6480,
   "on_sale": 0,
-  "changes": 0,
+  "changes": 4,
   "status": "ok",
   "seconds": 26
  },
  {
   "id": "nammal",
   "platform": "woocommerce",
-  "seen": 486,
-  "on_sale": 112,
-  "changes": 0,
+  "seen": 490,
+  "on_sale": 114,
+  "changes": 6,
   "status": "ok",
   "seconds": 11
  },
@@ -158,16 +158,16 @@
  {
   "id": "betili",
   "platform": "magento",
-  "seen": 5610,
-  "on_sale": 4848,
-  "changes": 7,
+  "seen": 5660,
+  "on_sale": 4898,
+  "changes": 41,
   "status": "ok",
   "seconds": 32
  },
  {
   "id": "ahava",
   "platform": "shopify",
-  "seen": 182,
+  "seen": 181,
   "on_sale": 45,
   "changes": 0,
   "status": "ok",
@@ -176,18 +176,18 @@
  {
   "id": "dealcosmetics",
   "platform": "shopify",
-  "seen": 5373,
+  "seen": 5370,
   "on_sale": 525,
-  "changes": 5,
+  "changes": 437,
   "status": "ok",
   "seconds": 23
  },
  {
   "id": "laline",
   "platform": "shopify",
-  "seen": 366,
-  "on_sale": 366,
-  "changes": 0,
+  "seen": 372,
+  "on_sale": 374,
+  "changes": 8,
   "status": "ok",
   "seconds": 2
  },
@@ -198,7 +198,7 @@
   "on_sale": 81,
   "changes": 0,
   "status": "ok",
-  "seconds": 10
+  "seconds": 8
  },
  {
   "id": "drugstore",

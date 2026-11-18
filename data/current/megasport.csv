@@ -733,7 +733,7 @@ product_id,title,url,price,compare_at,on_sale,discount_pct,first_seen,last_seen,
 8622761115784,גוזיית ספורט נשים,https://www.megasport.co.il/products/nihf5372010,135.92,169.90,1,20,2026-10-27,2026-11-18,2026-10-27,
 8622761214088,מכנסי ספורט גברים,https://www.megasport.co.il/products/niib8413010,151.92,189.90,1,20,2026-10-27,2026-11-11,2026-10-27,
 8622761476232,נעלי ריצה מקצועי RIDE 18 - נשים,https://www.megasport.co.il/products/sas11000224,510.93,729.90,1,30,2026-10-27,2026-11-18,2026-10-27,
-8622761640072,נעלי ריצה מקצועיות TRIUMPH 23 WIDE - גברים,https://www.megasport.co.il/products/sas21024200,799.00,,0,,2026-10-27,2026-11-18,,2026-11-18
+8622761640072,נעלי ריצה מקצועיות TRIUMPH 23 WIDE - גברים,https://www.megasport.co.il/products/sas21024200,559.30,799.00,1,30,2026-10-27,2026-11-18,2026-11-18,2026-11-18
 8622761803912,נעלי ריצה מקצועיות HURRICANE 25 WIDE - נשים,https://www.megasport.co.il/products/sas11027224,799.00,,0,,2026-10-27,2026-11-18,,2026-11-18
 8622762197128,כובע קסקט,https://www.megasport.co.il/products/adiq2908,99.90,,0,,2026-10-27,2026-11-18,,2026-11-18
 8622762229896,תיק נסיעות,https://www.megasport.co.il/products/adjd9555,149.90,179.90,1,17,2026-10-27,2026-11-18,2026-10-27,
@@ -744,7 +744,7 @@ product_id,title,url,price,compare_at,on_sale,discount_pct,first_seen,last_seen,
 8622762393736,תיק גב,https://www.megasport.co.il/products/adjl6155,199.90,,0,,2026-10-27,2026-11-18,,2026-11-18
 8622762426504,תיק גב,https://www.megasport.co.il/products/adjm2740,229.90,,0,,2026-10-27,2026-11-18,,2026-11-18
 8622762459272,תיק גב,https://www.megasport.co.il/products/adjm4467,119.90,,0,,2026-10-27,2026-11-18,,2026-11-18
-8622762524808,בקבוקי ספורט,https://www.megasport.co.il/products/adkc6412,79.90,,0,,2026-10-27,2026-10-28,,2026-10-28
+8622762524808,בקבוקי ספורט,https://www.megasport.co.il/products/adkc6412,79.90,,0,,2026-10-27,2026-11-18,,2026-11-18
 8622762688648,כובע קסקט,https://www.megasport.co.il/products/adjw6038,69.90,,0,,2026-10-27,2026-11-18,,2026-11-18
 8622762721416,בקבוקי ספורט,https://www.megasport.co.il/products/adkc6411,79.90,,0,,2026-10-27,2026-11-18,,2026-11-18
 8622762786952,כובע קסקט,https://www.megasport.co.il/products/adjv5387,69.90,,0,,2026-10-27,2026-11-18,,2026-11-18
@@ -1115,7 +1115,7 @@ product_id,title,url,price,compare_at,on_sale,discount_pct,first_seen,last_seen,
 8819988037768,נעלי ספורט METRO TEK - ילדים,https://www.megasport.co.il/products/nihq2008004,172.43,229.90,1,25,2026-10-27,2026-11-18,2026-11-02,2026-11-01
 8820546437256,מכנסי כדורגל קצרים - יוניסקס,https://www.megasport.co.il/products/adkd8954,125.93,179.90,1,30,2026-10-27,2026-11-18,2026-10-27,
 8820546470024,חולצת כדורגל קצרה - יוניסקס,https://www.megasport.co.il/products/adkd8965,125.93,179.90,1,30,2026-10-27,2026-10-29,2026-10-27,
-8824880103560,חולצת ספורט קצרה - גברים,https://www.megasport.co.il/products/adka7291,132.93,189.90,1,30,2026-10-27,2026-11-03,2026-10-27,
+8824880103560,חולצת ספורט קצרה - גברים,https://www.megasport.co.il/products/adka7291,132.93,189.90,1,30,2026-10-27,2026-11-18,2026-10-27,
 8824880169096,נעלי ריצה מקצועיות ELLIPSE - גברים,https://www.megasport.co.il/products/nbmelps20y,899.90,,0,,2026-10-27,2026-11-18,,2026-11-18
 8824880201864,מכנסי ספורט קצרים - גברים,https://www.megasport.co.il/products/adkf6431,209.93,299.90,1,30,2026-10-27,2026-11-09,2026-10-27,
 8824880234632,חולצת טי-שירט קצרה - גברים,https://www.megasport.co.il/products/adke8165,153.93,219.90,1,30,2026-10-27,2026-11-09,2026-10-27,
@@ -1325,11 +1325,11 @@ product_id,title,url,price,compare_at,on_sale,discount_pct,first_seen,last_seen,
 8908587335816,נעלי הליכה סליפ-אין EDGERIDE - גברים,https://www.megasport.co.il/products/sk232846bkw,262.43,349.90,1,25,2026-10-27,2026-11-18,2026-11-04,2026-11-03
 8908587368584,נעלי הליכה סליפ-אין EDGERIDE - גברים,https://www.megasport.co.il/products/sk232846bbk,349.90,,0,,2026-10-27,2026-11-18,,2026-11-18
 8908587401352,נעלי ריצה GOrun CONSISTENT 2.0 - נשים,https://www.megasport.co.il/products/sk128607ntpk,247.43,329.90,1,25,2026-10-27,2026-11-18,2026-11-04,2026-11-03
-8912099541128,נעלי ריצה מקצועיות TRIUMPH 23 - גברים,https://www.megasport.co.il/products/sas21023201,799.90,,0,,2026-10-27,2026-11-18,,2026-11-18
+8912099541128,נעלי ריצה מקצועיות TRIUMPH 23 - גברים,https://www.megasport.co.il/products/sas21023201,559.93,799.90,1,30,2026-10-27,2026-11-18,2026-11-18,2026-11-18
 8912099573896,נעלי ריצה מקצועיות ADIZERO EVO SL - גברים,https://www.megasport.co.il/products/adki6901,649.90,,0,,2026-10-27,2026-11-18,,2026-11-18
-8912099639432,נעלי ריצה מקצועיות TRIUMPH 23 - נשים,https://www.megasport.co.il/products/sas11023142,799.90,,0,,2026-10-27,2026-11-18,,2026-11-18
+8912099639432,נעלי ריצה מקצועיות TRIUMPH 23 - נשים,https://www.megasport.co.il/products/sas11023142,559.93,799.90,1,30,2026-10-27,2026-11-18,2026-11-18,2026-11-18
 8912099672200,נעלי ריצה מקצועיות ADIZERO EVO SL - נשים,https://www.megasport.co.il/products/adki6929,649.90,,0,,2026-10-27,2026-11-18,,2026-11-18
-8912099704968,נעלי ריצה מקצועיות TRIUMPH 23 - גברים,https://www.megasport.co.il/products/sas21024228,799.90,,0,,2026-10-27,2026-11-18,,2026-11-18
+8912099704968,נעלי ריצה מקצועיות TRIUMPH 23 - גברים,https://www.megasport.co.il/products/sas21024228,559.93,799.90,1,30,2026-10-27,2026-11-18,2026-11-18,2026-11-18
 8912099803272,נעלי ריצה מקצועיות ADIZERO EVO SL - נשים,https://www.megasport.co.il/products/adki6928,649.90,,0,,2026-10-27,2026-11-18,,2026-11-18
 8914285396104,חולצת פולו - גברים,https://www.megasport.co.il/products/adke6785,153.93,219.90,1,30,2026-10-27,2026-11-18,2026-10-27,
 8915751108744,כפכפי אצבע TOP WARNER - ילדים,https://www.megasport.co.il/products/ha41502910555,80.00,,0,,2026-10-27,2026-11-18,,2026-11-18
@@ -1361,6 +1361,7 @@ product_id,title,url,price,compare_at,on_sale,discount_pct,first_seen,last_seen,
 8929977368712,חולצת טי-שירט - גברים,https://www.megasport.co.il/products/ua1382801026,153.93,219.90,1,30,2026-10-27,2026-11-18,2026-10-27,
 8929977401480,נעלי ספורט TENSAUR SPORT 3.0 - תינוקות,https://www.megasport.co.il/products/adjq1852,149.90,,0,,2026-10-27,2026-11-18,,2026-11-18
 8929977499784,נעלי ספורט GALAXY 8 - ילדות,https://www.megasport.co.il/products/adki1671,209.93,279.90,1,25,2026-10-27,2026-11-18,2026-10-27,
+8929977630856,בקבוק ספורט,https://www.megasport.co.il/products/adkv8999,79.90,,0,,2026-11-18,2026-11-18,,2026-11-18
 8932040900744,נעלי קטרגל PREDATOR LEAGUE - גברים,https://www.megasport.co.il/products/adih7212,379.90,,0,,2026-10-27,2026-11-18,,2026-11-18
 8932041064584,נעלי קטרגל PREDATOR LEAGUE - ילדים,https://www.megasport.co.il/products/adkk3725,299.90,,0,,2026-10-27,2026-11-18,,2026-11-18
 8932041097352,גוזיית ספורט - נשים,https://www.megasport.co.il/products/bds26bdb06036,119.94,199.90,1,40,2026-10-27,2026-11-18,2026-10-27,
@@ -1409,7 +1410,7 @@ product_id,title,url,price,compare_at,on_sale,discount_pct,first_seen,last_seen,
 8934073532552,חולצת טי-שירט - נשים,https://www.megasport.co.il/products/adkt0297,104.93,149.90,1,30,2026-10-27,2026-11-09,2026-10-27,
 8935825014920,מכנסי בד קצרים - גברים,https://www.megasport.co.il/products/adkw2305,139.93,199.90,1,30,2026-10-27,2026-11-09,2026-10-27,
 8935825047688,מכנסי בד קצרים - גברים,https://www.megasport.co.il/products/adkw2299,139.93,199.90,1,30,2026-10-27,2026-11-09,2026-10-27,
-8935825080456,נעלי ריצה מקצועיות GEL KAYANO 32  - נשים,https://www.megasport.co.il/products/ac1012b838102,949.90,,0,,2026-10-27,2026-11-18,,2026-11-18
+8935825080456,נעלי ריצה מקצועיות GEL KAYANO 32  - נשים,https://www.megasport.co.il/products/ac1012b838102,664.93,949.90,1,30,2026-10-27,2026-11-18,2026-11-18,2026-11-18
 8935825113224,מכנסי ספורט קצרים - גברים,https://www.megasport.co.il/products/adka6260,174.93,249.90,1,30,2026-10-27,2026-11-09,2026-10-27,
 8935825211528,חולצת טי-שירט קצרה - גברים,https://www.megasport.co.il/products/adkx1281,104.93,149.90,1,30,2026-10-27,2026-11-09,2026-10-27,
 8944216670344,נעלי ספורט GALAXY 8 EL - ילדים,https://www.megasport.co.il/products/adla3825,149.00,219.90,1,32,2026-10-27,2026-11-18,2026-10-27,
@@ -1487,7 +1488,7 @@ product_id,title,url,price,compare_at,on_sale,discount_pct,first_seen,last_seen,
 8965067309192,נעלי קטרגל PREDATOR LEAGUE - ילדים,https://www.megasport.co.il/products/adih2091,299.90,,0,,2026-10-27,2026-11-18,,2026-11-18
 8965067374728,נעלי קטרגל F50 HYPERFAST LEAGUE - גברים,https://www.megasport.co.il/products/adkj3434,379.90,,0,,2026-10-27,2026-11-18,,2026-11-18
 8965067407496,נעלי ריצה ECEHLON 10 WIDE - גברים,https://www.megasport.co.il/products/sas21045101,489.30,699.00,1,30,2026-10-27,2026-11-18,2026-10-27,
-8965067473032,נעלי ספורט LANCER RUN - גברים,https://www.megasport.co.il/products/sas21048200,399.92,499.90,1,20,2026-10-27,2026-11-18,2026-11-02,2026-11-01
+8965067473032,נעלי ספורט LANCER RUN - גברים,https://www.megasport.co.il/products/sas21048200,349.93,499.90,1,30,2026-10-27,2026-11-18,2026-11-02,2026-11-01
 8965067505800,חולצת טי-שירט קצרה - גברים,https://www.megasport.co.il/products/adjz4995,97.93,139.90,1,30,2026-10-27,2026-11-18,2026-10-27,
 8965067538568,חולצת טי-שירט קצרה - גברים,https://www.megasport.co.il/products/niib6757010,149.90,,0,,2026-10-27,2026-11-18,,2026-11-18
 8965067571336,גופיית ספורט - נשים,https://www.megasport.co.il/products/adkf0916,104.93,149.90,1,30,2026-10-27,2026-11-18,2026-10-27,
@@ -1502,7 +1503,7 @@ product_id,title,url,price,compare_at,on_sale,discount_pct,first_seen,last_seen,
 8965067964552,טייץ ארוך - נשים,https://www.megasport.co.il/products/niib9135010,269.90,,0,,2026-10-27,2026-11-18,,2026-11-18
 8965067997320,טייץ קצר - נשים,https://www.megasport.co.il/products/niio0581010,189.90,,0,,2026-10-27,2026-11-18,,2026-11-18
 8965068030088,טייץ קצר - נשים,https://www.megasport.co.il/products/niio1292010,169.90,,0,,2026-10-27,2026-11-18,,2026-11-18
-8965068062856,נעלי ריצה LANCER RUN - נשים,https://www.megasport.co.il/products/sas11048200,399.20,499.00,1,20,2026-10-27,2026-11-18,2026-11-02,2026-11-01
+8965068062856,נעלי ריצה LANCER RUN - נשים,https://www.megasport.co.il/products/sas11048200,349.30,499.00,1,30,2026-10-27,2026-11-18,2026-11-02,2026-11-01
 8974159577224,נעלי סניקרס INITIATOR PHANTOM - נשים,https://www.megasport.co.il/products/niib4339001,369.90,,0,,2026-10-27,2026-11-18,,2026-11-18
 8974159642760,נעלי ריצה GALAXY 8 - נשים,https://www.megasport.co.il/products/adih9795,319.90,,0,,2026-10-27,2026-11-18,,2026-11-18
 8974159708296,נעלי סניקרס SPIRITAIN 2000 - גברים,https://www.megasport.co.il/products/adki3017,449.90,,0,,2026-10-27,2026-11-18,,2026-11-18
@@ -1687,7 +1688,7 @@ product_id,title,url,price,compare_at,on_sale,discount_pct,first_seen,last_seen,
 9003064656008,נעלי ספורט GO RUN CONSISTENT 2.0 - ילדות,https://www.megasport.co.il/products/sk303979lbkrg,219.90,,0,,2026-10-27,2026-11-18,,2026-11-18
 9003064721544,ג'קט - גברים,https://www.megasport.co.il/products/adks9289,230.93,329.90,1,30,2026-10-27,2026-11-09,2026-10-27,
 9003064754312,מכנסי ספורט קצרים - גברים,https://www.megasport.co.il/products/adkv4072,139.93,199.90,1,30,2026-10-27,2026-11-18,2026-10-27,
-9003064787080,נעלי ריצה COHESION 19 - גברים,https://www.megasport.co.il/products/sas1019211011,359.92,449.90,1,20,2026-10-27,2026-11-18,2026-11-02,2026-11-01
+9003064787080,נעלי ריצה COHESION 19 - גברים,https://www.megasport.co.il/products/sas1019211011,314.93,449.90,1,30,2026-10-27,2026-11-18,2026-11-02,2026-11-01
 9003064819848,ג'קט - גברים,https://www.megasport.co.il/products/adkg1919,230.93,329.90,1,30,2026-10-27,2026-11-18,2026-10-27,
 9003064852616,חולצת ספורט קצרה - גברים,https://www.megasport.co.il/products/adkg1926,118.93,169.90,1,30,2026-10-27,2026-11-14,2026-10-27,
 9006858272904,נעלי ריצה GLIDE-STEP SOLE - נשים,https://www.megasport.co.il/products/sk180272bknt,399.90,,0,,2026-10-27,2026-11-18,,2026-11-18
@@ -1911,7 +1912,7 @@ product_id,title,url,price,compare_at,on_sale,discount_pct,first_seen,last_seen,
 9142847340680,ג'קט - גברים,https://www.megasport.co.il/products/ua6013804411,293.93,419.90,1,30,2026-10-27,2026-11-18,2026-10-27,
 9142847373448,מכנסיים ארוכים - גברים,https://www.megasport.co.il/products/ua6013802410,251.93,359.90,1,30,2026-10-27,2026-11-18,2026-10-27,
 9142847406216,מכנסי ספורט קצרים - גברים,https://www.megasport.co.il/products/niiq5775011,189.90,,0,,2026-10-27,2026-11-18,,2026-11-18
-9142847438984,נעלי ריצה COHESION 19 WIDE - נשים,https://www.megasport.co.il/products/sas1019601003,359.92,449.90,1,20,2026-10-27,2026-11-18,2026-11-02,2026-11-01
+9142847438984,נעלי ריצה COHESION 19 WIDE - נשים,https://www.megasport.co.il/products/sas1019601003,314.93,449.90,1,30,2026-10-27,2026-11-18,2026-11-02,2026-11-01
 9142847504520,ג'קט - גברים,https://www.megasport.co.il/products/ua6017023008,328.93,469.90,1,30,2026-10-27,2026-11-18,2026-10-27,
 9142847537288,טייץ קצר - נשים,https://www.megasport.co.il/products/niiq6018010,159.90,,0,,2026-10-27,2026-11-18,,2026-11-18
 9143569547400,כדור כדורגל,https://www.megasport.co.il/products/adke5866,499.90,,0,,2026-10-27,2026-11-18,,2026-11-18
