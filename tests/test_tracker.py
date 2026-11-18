@@ -159,3 +159,27 @@ class SaverTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class SaverCapacityTest(unittest.TestCase):
+    def test_waits_for_free_slot_and_stops_at_daily_limit(self):
+        with mock.patch.dict("os.environ", {"IA_ACCESS_KEY": "a", "IA_SECRET_KEY": "b"}):
+            s = archive.Saver()
+        statuses = [FakeResp({"available": 0}), FakeResp({"available": 2, "daily_captures": 5, "daily_captures_limit": 100000})]
+        with mock.patch.object(s.s, "get", side_effect=statuses), mock.patch.object(archive.time, "sleep"), \
+             mock.patch.object(archive.time, "time", side_effect=__import__("itertools").count(0, 5)):
+            s._wait_capacity()
+        self.assertFalse(s.stop.is_set())
+        s._status_at = 0
+        with mock.patch.object(s.s, "get", return_value=FakeResp({"available": 3, "daily_captures": 100000, "daily_captures_limit": 100000})):
+            s._wait_capacity()
+        self.assertTrue(s.stop.is_set())
+
+    def test_log_path_starts_from_repo_copy(self):
+        tmp = Path(tempfile.mkdtemp())
+        with mock.patch.object(archive, "ARCHIVE_LOG", tmp / "repo"):
+            common.append_csv(tmp / "repo" / "2026-01-01.csv", [{"date": "2026-01-01", "url": "u", "result": "submitted"}], archive.LOG_FIELDS)
+            with mock.patch.dict("os.environ", {"ARCHIVE_LOG_DIR": str(tmp / "run")}):
+                p = archive.log_path("2026-01-01")
+        self.assertEqual(p, tmp / "run" / "2026-01-01.csv")
+        self.assertEqual(len(common.read_csv(p)), 1)

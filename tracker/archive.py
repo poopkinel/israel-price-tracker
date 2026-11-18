@@ -14,6 +14,8 @@ from __future__ import annotations
 import datetime as dt
 import hashlib
 import os
+import shutil
+from pathlib import Path
 import sys
 import threading
 import time
@@ -22,6 +24,20 @@ from concurrent.futures import ThreadPoolExecutor
 import requests
 
 from .common import ARCHIVE_LOG, CURRENT, USER_AGENT, append_csv, load_stores, read_csv, today
+
+def log_path(day: str):
+    """Where this run appends its log. ARCHIVE_LOG_DIR (outside the repo) lets the workflow copy and
+    commit the log every few minutes without racing the writer; it starts from the repo's copy."""
+    d = os.environ.get("ARCHIVE_LOG_DIR")
+    if not d:
+        return ARCHIVE_LOG / f"{day}.csv"
+    p = Path(d) / f"{day}.csv"
+    src = ARCHIVE_LOG / f"{day}.csv"
+    if not p.exists() and src.exists():
+        p.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(src, p)
+    return p
+
 
 LOG_FIELDS = ["date", "store", "product_id", "url", "sale_since", "result", "job_id", "submitted_at"]
 SAVE = "https://web.archive.org/save"
@@ -60,10 +76,31 @@ class Saver:
         self.stop = threading.Event()
         self.lock = threading.Lock()
         self.pause_until = 0.0
+        self._status_at = 0.0
+        self._available = 0
 
     @property
     def authed(self) -> bool:
         return bool(self.key and self.secret)
+
+    def _wait_capacity(self, max_wait: float = 900) -> None:
+        """Authenticated only: wait until the account has a free capture slot (SPN2 /save/status/user)."""
+        t_end = time.time() + max_wait
+        while not self.stop.is_set() and time.time() < t_end:
+            with self.lock:
+                if time.time() - self._status_at > 3:
+                    try:
+                        j = self.s.get(SAVE + "/status/user", timeout=30).json()
+                        self._available = int(j.get("available", 1))
+                        if j.get("daily_captures_limit") and j.get("daily_captures", 0) >= j["daily_captures_limit"]:
+                            self.stop.set()
+                    except (requests.RequestException, ValueError, TypeError):
+                        self._available = 1  # status endpoint unavailable: fall back to trying
+                    self._status_at = time.time()
+                if self._available > 0:
+                    self._available -= 1
+                    return
+            time.sleep(4)
 
     def _throttle(self):
         while True:
@@ -86,6 +123,9 @@ class Saver:
             self._throttle()
             try:
                 if self.authed:
+                    self._wait_capacity()
+                    if self.stop.is_set():
+                        return "skipped", ""
                     r = self.s.post(SAVE, data={"url": url, "if_not_archived_within": "2d", "skip_first_archive": "1"}, timeout=60)
                 else:
                     r = self.s.get(f"{SAVE}/{url}", timeout=180)
@@ -136,6 +176,7 @@ def main() -> int:
     workers = 6 if saver.authed else 3
     print(f"{day}: {len(targets)} pages due today; submitting up to {max_saves} ({'authenticated' if saver.authed else 'anonymous'}, {workers} workers)", flush=True)
     batch = targets[:max_saves]
+    logfile = log_path(day)
     log_lock = threading.Lock()
     counts: dict[str, int] = {}
     fails = [0]  # consecutive failures; a long streak means the archive stopped accepting us
@@ -148,9 +189,9 @@ def main() -> int:
         res, job = saver.save(t["url"])
         if res == "skipped":
             return
-        row = dict(t, date=day, result=res, job_id=job, submitted_at=dt.datetime.utcnow().isoformat(timespec="seconds"))
+        row = dict(t, date=day, result=res, job_id=job, submitted_at=dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%S"))
         with log_lock:
-            append_csv(ARCHIVE_LOG / f"{day}.csv", [row], LOG_FIELDS)
+            append_csv(logfile, [row], LOG_FIELDS)
             counts[res.split(":")[0]] = counts.get(res.split(":")[0], 0) + 1
             fails[0] = 0 if res in ("submitted", "saved", "recent") else fails[0] + 1
             if fails[0] >= 25 and not saver.stop.is_set():
@@ -160,7 +201,7 @@ def main() -> int:
             if n % 100 == 0:
                 print(n, counts, flush=True)
         if saver.authed:
-            time.sleep(2)  # keep a steady pace well under the concurrency cap
+            time.sleep(1)
 
     with ThreadPoolExecutor(max_workers=workers) as ex:
         list(ex.map(work, batch))
