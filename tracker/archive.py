@@ -40,6 +40,26 @@ def log_path(day: str):
 
 
 LOG_FIELDS = ["date", "store", "product_id", "url", "sale_since", "result", "job_id", "submitted_at"]
+
+
+def merge_logs(run_dir, repo_dir=ARCHIVE_LOG) -> int:
+    """Append to the repo's logs the rows of this run's logs that are not there yet; returns how many.
+
+    The repo's copy can hold rows this run never saw (another run pushed them after this run's
+    checkout), so the run's file must never simply replace it. Existing rows are left untouched."""
+    added = 0
+    for src in sorted(Path(run_dir).glob("*.csv")):
+        dst = Path(repo_dir) / src.name
+        have = {tuple(r.get(f, "") for f in LOG_FIELDS) for r in read_csv(dst)}
+        new = []
+        for r in read_csv(src):
+            k = tuple(r.get(f, "") for f in LOG_FIELDS)
+            if k not in have:
+                have.add(k)
+                new.append(r)
+        append_csv(dst, new, LOG_FIELDS)
+        added += len(new)
+    return added
 SAVE = "https://web.archive.org/save"
 
 
@@ -210,4 +230,7 @@ def main() -> int:
 
 
 if __name__ == "__main__":
+    if len(sys.argv) == 3 and sys.argv[1] == "--merge-log":
+        print("archive log: merged", merge_logs(sys.argv[2]), "new rows", flush=True)
+        sys.exit(0)
     sys.exit(main())

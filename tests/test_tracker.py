@@ -138,6 +138,34 @@ class TrackerTest(unittest.TestCase):
         self.assertIn("| S | c | ✅ | 1 | 1 | 100% |", text)
 
 
+class MergeLogsTest(unittest.TestCase):
+    def row(self, url, at):
+        return {"date": "2026-11-22", "store": "fox", "product_id": "1", "url": url, "sale_since": "2026-11-01",
+                "result": "submitted", "job_id": "j" + at, "submitted_at": at}
+
+    def test_keeps_rows_pushed_by_another_run_and_adds_only_new_ones(self):
+        with tempfile.TemporaryDirectory() as d:
+            repo, run = Path(d) / "repo", Path(d) / "run"
+            a, b, c = self.row("u/a", "t1"), self.row("u/b", "t2"), self.row("u/c", "t3")
+            # the run started from a checkout that had only row a; meanwhile another run pushed b
+            common.append_csv(repo / "2026-11-22.csv", [a, b], archive.LOG_FIELDS)
+            common.append_csv(run / "2026-11-22.csv", [a, c], archive.LOG_FIELDS)
+            before = (repo / "2026-11-22.csv").read_bytes()
+            self.assertEqual(archive.merge_logs(run, repo), 1)
+            after = (repo / "2026-11-22.csv").read_bytes()
+            self.assertTrue(after.startswith(before))  # existing rows untouched
+            self.assertEqual([r["url"] for r in common.read_csv(repo / "2026-11-22.csv")], ["u/a", "u/b", "u/c"])
+            self.assertEqual(archive.merge_logs(run, repo), 0)  # repeating the sync adds nothing
+            self.assertEqual((repo / "2026-11-22.csv").read_bytes(), after)
+
+    def test_creates_the_log_when_the_repo_has_none(self):
+        with tempfile.TemporaryDirectory() as d:
+            repo, run = Path(d) / "repo", Path(d) / "run"
+            common.append_csv(run / "2026-11-23.csv", [self.row("u/a", "t1")], archive.LOG_FIELDS)
+            self.assertEqual(archive.merge_logs(run, repo), 1)
+            self.assertEqual(len(common.read_csv(repo / "2026-11-23.csv")), 1)
+
+
 class SaverTest(unittest.TestCase):
     def test_authed_responses(self):
         with mock.patch.dict("os.environ", {"IA_ACCESS_KEY": "a", "IA_SECRET_KEY": "b"}):
