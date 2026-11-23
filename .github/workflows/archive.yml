@@ -25,6 +25,8 @@ jobs:
     timeout-minutes: 345
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main   # the latest main, not the commit the run was queued on: today's log must be current
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
