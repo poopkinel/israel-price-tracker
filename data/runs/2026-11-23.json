@@ -2,45 +2,45 @@
  {
   "id": "fox",
   "platform": "shopify",
-  "seen": 2712,
-  "on_sale": 2330,
-  "changes": 5,
+  "seen": 2724,
+  "on_sale": 2342,
+  "changes": 10,
   "status": "ok",
   "seconds": 19
  },
  {
   "id": "megasport",
   "platform": "shopify",
-  "seen": 1664,
+  "seen": 1663,
   "on_sale": 1053,
-  "changes": 237,
+  "changes": 0,
   "status": "ok",
   "seconds": 7
  },
  {
   "id": "factory54",
   "platform": "shopify",
-  "seen": 16880,
-  "on_sale": 768,
-  "changes": 25,
+  "seen": 16891,
+  "on_sale": 771,
+  "changes": 28,
   "status": "ok",
-  "seconds": 78
+  "seconds": 69
  },
  {
   "id": "commeilfaut",
   "platform": "shopify",
   "seen": 652,
   "on_sale": 430,
-  "changes": 3,
+  "changes": 0,
   "status": "ok",
-  "seconds": 3
+  "seconds": 4
  },
  {
   "id": "gertrud",
   "platform": "shopify",
-  "seen": 538,
+  "seen": 537,
   "on_sale": 518,
-  "changes": 215,
+  "changes": 0,
   "status": "ok",
   "seconds": 3
  },
@@ -51,16 +51,16 @@
   "on_sale": 363,
   "changes": 0,
   "status": "ok",
-  "seconds": 2
+  "seconds": 4
  },
  {
   "id": "ronenchen",
   "platform": "shopify",
-  "seen": 816,
-  "on_sale": 621,
-  "changes": 4,
+  "seen": 821,
+  "on_sale": 623,
+  "changes": 6,
   "status": "ok",
-  "seconds": 4
+  "seconds": 5
  },
  {
   "id": "salinka",
@@ -69,16 +69,16 @@
   "on_sale": 37,
   "changes": 0,
   "status": "ok",
-  "seconds": 12
+  "seconds": 17
  },
  {
   "id": "princessa",
   "platform": "woocommerce",
   "seen": 523,
   "on_sale": 140,
-  "changes": 23,
+  "changes": 0,
   "status": "ok",
-  "seconds": 16
+  "seconds": 17
  },
  {
   "id": "idigital",
@@ -87,14 +87,14 @@
   "on_sale": 0,
   "changes": 0,
   "status": "ok",
-  "seconds": 9
+  "seconds": 10
  },
  {
   "id": "gadgetline",
   "platform": "shopify",
   "seen": 3265,
   "on_sale": 283,
-  "changes": 18,
+  "changes": 0,
   "status": "ok",
   "seconds": 14
  },
@@ -102,7 +102,7 @@
   "id": "cwc",
   "platform": "woocommerce",
   "status": "error",
-  "error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+  "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.cwc.co.il/wp-json/wc/store/v1/products?per_page=100&page=1",
   "seconds": 0
  },
  {
@@ -115,11 +115,11 @@
  {
   "id": "homecenter",
   "platform": "shopify",
-  "seen": 21851,
-  "on_sale": 7109,
-  "changes": 92,
+  "seen": 21858,
+  "on_sale": 7111,
+  "changes": 6,
   "status": "ok",
-  "seconds": 89
+  "seconds": 99
  },
  {
   "id": "foxhome",
@@ -135,7 +135,7 @@
   "platform": "shopify",
   "seen": 6226,
   "on_sale": 0,
-  "changes": 2,
+  "changes": 0,
   "status": "ok",
   "seconds": 25
  },
@@ -144,9 +144,9 @@
   "platform": "woocommerce",
   "seen": 485,
   "on_sale": 108,
-  "changes": 2,
+  "changes": 0,
   "status": "ok",
-  "seconds": 10
+  "seconds": 11
  },
  {
   "id": "cookbake",
@@ -158,11 +158,11 @@
  {
   "id": "betili",
   "platform": "magento",
-  "seen": 5693,
-  "on_sale": 4945,
-  "changes": 34,
+  "seen": 5659,
+  "on_sale": 4950,
+  "changes": 7,
   "status": "ok",
-  "seconds": 31
+  "seconds": 35
  },
  {
   "id": "ahava",
@@ -177,15 +177,15 @@
   "id": "dealcosmetics",
   "platform": "shopify",
   "seen": 5374,
-  "on_sale": 649,
-  "changes": 202,
+  "on_sale": 529,
+  "changes": 130,
   "status": "ok",
   "seconds": 22
  },
  {
   "id": "laline",
   "platform": "shopify",
-  "seen": 371,
+  "seen": 370,
   "on_sale": 371,
   "changes": 0,
   "status": "ok",
@@ -194,11 +194,9 @@
  {
   "id": "newpharm",
   "platform": "woocommerce",
-  "seen": 334,
-  "on_sale": 0,
-  "changes": 0,
-  "status": "ok",
-  "seconds": 4
+  "status": "error",
+  "error": "HTTPError: 403 Client Error: Forbidden for url: https://newpharm.co.il/wp-json/wc/store/v1/products?per_page=100&page=1",
+  "seconds": 1
  },
  {
   "id": "drugstore",
