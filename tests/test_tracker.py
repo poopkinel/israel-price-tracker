@@ -138,6 +138,81 @@ class TrackerTest(unittest.TestCase):
         self.assertIn("| S | c | ✅ | 1 | 1 | 100% |", text)
 
 
+class TodaysTargetsTest(unittest.TestCase):
+    """Which pages are due for archiving today, and in what order."""
+
+    DAY = "2026-11-24"
+
+    def setUp(self):
+        self.tmp = Path(tempfile.mkdtemp())
+        self.current, self.log = self.tmp / "current", self.tmp / "archive"
+        mock.patch.object(archive, "CURRENT", self.current).start()
+        mock.patch.object(archive, "ARCHIVE_LOG", self.log).start()
+        mock.patch.object(archive, "load_stores", lambda: [{"id": "a"}, {"id": "b"}]).start()
+        self.addCleanup(mock.patch.stopall)
+        import datetime as dt
+        self.today_bucket = dt.date.fromisoformat(self.DAY).toordinal() % 3
+
+    def url(self, store, n, due=True):
+        """A product URL whose bucket is (or is not) today's."""
+        i = 0
+        while True:
+            u = f"https://{store}.co.il/p/{n}-{i}"
+            if (archive.bucket(u) == self.today_bucket) == due:
+                return u
+            i += 1
+
+    def row(self, pid, url, on_sale="1", last_seen=None, sale_since="2026-11-01"):
+        return {"product_id": pid, "title": "t", "url": url, "price": "80.00", "compare_at": "100.00",
+                "on_sale": on_sale, "discount_pct": "20", "first_seen": "2026-10-27",
+                "last_seen": last_seen or self.DAY, "sale_since": sale_since if on_sale == "1" else "",
+                "last_full_price_seen": ""}
+
+    def write(self, store, rows):
+        common.write_csv(self.current / f"{store}.csv", rows, common.CURRENT_FIELDS)
+
+    def test_only_on_sale_products_in_todays_bucket(self):
+        due, other_day, full_price = self.url("a", 1), self.url("a", 2, due=False), self.url("a", 3)
+        self.write("a", [self.row("1", due), self.row("2", other_day), self.row("3", full_price, on_sale="0"),
+                         self.row("4", "")])
+        out = archive.todays_targets(self.DAY)
+        self.assertEqual(out, [{"store": "a", "product_id": "1", "url": due, "sale_since": "2026-11-01"}])
+
+    def test_every_url_is_due_exactly_one_day_in_three(self):
+        urls = [f"https://a.co.il/p/{i}" for i in range(60)]
+        seen = []
+        for day in ("2026-11-24", "2026-11-25", "2026-11-26"):
+            self.write("a", [self.row(str(i), u, last_seen=day) for i, u in enumerate(urls)])
+            seen += [t["url"] for t in archive.todays_targets(day)]
+        self.assertEqual(sorted(seen), sorted(urls))
+
+    def test_products_not_seen_for_two_days_are_skipped(self):
+        yesterday, stale = self.url("a", 1), self.url("a", 2)
+        self.write("a", [self.row("1", yesterday, last_seen="2026-11-23"), self.row("2", stale, last_seen="2026-11-22")])
+        self.assertEqual([t["product_id"] for t in archive.todays_targets(self.DAY)], ["1"])
+
+    def test_longest_discounts_first_across_stores(self):
+        self.write("a", [self.row("1", self.url("a", 1), sale_since="2026-11-20"),
+                         self.row("2", self.url("a", 2), sale_since="2026-10-27")])
+        self.write("b", [self.row("3", self.url("b", 3), sale_since="2026-11-05")])
+        self.assertEqual([t["product_id"] for t in archive.todays_targets(self.DAY)], ["2", "3", "1"])
+
+    def test_pages_already_handled_today_are_skipped_but_errors_stay_due(self):
+        urls = {k: self.url("a", k) for k in ("submitted", "recent", "saved", "error:paused", "rate-limited")}
+        self.write("a", [self.row(str(i), u) for i, u in enumerate(urls.values())])
+        common.append_csv(self.log / f"{self.DAY}.csv",
+                          [{"date": self.DAY, "store": "a", "product_id": str(i), "url": u, "sale_since": "2026-11-01",
+                            "result": res, "job_id": "", "submitted_at": ""} for i, (res, u) in enumerate(urls.items())],
+                          archive.LOG_FIELDS)
+        # yesterday's log must not count for today
+        common.append_csv(self.log / "2026-11-23.csv",
+                          [{"date": "2026-11-23", "store": "a", "product_id": "3", "url": urls["error:paused"],
+                            "sale_since": "2026-11-01", "result": "submitted", "job_id": "", "submitted_at": ""}],
+                          archive.LOG_FIELDS)
+        left = archive.todays_targets(self.DAY)
+        self.assertEqual(sorted(t["url"] for t in left), sorted([urls["error:paused"], urls["rate-limited"]]))
+
+
 class MergeLogsTest(unittest.TestCase):
     def row(self, url, at):
         return {"date": "2026-11-22", "store": "fox", "product_id": "1", "url": url, "sale_since": "2026-11-01",
