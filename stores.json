@@ -27,6 +27,7 @@
   {"id": "ahava", "name": "אהבה", "category": "קוסמטיקה ופארם", "platform": "shopify", "base": "https://www.ahava.co.il"},
   {"id": "dealcosmetics", "name": "דיל קוסמטיקס", "category": "קוסמטיקה ופארם", "platform": "shopify", "base": "https://www.dealcosmetics.co.il"},
   {"id": "laline", "name": "ללין", "category": "קוסמטיקה ופארם", "platform": "shopify", "base": "https://www.laline.co.il"},
-  {"id": "newpharm", "name": "ניו פארם", "category": "קוסמטיקה ופארם", "platform": "woocommerce", "base": "https://newpharm.co.il"},
+  {"id": "newpharm", "name": "ניו פארם", "category": "קוסמטיקה ופארם", "platform": "woocommerce", "base": "https://newpharm.co.il",
+   "note": "ב-22.11.2026 נעלם המחיר הישן מכל 80 המוצרים שהיו בהנחה בבת אחת, והמחיר עצמו לא השתנה; לא ידוע אם ההנחות הסתיימו או שהאתר הפסיק לדווח על המחיר הישן"},
   {"id": "drugstore", "name": "דראגסטור", "category": "קוסמטיקה ופארם", "platform": "magento", "base": "https://www.drugstore.co.il"}
 ]
