@@ -260,10 +260,6 @@ class SaverTest(unittest.TestCase):
             self.assertEqual(s.save("https://x/c"), ("recent", ""))
 
 
-if __name__ == "__main__":
-    unittest.main()
-
-
 class SaverCapacityTest(unittest.TestCase):
     def test_waits_for_free_slot_and_stops_at_daily_limit(self):
         with mock.patch.dict("os.environ", {"IA_ACCESS_KEY": "a", "IA_SECRET_KEY": "b"}):
@@ -286,3 +282,79 @@ class SaverCapacityTest(unittest.TestCase):
                 p = archive.log_path("2026-01-01")
         self.assertEqual(p, tmp / "run" / "2026-01-01.csv")
         self.assertEqual(len(common.read_csv(p)), 1)
+
+
+class FakeSaver:
+    """Answers like archive.Saver.save, from a function of (url, how many times it was asked)."""
+    authed = False
+
+    def __init__(self, answer):
+        self.stop = archive.threading.Event()
+        self.answer, self.asked = answer, []
+
+    def save(self, url):
+        self.asked.append(url)
+        return self.answer(url, self.asked.count(url))
+
+
+PAUSED = "error:please try again in ~1 min. crawling this host is paused bec"
+
+
+class PausedHostTest(unittest.TestCase):
+    """The Wayback Machine sometimes stops crawling one store's site; the run must go on with the others."""
+
+    def setUp(self):
+        self.log = Path(tempfile.mkdtemp()) / "2026-01-01.csv"
+        self.batch = [{"store": "a", "product_id": str(i), "url": f"https://a.co.il/p{i}", "sale_since": "2025-12-01"} for i in range(40)]
+        self.batch += [{"store": "b", "product_id": str(i), "url": f"https://b.co.il/p{i}", "sale_since": "2025-12-02"} for i in range(5)]
+
+    def run_batch(self, saver, deadline=float("inf")):
+        with mock.patch.object(archive.time, "sleep"):
+            return archive.submit_all(self.batch, saver, self.log, "2026-01-01", deadline, workers=1)
+
+    def test_other_stores_go_on_while_one_site_is_paused(self):
+        saver = FakeSaver(lambda url, n: (PAUSED, "") if "a.co.il" in url else ("submitted", "j"))
+        counts = self.run_batch(saver, deadline=archive.time.time() + 60)
+        self.assertFalse(saver.stop.is_set())  # 40 pages of a paused site did not end the run
+        self.assertEqual(counts, {"error": 1, "submitted": 5})
+        rows = common.read_csv(self.log)
+        self.assertEqual([r["store"] for r in rows], ["a"] + ["b"] * 5)  # the paused site's other pages are not logged
+        self.assertEqual(len(saver.asked), 6)  # and were not sent to the Wayback Machine either
+
+    def test_paused_pages_are_tried_again_after_the_pause(self):
+        saver = FakeSaver(lambda url, n: (PAUSED, "") if url.endswith("a.co.il/p0") and n == 1 else ("submitted", "j"))
+        real_paused = archive.HostPauses.paused
+        calls = []
+
+        def paused_once(self, url):  # the pause is over by the second pass
+            calls.append(url)
+            return real_paused(self, url) and calls.count(url) == 1
+
+        with mock.patch.object(archive.HostPauses, "paused", paused_once):
+            counts = self.run_batch(saver)
+        self.assertEqual(counts, {"error": 1, "submitted": 44})
+        rows = common.read_csv(self.log)
+        self.assertEqual(sum(r["result"] == "submitted" for r in rows), 44)
+        # the page that got the error stays due: todays_targets only skips submitted pages
+        self.assertNotIn("https://a.co.il/p0", {r["url"] for r in rows if r["result"] == "submitted"})
+
+    def test_run_still_stops_when_every_answer_is_an_error(self):
+        saver = FakeSaver(lambda url, n: ("error:http-502", ""))
+        counts = self.run_batch(saver)
+        self.assertTrue(saver.stop.is_set())
+        self.assertEqual(counts, {"error": 25})
+
+    def test_host_pause_expires(self):
+        hosts = archive.HostPauses(minutes=15)
+        with mock.patch.object(archive.time, "time", return_value=1000.0):
+            hosts.pause("https://a.co.il/p1")
+            self.assertTrue(hosts.paused("https://a.co.il/p2"))
+            self.assertFalse(hosts.paused("https://b.co.il/p1"))
+            self.assertEqual(hosts.seconds_left(["https://a.co.il/p3"]), 900.0)
+        with mock.patch.object(archive.time, "time", return_value=1901.0):
+            self.assertFalse(hosts.paused("https://a.co.il/p2"))
+            self.assertEqual(hosts.seconds_left(["https://a.co.il/p3"]), 0.0)
+
+
+if __name__ == "__main__":
+    unittest.main()

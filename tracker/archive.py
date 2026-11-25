@@ -4,6 +4,9 @@ Today's share = products currently on sale whose URL falls in today's bucket (ha
 Products discounted for the longest time go first. Several runs per day continue where the
 previous one stopped (URLs already logged today are skipped).
 
+When the Wayback Machine answers that crawling one store's site is paused, that store's pages are
+set aside for a while and the run goes on with the other stores (see HostPauses).
+
 Environment:
   IA_ACCESS_KEY / IA_SECRET_KEY  archive.org S3 keys (optional; higher limits when set)
   MAX_SAVES                      max submissions this run (default 2500)
@@ -20,6 +23,7 @@ import sys
 import threading
 import time
 from concurrent.futures import ThreadPoolExecutor
+from urllib.parse import urlparse
 
 import requests
 
@@ -83,6 +87,36 @@ def todays_targets(day: str) -> list[dict]:
             out.append({"store": s["id"], "product_id": r["product_id"], "url": r["url"], "sale_since": r["sale_since"]})
     out.sort(key=lambda r: r["sale_since"] or "9999")
     return out
+
+
+HOST_PAUSED = "host is paused"  # in the Wayback Machine's reply "crawling this host is paused because ..."
+HOST_PAUSE_MIN = 15
+
+
+class HostPauses:
+    """Store sites the Wayback Machine has stopped crawling for the moment.
+
+    The reply "crawling this host is paused" is about one site, not about our account. Its pages
+    are left alone for HOST_PAUSE_MIN minutes (not submitted, not logged, so they stay due) while
+    the other stores' pages go on."""
+
+    def __init__(self, minutes: float = HOST_PAUSE_MIN):
+        self.seconds = 60 * minutes
+        self.until: dict[str, float] = {}
+        self.lock = threading.Lock()
+
+    def pause(self, url: str) -> None:
+        with self.lock:
+            self.until[urlparse(url).netloc] = time.time() + self.seconds
+
+    def paused(self, url: str) -> bool:
+        with self.lock:
+            return self.until.get(urlparse(url).netloc, 0) > time.time()
+
+    def seconds_left(self, urls) -> float:
+        """How long until the first of these pages' sites may be tried again (0 if one already may)."""
+        with self.lock:
+            return max(0.0, min((self.until.get(urlparse(u).netloc, 0) for u in urls), default=0) - time.time())
 
 
 class Saver:
@@ -187,25 +221,26 @@ class Saver:
         return last, ""
 
 
-def main() -> int:
-    day = today()
-    targets = todays_targets(day)
-    max_saves = int(os.environ.get("MAX_SAVES", "2500"))
-    deadline = time.time() + 60 * float(os.environ.get("TIME_BUDGET_MIN", "330"))
-    saver = Saver()
-    workers = 6 if saver.authed else 3
-    print(f"{day}: {len(targets)} pages due today; submitting up to {max_saves} ({'authenticated' if saver.authed else 'anonymous'}, {workers} workers)", flush=True)
-    batch = targets[:max_saves]
-    logfile = log_path(day)
+def submit_all(batch: list[dict], saver, logfile, day: str, deadline: float, workers: int, hosts: HostPauses | None = None) -> dict[str, int]:
+    """Submit the pages in order and log every answer; returns how many of each result.
+
+    Pages of a site whose crawling is paused are passed over and tried again after the rest of the
+    batch, as long as the time budget lasts. Whatever is not logged stays due for the next run."""
+    hosts = hosts or HostPauses()
     log_lock = threading.Lock()
     counts: dict[str, int] = {}
     fails = [0]  # consecutive failures; a long streak means the archive stopped accepting us
+    held: list[dict] = []  # passed over because their site was paused
 
     def work(t):
         if time.time() > deadline:
             saver.stop.set()
         if saver.stop.is_set():
             return  # not logged, so the page stays due for the next run
+        if hosts.paused(t["url"]):
+            with log_lock:
+                held.append(t)
+            return
         res, job = saver.save(t["url"])
         if res == "skipped":
             return
@@ -213,7 +248,13 @@ def main() -> int:
         with log_lock:
             append_csv(logfile, [row], LOG_FIELDS)
             counts[res.split(":")[0]] = counts.get(res.split(":")[0], 0) + 1
-            fails[0] = 0 if res in ("submitted", "saved", "recent") else fails[0] + 1
+            if HOST_PAUSED in res:
+                # one site's problem: set the site aside, and do not count it towards giving up
+                if not hosts.paused(t["url"]):
+                    print(f"{urlparse(t['url']).netloc}: crawling paused by the Wayback Machine; its pages wait {hosts.seconds / 60:.0f} minutes", flush=True)
+                hosts.pause(t["url"])
+            else:
+                fails[0] = 0 if res in ("submitted", "saved", "recent") else fails[0] + 1
             if fails[0] >= 25 and not saver.stop.is_set():
                 print(f"stopping: {fails[0]} failures in a row (last: {res}); the rest stays due for the next run", flush=True)
                 saver.stop.set()
@@ -223,8 +264,30 @@ def main() -> int:
         if saver.authed:
             time.sleep(1)
 
-    with ThreadPoolExecutor(max_workers=workers) as ex:
-        list(ex.map(work, batch))
+    pending = batch
+    while pending and not saver.stop.is_set():
+        held.clear()
+        with ThreadPoolExecutor(max_workers=workers) as ex:
+            list(ex.map(work, pending))
+        pending = list(held)
+        if pending and not saver.stop.is_set():
+            wait = hosts.seconds_left(t["url"] for t in pending)
+            if time.time() + wait > deadline:
+                break
+            print(f"{len(pending)} pages of paused sites left; trying them again in {wait / 60:.0f} minutes", flush=True)
+            time.sleep(wait)
+    return counts
+
+
+def main() -> int:
+    day = today()
+    targets = todays_targets(day)
+    max_saves = int(os.environ.get("MAX_SAVES", "2500"))
+    deadline = time.time() + 60 * float(os.environ.get("TIME_BUDGET_MIN", "330"))
+    saver = Saver()
+    workers = 6 if saver.authed else 3
+    print(f"{day}: {len(targets)} pages due today; submitting up to {max_saves} ({'authenticated' if saver.authed else 'anonymous'}, {workers} workers)", flush=True)
+    counts = submit_all(targets[:max_saves], saver, log_path(day), day, deadline, workers)
     print("done:", counts, f"remaining today: {len(targets) - sum(v for k, v in counts.items() if k in ('submitted', 'saved', 'recent'))}")
     return 0
 
