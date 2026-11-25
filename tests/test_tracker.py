@@ -135,7 +135,7 @@ class TrackerTest(unittest.TestCase):
         with mock.patch.object(report, "load_stores", return_value=stores):
             report.main()
         text = (self.tmp / "REPORT.md").read_text(encoding="utf-8")
-        self.assertIn("| S | c | ✅ | 1 | 1 | 100% |", text)
+        self.assertIn("| S | c | ✅ | 1 | 1 | 100% | 1 | 0 | 0 | 0 | 0 |", text)  # on sale since the first day
 
 
 class TodaysTargetsTest(unittest.TestCase):
