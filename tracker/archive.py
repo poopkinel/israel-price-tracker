@@ -85,7 +85,9 @@ def todays_targets(day: str) -> list[dict]:
             if bucket(r["url"]) != b:
                 continue
             out.append({"store": s["id"], "product_id": r["product_id"], "url": r["url"], "sale_since": r["sale_since"]})
-    out.sort(key=lambda r: r["sale_since"] or "9999")
+    # longest discounts first; among discounts of the same age, a fixed shuffle (by URL hash) so that
+    # every store gets its share instead of the stores listed first in stores.json taking all of it
+    out.sort(key=lambda r: (r["sale_since"] or "9999", hashlib.md5(r["url"].encode()).hexdigest()[8:]))
     return out
 
 

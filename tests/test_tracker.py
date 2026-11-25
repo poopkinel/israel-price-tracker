@@ -197,6 +197,16 @@ class TodaysTargetsTest(unittest.TestCase):
         self.write("b", [self.row("3", self.url("b", 3), sale_since="2026-11-05")])
         self.assertEqual([t["product_id"] for t in archive.todays_targets(self.DAY)], ["2", "3", "1"])
 
+    def test_same_age_discounts_are_spread_over_stores(self):
+        # many pages each, all discounted since the same day: the first store must not come entirely first
+        for st in ("a", "b"):
+            self.write(st, [self.row(f"{st}{k}", self.url(st, 1000 + k), sale_since="2026-10-27") for k in range(40)])
+        order = [t["store"] for t in archive.todays_targets(self.DAY)]
+        self.assertEqual(len(order), 80)
+        self.assertGreater(order[:40].count("b"), 10)
+        self.assertGreater(order[:40].count("a"), 10)
+        self.assertEqual(order, [t["store"] for t in archive.todays_targets(self.DAY)])  # same order every run
+
     def test_pages_already_handled_today_are_skipped_but_errors_stay_due(self):
         urls = {k: self.url("a", k) for k in ("submitted", "recent", "saved", "error:paused", "rate-limited")}
         self.write("a", [self.row(str(i), u) for i, u in enumerate(urls.values())])
