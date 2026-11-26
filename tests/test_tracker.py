@@ -356,5 +356,58 @@ class PausedHostTest(unittest.TestCase):
             self.assertEqual(hosts.seconds_left(["https://a.co.il/p3"]), 0.0)
 
 
+class SnapshotCheckTest(unittest.TestCase):
+    """checks/snapshots.py: the parts that need no network."""
+
+    def test_price_is_found_however_it_is_written(self):
+        from checks import snapshots
+        for html in ("<s>4,258.00 ₪</s>", "was 4258 nis", '"compare_at_price":425800,', "<b>4258.00</b>"):
+            self.assertTrue(snapshots.find_number(html, "4258.00"), html)
+        self.assertTrue(snapshots.find_number("now 29.9!", "29.90"))
+
+    def test_price_inside_a_longer_number_is_not_a_match(self):
+        from checks import snapshots
+        for html in ("sku 142580", "14258", "4258.50", "4,258,000", "id=9425800"):
+            self.assertEqual(snapshots.find_number(html, "4258.00"), "", html)
+
+    def test_verdict_names_which_prices_are_on_the_page(self):
+        from checks import snapshots
+        self.assertEqual(snapshots.verdict("<s>64.90</s> <b>19.90</b>", "19.90", "64.90")[0], "both")
+        self.assertEqual(snapshots.verdict("<b>19.90</b>", "19.90", "64.90")[0], "price")
+        self.assertEqual(snapshots.verdict("<s>64.90</s>", "19.90", "64.90")[0], "before")
+        self.assertEqual(snapshots.verdict("<div id=app></div>", "19.90", "64.90")[0], "neither")
+
+    def test_price_on_a_day_is_the_last_change_up_to_that_day(self):
+        from checks import snapshots
+        hist = [{"date": "2026-10-27", "product_id": "a", "price": "10.00", "compare_at": "20.00"},
+                {"date": "2026-11-05", "product_id": "b", "price": "1.00", "compare_at": ""},
+                {"date": "2026-11-10", "product_id": "a", "price": "12.00", "compare_at": "20.00"}]
+        self.assertEqual(snapshots.price_on(hist, "a", "2026-11-09"), ("10.00", "20.00"))
+        self.assertEqual(snapshots.price_on(hist, "a", "2026-11-10"), ("12.00", "20.00"))
+        self.assertEqual(snapshots.price_on(hist, "a", "2026-10-26"), ("", ""))
+
+    def test_sample_is_long_discounts_with_a_submitted_page(self):
+        from checks import snapshots
+        with tempfile.TemporaryDirectory() as d:
+            d = Path(d)
+            row = dict(title="", price="5.00", compare_at="9.00", on_sale="1", discount_pct="44",
+                       first_seen="2026-10-27", last_seen="2026-11-25", sale_since="2026-10-27", last_full_price_seen="")
+            cur = [dict(row, product_id="1", url="https://s/1"),
+                   dict(row, product_id="2", url="https://s/2", sale_since="2026-11-16"),   # restarted
+                   dict(row, product_id="3", url="https://s/3"),                             # never submitted
+                   dict(row, product_id="4", url="https://s/4", last_seen="2026-11-09"),     # gone
+                   dict(row, product_id="5", url="https://s/5")]
+            common.write_csv(d / "cur" / "s.csv", cur, common.CURRENT_FIELDS)
+            log = [dict(date="2026-11-20", store="s", product_id=p, url=f"https://s/{p}", sale_since="", result=r,
+                        job_id="", submitted_at="") for p, r in (("1", "submitted"), ("2", "submitted"), ("3", "error:x"),
+                                                                 ("4", "submitted"), ("5", "submitted"))]
+            common.write_csv(d / "log" / "2026-11-20.csv", log, archive.LOG_FIELDS)
+            with mock.patch.object(snapshots, "CURRENT", d / "cur"), mock.patch.object(snapshots, "ARCHIVE_LOG", d / "log"), \
+                    mock.patch.object(snapshots, "load_stores", lambda: [{"id": "s"}]):
+                got = snapshots.pick_sample(5, "2026-10-27", "2026-11-25")
+                self.assertEqual(sorted(t["product_id"] for t in got), ["1", "5"])
+                self.assertEqual(len(snapshots.pick_sample(1, "2026-10-27", "2026-11-25")), 1)
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -1,0 +1,30 @@
+name: check archived snapshots
+
+# Manual only, no schedule. Looks up a small fixed sample of long-discounted product pages in the
+# Wayback Machine and prints, in the job summary, whether the prices in our data appear on the saved
+# page. Reads web.archive.org only (never the stores) and writes nothing to the repository.
+
+on:
+  workflow_dispatch:
+    inputs:
+      per_store:
+        description: "Pages to check per store"
+        required: false
+        default: "4"
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: python -m checks.snapshots ${{ github.event.inputs.per_store || '4' }}
