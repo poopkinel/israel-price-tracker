@@ -11,7 +11,10 @@ How to read the result
   price    the price is there, the "before" price is not (the buyer may not have been shown it)
   before   the "before" price is there, the price is not
   neither  neither number is on the page (page built by scripts, or the data differs from the page)
-  none     no saved copy found (the submission may have failed on the archive's side)
+  none     no good saved copy found although we submitted the page; the last column then lists
+           whatever copies exist (date:HTTP status) and what the archive says about our last request
+  A "?" after the result: the "before" number is on the page but not next to a currency sign or a
+  price label, so it may be something else.
 A number is searched as text in the page source, in the usual ways of writing it (1,299 / 1299.00 /
 129900 agorot). A match is evidence, not proof: short prices can also belong to another product on
 the same page. The context printed next to each "before" match is there for a human to judge.
@@ -47,19 +50,30 @@ def number_forms(value: str) -> list[str]:
     return forms
 
 
-def find_number(html: str, value: str) -> str:
-    """Up to 60 characters around the first place the price appears as a whole number, else ''."""
+NEAR_PRICE = re.compile(r"₪|&#8362;|ILS|NIS|price|compare", re.I)
+
+
+def find_number(html: str, value: str) -> tuple[str, bool]:
+    """(up to 60 characters around a place the price appears as a whole number, whether a currency
+    sign or the word price/compare is next to it). Prefers such a place; ('', False) if none at all."""
+    weak = ""
     for form in number_forms(value):
-        m = re.search(r"(?<![\d.,])" + re.escape(form) + r"(?![\d]|[.,]\d)", html)
-        if m:
-            return " ".join(html[max(0, m.start() - 30):m.end() + 30].split())
-    return ""
+        for m in re.finditer(r"(?<![\w.,-])" + re.escape(form) + r"(?![\w]|[.,]\d)", html):
+            ctx = " ".join(html[max(0, m.start() - 30):m.end() + 30].split())
+            if NEAR_PRICE.search(ctx):
+                return ctx, True
+            weak = weak or ctx
+    return weak, False
 
 
 def verdict(html: str, price: str, before: str) -> tuple[str, str]:
-    """('both' | 'price' | 'before' | 'neither', context of the "before" match)."""
-    p, b = find_number(html, price), find_number(html, before)
-    return ("both" if p and b else "price" if p else "before" if b else "neither"), b
+    """('both' | 'price' | 'before' | 'neither', context of the "before" match).
+
+    'both?' / 'before?' when the "before" number is on the page but not next to a currency sign
+    or a price label, so it may be something else (a size, a style rule)."""
+    (p, _), (b, strong) = find_number(html, price), find_number(html, before)
+    res = "both" if p and b else "price" if p else "before" if b else "neither"
+    return res + ("?" if b and not strong else ""), b
 
 
 def price_on(history: list[dict], product_id: str, day: str) -> tuple[str, str]:
@@ -76,18 +90,18 @@ def pick_sample(per_store: int, first_day: str, last_day: str) -> list[dict]:
     one, whose page we submitted at least once.
 
     The choice is fixed (by a hash of the URL), so two runs check the same pages."""
-    submitted: dict[str, str] = {}
+    submitted: dict[str, tuple[str, str]] = {}  # url -> (day, job id) of the last accepted request
     for f in sorted(ARCHIVE_LOG.glob("*.csv")):
         for r in read_csv(f):
             if r["result"] in ("submitted", "saved", "recent"):
-                submitted[r["url"]] = r["date"]
+                submitted[r["url"]] = (r["date"], r.get("job_id", ""))
     out = []
     for s in load_stores():
         rows = [r for r in read_csv(CURRENT / f"{s['id']}.csv")
                 if r["on_sale"] == "1" and r["sale_since"] == first_day and r["last_seen"] == last_day
                 and r["url"] in submitted]
         rows.sort(key=lambda r: hashlib.md5(r["url"].encode()).hexdigest())
-        out += [dict(r, store=s["id"], submitted=submitted[r["url"]]) for r in rows[:per_store]]
+        out += [dict(r, store=s["id"], submitted=submitted[r["url"]][0], job_id=submitted[r["url"]][1]) for r in rows[:per_store]]
     return out
 
 
@@ -98,6 +112,23 @@ def latest_snapshot(session, url: str, since: str) -> str:
     r.raise_for_status()
     rows = r.json() if r.text.strip() else []
     return rows[-1][0] if len(rows) > 1 else ""
+
+
+def why_none(session, t: dict) -> str:
+    """For a page with no good copy: the copies that do exist, and the state of our last request."""
+    out = []
+    try:
+        r = session.get(CDX, params={"url": t["url"], "output": "json", "fl": "timestamp,statuscode", "limit": "-3"}, timeout=60)
+        rows = r.json()[1:] if r.ok and r.text.strip() else []
+        out.append("copies: " + (" ".join(f"{ts[:8]}:{code}" for ts, code in rows) or "none at all"))
+        time.sleep(DELAY)
+        if t.get("job_id"):
+            j = session.get(f"https://web.archive.org/save/status/{t['job_id']}", headers={"Accept": "application/json"}, timeout=60).json()
+            out.append(f"last request ({t['submitted']}): " + " ".join(str(j.get(k, "")) for k in ("status", "status_ext", "message") if j.get(k))[:120])
+            time.sleep(DELAY)
+    except (requests.RequestException, ValueError) as e:
+        out.append(f"lookup failed: {type(e).__name__}")
+    return "; ".join(out)
 
 
 def main(argv: list[str]) -> int:
@@ -123,17 +154,19 @@ def main(argv: list[str]) -> int:
                 time.sleep(DELAY)
                 page.raise_for_status()
                 res, ctx = verdict(page.text, price, before) if price and before else ("no-data", "")
+            else:
+                ctx = why_none(s, t)
         except (requests.RequestException, ValueError) as e:
             res = f"failed:{type(e).__name__}"
         totals.setdefault(t["store"], {}).setdefault(res.split(":")[0], 0)
         totals[t["store"]][res.split(":")[0]] += 1
-        line = f"| {t['store']} | {t['url']} | {ts[:8]} | {price} | {before} | {res} | {ctx.replace('|', '/')[:90]} |"
+        line = f"| {t['store']} | {t['url']} | {ts[:8]} | {price} | {before} | {res} | {ctx.replace('|', '/')[:200]} |"
         print(line, flush=True)
         lines.append(line)
-    head = ["| store | page | saved on | price | before | result | where the before price appears |", "|---|---|---|---|---|---|---|"]
-    summary = ["| store | " + " | ".join(k for k in ("both", "price", "before", "neither", "none", "no-data", "failed")) + " |", "|---|---|---|---|---|---|---|---|"]
+    head = ["| store | page | saved on | price | before | result | where the before price appears, or why there is no copy |", "|---|---|---|---|---|---|---|"]
+    summary = ["| store | " + " | ".join(k for k in ("both", "both?", "price", "before", "before?", "neither", "none", "no-data", "failed")) + " |", "|---|---|---|---|---|---|---|---|---|---|"]
     for store, c in totals.items():
-        summary.append(f"| {store} | " + " | ".join(str(c.get(k, 0)) for k in ("both", "price", "before", "neither", "none", "no-data", "failed")) + " |")
+        summary.append(f"| {store} | " + " | ".join(str(c.get(k, 0)) for k in ("both", "both?", "price", "before", "before?", "neither", "none", "no-data", "failed")) + " |")
     text = "\n".join(["## Archived snapshots against the data", ""] + summary + [""] + head + lines) + "\n"
     print("\n".join(summary), flush=True)
     if os.environ.get("GITHUB_STEP_SUMMARY"):

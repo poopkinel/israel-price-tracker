@@ -362,19 +362,28 @@ class SnapshotCheckTest(unittest.TestCase):
     def test_price_is_found_however_it_is_written(self):
         from checks import snapshots
         for html in ("<s>4,258.00 ₪</s>", "was 4258 nis", '"compare_at_price":425800,', "<b>4258.00</b>"):
-            self.assertTrue(snapshots.find_number(html, "4258.00"), html)
-        self.assertTrue(snapshots.find_number("now 29.9!", "29.90"))
+            self.assertTrue(snapshots.find_number(html, "4258.00")[0], html)
+        self.assertTrue(snapshots.find_number("now 29.9!", "29.90")[0])
 
     def test_price_inside_a_longer_number_is_not_a_match(self):
         from checks import snapshots
-        for html in ("sku 142580", "14258", "4258.50", "4,258,000", "id=9425800"):
-            self.assertEqual(snapshots.find_number(html, "4258.00"), "", html)
+        for html in ("sku 142580", "14258", "4258.50", "4,258,000", "id=9425800", "b7b8-4258-9cb5", "max-width: 4258px"):
+            self.assertEqual(snapshots.find_number(html, "4258.00")[0], "", html)
+
+    def test_number_next_to_a_currency_sign_is_preferred_and_a_bare_one_is_marked(self):
+        from checks import snapshots
+        html = "font-weight:300;" + " " * 80 + "<del>&#8362;300</del>" + " " * 80 + "<b>99 ₪</b>"
+        ctx, strong = snapshots.find_number(html, "300.00")
+        self.assertTrue(strong)
+        self.assertIn("&#8362;300", ctx)
+        self.assertEqual(snapshots.verdict(html, "99.00", "300.00")[0], "both")
+        self.assertEqual(snapshots.verdict("font-weight:300;" + " " * 80 + "<b>99 ₪</b>", "99.00", "300.00")[0], "both?")
 
     def test_verdict_names_which_prices_are_on_the_page(self):
         from checks import snapshots
-        self.assertEqual(snapshots.verdict("<s>64.90</s> <b>19.90</b>", "19.90", "64.90")[0], "both")
+        self.assertEqual(snapshots.verdict("<s>64.90 ₪</s> <b>19.90 ₪</b>", "19.90", "64.90")[0], "both")
         self.assertEqual(snapshots.verdict("<b>19.90</b>", "19.90", "64.90")[0], "price")
-        self.assertEqual(snapshots.verdict("<s>64.90</s>", "19.90", "64.90")[0], "before")
+        self.assertEqual(snapshots.verdict("<s>₪64.90</s>", "19.90", "64.90")[0], "before")
         self.assertEqual(snapshots.verdict("<div id=app></div>", "19.90", "64.90")[0], "neither")
 
     def test_price_on_a_day_is_the_last_change_up_to_that_day(self):
