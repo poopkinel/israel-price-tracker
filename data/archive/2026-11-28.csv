@@ -1,0 +1,81 @@
+date,store,product_id,url,sale_since,result,job_id,submitted_at
+2026-11-28,fox,14695222149490,https://fox.co.il/products/9268767500,2026-10-27,submitted,spn2-909a52851911ed50493f652877b55054af43b307,2026-11-27T23:43:03
+2026-11-28,fox,14620221079922,https://fox.co.il/products/גרביון-1,2026-10-27,submitted,spn2-e8e1a9e0b0301c8e018bdcd8b02ffc53bcb5d1b1,2026-11-27T23:43:04
+2026-11-28,fox,14703507833202,https://fox.co.il/products/9324856000,2026-10-27,submitted,spn2-e4d95ce745361ff7b891ceb90140f47e50089269,2026-11-27T23:43:05
+2026-11-28,fox,14725106991474,https://fox.co.il/products/9342510500,2026-10-27,submitted,spn2-fe57ee040983706f40ebee9b47d72b04e8a15ef0,2026-11-27T23:44:00
+2026-11-28,fox,14703507734898,https://fox.co.il/products/9324850700,2026-10-27,submitted,spn2-1bf7a3364decf3807fadf3966e6679f4026f8702,2026-11-27T23:44:00
+2026-11-28,fox,14620904489330,https://fox.co.il/products/9268509400,2026-10-27,submitted,spn2-2227c76a3dc7dfb3eef0c0de70708537e3759960,2026-11-27T23:44:01
+2026-11-28,fox,14620904554866,https://fox.co.il/products/9268504800,2026-10-27,submitted,spn2-7f30c606274bb3e016e9b670d9fe8a442ec84e45,2026-11-27T23:45:03
+2026-11-28,fox,14718759043442,https://fox.co.il/products/9269030500,2026-10-27,submitted,spn2-5132e9240b02b72c58b73350a6c620e4b0499f6b,2026-11-27T23:45:04
+2026-11-28,fox,14713885589874,https://fox.co.il/products/9324830700,2026-10-27,submitted,spn2-50bd5c30bb521cd294ccc6efb11afe70d3eba27f,2026-11-27T23:45:04
+2026-11-28,fox,14725784174962,https://fox.co.il/products/9342510100,2026-10-27,submitted,spn2-88bf7ffe60323e33d8b4cceec1e4dfa55c82c5a2,2026-11-27T23:46:01
+2026-11-28,fox,14725215289714,https://fox.co.il/products/9342509400,2026-10-27,submitted,spn2-b3dfbb206383bff7b3029a587d7f793a81900fa6,2026-11-27T23:46:01
+2026-11-28,fox,14766464401778,https://fox.co.il/products/9270066500,2026-10-27,submitted,spn2-b2c892b38065f457ac7a3667e86a4fb588fbc0f1,2026-11-27T23:46:01
+2026-11-28,fox,14766464860530,https://fox.co.il/products/9270134399,2026-10-27,submitted,spn2-9c1b41a5d7af0b9851cb58057f3e2ceee9b61f85,2026-11-27T23:47:03
+2026-11-28,fox,14725215224178,https://fox.co.il/products/9342500500,2026-10-27,submitted,spn2-e255d323471f1472a5458614bd65917d0072d65a,2026-11-27T23:47:03
+2026-11-28,fox,14783506055538,https://fox.co.il/products/5325749300,2026-10-27,submitted,spn2-fd373aa0c8cdb564f666e2336970ea5aeca8ff07,2026-11-27T23:47:05
+2026-11-28,fox,14766464991602,https://fox.co.il/products/9270159401,2026-10-27,submitted,spn2-637bdf131776276907cc5dc90a9aeea591f73688,2026-11-27T23:48:00
+2026-11-28,fox,15010932982130,https://fox.co.il/products/9270253998,2026-10-27,submitted,spn2-78dbc94fd32259caf5ed793fdcfccc37cd2012ef,2026-11-27T23:48:00
+2026-11-28,fox,14766464926066,https://fox.co.il/products/9270142500,2026-10-27,submitted,spn2-0fb4306d1d1eeb8fa6d7d87a40f8c7ea6de04bc3,2026-11-27T23:48:01
+2026-11-28,fox,14766464598386,https://fox.co.il/products/9270093939,2026-10-27,submitted,spn2-deb011ef34918a2845282d001fc672b25a11a489,2026-11-27T23:49:02
+2026-11-28,fox,14961575887218,https://fox.co.il/products/1822190100,2026-10-27,submitted,spn2-bbfde782dda61fcf2a3dc829dd27f6075bbd13f3,2026-11-27T23:49:02
+2026-11-28,fox,15014891192690,https://fox.co.il/products/9270480200,2026-10-27,submitted,spn2-8596f8bbb43ca78dfddde973877677ceeb6708f8,2026-11-27T23:49:02
+2026-11-28,fox,15014892044658,https://fox.co.il/products/9270552100,2026-10-27,submitted,spn2-cacce9bc30b5ff1c0ee6ce24fb83f6deec53f4f0,2026-11-27T23:50:01
+2026-11-28,fox,15021072056690,https://fox.co.il/products/1102369960,2026-10-27,submitted,spn2-25a302fc149f073833c2907ae8c8e7240dc95349,2026-11-27T23:50:01
+2026-11-28,fox,14983813955954,https://fox.co.il/products/1102305802,2026-10-27,submitted,spn2-2ff0fb25867443b29ed96ed43af865dbdf51a14f,2026-11-27T23:50:01
+2026-11-28,fox,15021073924466,https://fox.co.il/products/1102432400,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T23:51:03
+2026-11-28,fox,15013023121778,https://fox.co.il/products/9210044413,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T23:51:03
+2026-11-28,fox,15014891848050,https://fox.co.il/products/9270549400,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T23:51:03
+2026-11-28,fox,15047842890098,https://fox.co.il/products/1102105815,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T23:51:08
+2026-11-28,fox,15078385287538,https://fox.co.il/products/9262383939,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T23:51:08
+2026-11-28,megasport,8570837139592,https://www.megasport.co.il/products/hi7480021005,2026-10-27,submitted,spn2-3e7e35e189c86d3738fce9c0843716a6c097b018,2026-11-27T23:51:12
+2026-11-28,megasport,8570785857672,https://www.megasport.co.il/products/ua1365335001,2026-10-27,submitted,spn2-407d9eb221ac0f69317ff5c8334b181d4d87649e,2026-11-27T23:51:12
+2026-11-28,megasport,8570838024328,https://www.megasport.co.il/products/ua1369771001,2026-10-27,submitted,spn2-88cf2ff33e04e93d307f22dc9840534645121d14,2026-11-27T23:51:13
+2026-11-28,megasport,8570861518984,https://www.megasport.co.il/products/ua1383559001,2026-10-27,submitted,spn2-fa086c992896c72fdc646b43e3eb6b5fe83efada,2026-11-27T23:52:03
+2026-11-28,megasport,8570891600008,https://www.megasport.co.il/products/coa10439c,2026-10-27,submitted,spn2-8227a1befb06884d3896f0a8ad1f40bd7136c6e1,2026-11-27T23:52:03
+2026-11-28,megasport,8570838941832,https://www.megasport.co.il/products/sk232450gry,2026-10-27,submitted,spn2-144b535f7fe45fef160558a9008327606bbfacb1,2026-11-27T23:52:03
+2026-11-28,megasport,8570898808968,https://www.megasport.co.il/products/adix1247,2026-10-27,submitted,spn2-6b3a3d786f3eca4026b0efa567426641668ff608,2026-11-27T23:53:00
+2026-11-28,megasport,8570893598856,https://www.megasport.co.il/products/nbw680lk8,2026-10-27,submitted,spn2-0eb5e225fc4587188e71519c0d2f81eb1a62d3c5,2026-11-27T23:53:00
+2026-11-28,megasport,8570907099272,https://www.megasport.co.il/products/skts107nvy,2026-10-27,submitted,spn2-bededee1ab77412ca7bfee646e6eb30c742cc394,2026-11-27T23:53:00
+2026-11-28,megasport,8570909261960,https://www.megasport.co.il/products/adji8203,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T23:54:04
+2026-11-28,megasport,8570907525256,https://www.megasport.co.il/products/adji9253,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T23:54:04
+2026-11-28,megasport,8570908147848,https://www.megasport.co.il/products/adji5267,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T23:54:04
+2026-11-28,megasport,8570911752328,https://www.megasport.co.il/products/adjj2605,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T23:54:07
+2026-11-28,megasport,8570885767304,https://www.megasport.co.il/products/adih5286,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T23:54:07
+2026-11-28,fox,15014891651442,https://fox.co.il/products/9270521014,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T23:54:08
+2026-11-28,factory54,9277775610078,https://factory54.co.il/products/polo-ralph-lauren-polo-id-leather-small-shoulder-bag-brown-428944017-002,2026-10-27,submitted,spn2-4605aa2e4251778d0a35ff37437cfdc25dfe846a,2026-11-27T23:54:13
+2026-11-28,factory54,9277775544542,https://factory54.co.il/products/polo-ralph-lauren-cotton-canvas-jacket-beige-211936442-003,2026-10-27,submitted,spn2-462c9db27d684660e9efbcf16a05de231462f481,2026-11-27T23:54:13
+2026-11-28,factory54,9277776756958,https://factory54.co.il/products/polo-ralph-lauren-cable-knit-cotton-cardigan-blue-211971881-501,2026-10-27,submitted,spn2-e9d2636dc62665bd97bea0ac000fe70961582ed7,2026-11-27T23:54:13
+2026-11-28,factory54,9277771088094,https://factory54.co.il/products/polo-ralph-lauren-classic-fit-linen-shirt-light-blue-211970730-515,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T23:55:03
+2026-11-28,factory54,9277773480158,https://factory54.co.il/products/polo-ralph-lauren-short-sleeve-crewneck-sweater-light-blue-211971872-504,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T23:55:03
+2026-11-28,factory54,9277770727646,https://factory54.co.il/products/polo-ralph-lauren-custom-fit-garment-dyed-oxford-shirt-light-blue-710805564-067,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T23:55:03
+2026-11-28,factory54,9277777215710,https://factory54.co.il/products/polo-ralph-lauren-pleated-cotton-blend-relaxed-pant-white-211a96676-002,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T23:55:07
+2026-11-28,factory54,9283054567646,https://factory54.co.il/products/bottega-veneta-andiamo-medium-intrecciato-leather-tote-bag-beige-766016-vcpp1-9713,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T23:55:07
+2026-11-28,factory54,9277777477854,https://factory54.co.il/products/polo-ralph-lauren-polo-id-suede-mini-shoulder-bag-brown-428922880-001,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T23:55:07
+2026-11-28,commeilfaut,7561581658200,https://comme-il-faut.com/products/lime-dina-jacket-ירוק,2026-10-27,submitted,spn2-152f97d6d6e48d212d08943e0128671f585b15c5,2026-11-27T23:55:14
+2026-11-28,commeilfaut,7596489408600,https://comme-il-faut.com/products/red-sharon-pants-אדום,2026-10-27,submitted,spn2-76f6b7326a7a392da1930268e304e6667078f443,2026-11-27T23:55:14
+2026-11-28,commeilfaut,7561828434008,https://comme-il-faut.com/products/barbie-t-shirt-שחור,2026-10-27,submitted,spn2-e97457c85d44886646a4f966103b35ff0aa25c24,2026-11-27T23:55:14
+2026-11-28,commeilfaut,7596496781400,https://comme-il-faut.com/products/dalya-jeans-כחול,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T23:56:02
+2026-11-28,commeilfaut,7865380962392,https://comme-il-faut.com/products/blue-salem-shirt,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T23:56:02
+2026-11-28,commeilfaut,8124755148888,https://comme-il-faut.com/products/ecru-denim-jacket-relaxed-fit,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T23:56:04
+2026-11-28,gertrud,7880257405110,https://gertrudshop.com/products/copy-of-מעיל-בורבון-nyl,2026-10-27,submitted,spn2-36e345e536e138928ff6c6344d423adccf848c00,2026-11-27T23:56:06
+2026-11-28,commeilfaut,8125819748440,https://comme-il-faut.com/products/red-rohav-top,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T23:56:07
+2026-11-28,gertrud,7983620751542,https://gertrudshop.com/products/גופיית-קלרה-copy,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T23:56:08
+2026-11-28,gertrud,7995729969334,https://gertrudshop.com/products/שמלת-לייזה-copy,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T23:56:09
+2026-11-28,netaefrati,9034440147159,https://netaefrati.com/products/adrian-top-fuchsia,2026-10-27,submitted,spn2-039b1b1bd41efc625c82e2c8f2be69d4e4ffd4c4,2026-11-27T23:56:11
+2026-11-28,netaefrati,9034441982167,https://netaefrati.com/products/kori-top-camel,2026-10-27,submitted,spn2-bdfcce4f7f30741a633dca34a824eb494ca8b56b,2026-11-27T23:56:12
+2026-11-28,gertrud,7514894008502,https://gertrudshop.com/products/גקט-גרטי,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T23:57:01
+2026-11-28,commeilfaut,8189533421656,https://comme-il-faut.com/products/white-aviva-shirt,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T23:57:01
+2026-11-28,commeilfaut,8295300137048,https://comme-il-faut.com/products/stripes-sem-tank,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T23:57:01
+2026-11-28,gertrud,7729776623798,https://gertrudshop.com/products/copy-of-גקט-בקרדי-1,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T23:57:05
+2026-11-28,netaefrati,9034442178775,https://netaefrati.com/products/kori-crop-top-camel,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T23:57:06
+2026-11-28,netaefrati,9034442375383,https://netaefrati.com/products/kori-bodysuit-camel,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T23:57:06
+2026-11-28,netaefrati,9034443849943,https://netaefrati.com/products/tori-dress-lurex-gray,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T23:57:10
+2026-11-28,netaefrati,9034440376535,https://netaefrati.com/products/adrian-top-green,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T23:57:10
+2026-11-28,netaefrati,9034444046551,https://netaefrati.com/products/stefany-dress-brown,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T23:57:11
+2026-11-28,ronenchen,8172715245613,https://ronenchen.co.il/products/שמלת-אילנה,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T23:57:15
+2026-11-28,ronenchen,8172779536429,https://ronenchen.co.il/products/חולצת-לב,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T23:57:16
+2026-11-28,ronenchen,15087033778221,https://ronenchen.co.il/products/שמלת-טבע,2026-10-27,submitted,spn2-33842d56620c73047d5096a21048049f282d7c47,2026-11-27T23:57:17
+2026-11-28,salinka,58973,https://salinka.co.il/product/%d7%a1%d7%a0%d7%93%d7%9c-%d7%a2%d7%a8%d7%91-bar-2,2026-10-27,submitted,spn2-bf33d2c0178ab98b438433dd2a44582664a44515,2026-11-27T23:57:19
+2026-11-28,ronenchen,8172783337517,https://ronenchen.co.il/products/שמלת-אוליביה,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T23:57:21
+2026-11-28,salinka,573062,https://salinka.co.il/product/%d7%a1%d7%a0%d7%93%d7%9c-%d7%a2%d7%a8%d7%91-elinoy-1,2026-10-27,submitted,spn2-36581b399378bbd7626333c50d51ce592ad1a9a8,2026-11-27T23:57:21
