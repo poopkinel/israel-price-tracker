@@ -260,6 +260,19 @@ class SaverTest(unittest.TestCase):
             self.assertEqual(s.save("https://x/c"), ("recent", ""))
 
 
+    def test_full_error_answer_goes_to_the_job_log_once(self):
+        with mock.patch.dict("os.environ", {"IA_ACCESS_KEY": "a", "IA_SECRET_KEY": "b"}):
+            s = archive.Saver()
+        text = "Please try again in ~1 min. Crawling this host is paused because of a long reason that the log cuts off."
+        with mock.patch.object(s.s, "post", return_value=FakeResp({"message": text})), mock.patch.object(s, "_throttle"), \
+                mock.patch.object(s, "_wait_capacity"), mock.patch("builtins.print") as out:
+            first = s.save("https://x/a")
+            self.assertEqual(s.save("https://x/b"), first)
+        self.assertEqual(first, ("error:" + text.lower()[:60], ""))
+        self.assertEqual(out.call_count, 1)
+        self.assertIn("cuts off", out.call_args[0][0])
+
+
 class SaverCapacityTest(unittest.TestCase):
     def test_waits_for_free_slot_and_stops_at_daily_limit(self):
         with mock.patch.dict("os.environ", {"IA_ACCESS_KEY": "a", "IA_SECRET_KEY": "b"}):

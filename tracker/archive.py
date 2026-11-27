@@ -145,6 +145,7 @@ class Saver:
         self.pause_until = 0.0
         self._status_at = 0.0
         self._available = 0
+        self._told: set[str] = set()
 
     @property
     def authed(self) -> bool:
@@ -223,6 +224,10 @@ class Saver:
                     continue
                 if "already" in msg or "within" in msg or "same snapshot" in msg:
                     return "recent", ""
+                if msg[:60] not in self._told:
+                    # the log keeps 60 characters; the job log gets the whole answer once
+                    self._told.add(msg[:60])
+                    print(f"archive answered for {url}: {msg or r.status_code}", flush=True)
                 return f"error:{msg[:60] or r.status_code}", ""
             # anonymous: success is a redirect/200 to the snapshot
             if r.status_code in (200, 301, 302):
