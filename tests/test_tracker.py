@@ -321,22 +321,48 @@ class PausedHostTest(unittest.TestCase):
         self.assertEqual([r["store"] for r in rows], ["a"] + ["b"] * 5)  # the paused site's other pages are not logged
         self.assertEqual(len(saver.asked), 6)  # and were not sent to the Wayback Machine either
 
+    def run_with_clock(self, saver, seconds_per_page=20, minutes=float("inf")):
+        """Runs the batch on a fake clock: every request takes seconds_per_page, sleeping moves the clock."""
+        now = [1000.0]
+        answer = saver.answer
+
+        def timed(url, n):
+            now[0] += seconds_per_page
+            return answer(url, n)
+
+        saver.answer = timed
+        with mock.patch.object(archive.time, "time", lambda: now[0]), \
+                mock.patch.object(archive.time, "sleep", lambda s: now.__setitem__(0, now[0] + s)):
+            return archive.submit_all(self.batch, saver, self.log, "2026-01-01", 1000.0 + 60 * minutes, workers=1)
+
     def test_paused_pages_are_tried_again_after_the_pause(self):
         saver = FakeSaver(lambda url, n: (PAUSED, "") if url.endswith("a.co.il/p0") and n == 1 else ("submitted", "j"))
-        real_paused = archive.HostPauses.paused
-        calls = []
-
-        def paused_once(self, url):  # the pause is over by the second pass
-            calls.append(url)
-            return real_paused(self, url) and calls.count(url) == 1
-
-        with mock.patch.object(archive.HostPauses, "paused", paused_once):
-            counts = self.run_batch(saver)
+        counts = self.run_with_clock(saver)
         self.assertEqual(counts, {"error": 1, "submitted": 44})
         rows = common.read_csv(self.log)
         self.assertEqual(sum(r["result"] == "submitted" for r in rows), 44)
         # the page that got the error stays due: todays_targets only skips submitted pages
         self.assertNotIn("https://a.co.il/p0", {r["url"] for r in rows if r["result"] == "submitted"})
+
+    def test_paused_site_rejoins_before_the_other_stores_finish(self):
+        # 300 pages of store b take 100 minutes; store a's pause lasts 15
+        self.batch += [{"store": "b", "product_id": f"x{i}", "url": f"https://b.co.il/x{i}", "sale_since": "2025-12-03"} for i in range(300)]
+        saver = FakeSaver(lambda url, n: (PAUSED, "") if url.endswith("a.co.il/p0") else ("submitted", "j"))
+        self.run_with_clock(saver)
+        stores = [r["store"] for r in common.read_csv(self.log) if r["result"] == "submitted"]
+        self.assertEqual(stores.count("a"), 39)
+        last_a = max(i for i, s in enumerate(stores) if s == "a")
+        self.assertLess(last_a, 150)  # not after all 305 pages of b, as before
+
+    def test_site_still_paused_costs_one_request_per_retry(self):
+        self.batch += [{"store": "b", "product_id": f"x{i}", "url": f"https://b.co.il/x{i}", "sale_since": "2025-12-03"} for i in range(300)]
+        saver = FakeSaver(lambda url, n: (PAUSED, "") if "a.co.il" in url else ("submitted", "j"))
+        counts = self.run_with_clock(saver, minutes=110)
+        asked_a = [u for u in saver.asked if "a.co.il" in u]
+        self.assertEqual(counts["submitted"], 305)
+        self.assertEqual(len(asked_a), len(set(asked_a)))  # an error is not repeated for the same page in this run
+        self.assertGreaterEqual(len(asked_a), 4)  # tried again about every 15 minutes over 100 minutes
+        self.assertLessEqual(len(asked_a), 9)  # one page each time, not the whole store
 
     def test_run_still_stops_when_every_answer_is_an_error(self):
         saver = FakeSaver(lambda url, n: ("error:http-502", ""))

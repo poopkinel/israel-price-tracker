@@ -5,7 +5,8 @@ Products discounted for the longest time go first. Several runs per day continue
 previous one stopped (URLs already logged today are skipped).
 
 When the Wayback Machine answers that crawling one store's site is paused, that store's pages are
-set aside for a while and the run goes on with the other stores (see HostPauses).
+set aside for a while and the run goes on with the other stores; when the pause is over they take
+their place in the order again (see HostPauses and submit_all).
 
 Environment:
   IA_ACCESS_KEY / IA_SECRET_KEY  archive.org S3 keys (optional; higher limits when set)
@@ -98,16 +99,28 @@ class HostPauses:
 
     The reply "crawling this host is paused" is about one site, not about our account. Its pages
     are left alone for HOST_PAUSE_MIN minutes (not submitted, not logged, so they stay due) while
-    the other stores' pages go on."""
+    the other stores' pages go on. After that the site is on trial: one page at a time is sent
+    until the archive accepts one, so a site that is still paused costs one request, not a burst."""
 
     def __init__(self, minutes: float = HOST_PAUSE_MIN):
         self.seconds = 60 * minutes
         self.until: dict[str, float] = {}
+        self.trial: set[str] = set()
         self.lock = threading.Lock()
 
     def pause(self, url: str) -> None:
         with self.lock:
             self.until[urlparse(url).netloc] = time.time() + self.seconds
+            self.trial.add(urlparse(url).netloc)
+
+    def accepted(self, url: str) -> None:
+        """The archive took a page of this site, so the site is no longer on trial."""
+        with self.lock:
+            self.trial.discard(urlparse(url).netloc)
+
+    def on_trial(self, url: str) -> bool:
+        with self.lock:
+            return urlparse(url).netloc in self.trial
 
     def paused(self, url: str) -> bool:
         with self.lock:
@@ -224,28 +237,37 @@ class Saver:
 def submit_all(batch: list[dict], saver, logfile, day: str, deadline: float, workers: int, hosts: HostPauses | None = None) -> dict[str, int]:
     """Submit the pages in order and log every answer; returns how many of each result.
 
-    Pages of a site whose crawling is paused are passed over and tried again after the rest of the
-    batch, as long as the time budget lasts. Whatever is not logged stays due for the next run."""
+    Each worker takes the first page in the order whose site is not paused. So a paused site's
+    pages are passed over, and once the pause is over they are next again (first a single page,
+    then the rest), without waiting for the other stores' pages to finish. Whatever is not logged
+    stays due for the next run."""
     hosts = hosts or HostPauses()
-    log_lock = threading.Lock()
+    lock = threading.Lock()  # guards the log, the counters and the list of pages left
     counts: dict[str, int] = {}
     fails = [0]  # consecutive failures; a long streak means the archive stopped accepting us
-    held: list[dict] = []  # passed over because their site was paused
+    pending = list(batch)
+    trying: set[str] = set()  # sites on trial that have their one page out right now
 
-    def work(t):
-        if time.time() > deadline:
-            saver.stop.set()
-        if saver.stop.is_set():
-            return  # not logged, so the page stays due for the next run
-        if hosts.paused(t["url"]):
-            with log_lock:
-                held.append(t)
-            return
+    def take():
+        """The next page to submit, or None when every page left belongs to a paused site."""
+        with lock:
+            for i, t in enumerate(pending):
+                if hosts.paused(t["url"]):
+                    continue
+                if hosts.on_trial(t["url"]):
+                    host = urlparse(t["url"]).netloc
+                    if host in trying:
+                        continue
+                    trying.add(host)
+                return pending.pop(i)
+        return None
+
+    def submit(t):
         res, job = saver.save(t["url"])
         if res == "skipped":
-            return
+            return  # not logged, so the page stays due for the next run
         row = dict(t, date=day, result=res, job_id=job, submitted_at=dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%S"))
-        with log_lock:
+        with lock:
             append_csv(logfile, [row], LOG_FIELDS)
             counts[res.split(":")[0]] = counts.get(res.split(":")[0], 0) + 1
             if HOST_PAUSED in res:
@@ -255,6 +277,8 @@ def submit_all(batch: list[dict], saver, logfile, day: str, deadline: float, wor
                 hosts.pause(t["url"])
             else:
                 fails[0] = 0 if res in ("submitted", "saved", "recent") else fails[0] + 1
+                if fails[0] == 0:
+                    hosts.accepted(t["url"])
             if fails[0] >= 25 and not saver.stop.is_set():
                 print(f"stopping: {fails[0]} failures in a row (last: {res}); the rest stays due for the next run", flush=True)
                 saver.stop.set()
@@ -264,18 +288,33 @@ def submit_all(batch: list[dict], saver, logfile, day: str, deadline: float, wor
         if saver.authed:
             time.sleep(1)
 
-    pending = batch
-    while pending and not saver.stop.is_set():
-        held.clear()
-        with ThreadPoolExecutor(max_workers=workers) as ex:
-            list(ex.map(work, pending))
-        pending = list(held)
-        if pending and not saver.stop.is_set():
-            wait = hosts.seconds_left(t["url"] for t in pending)
+    def worker():
+        while not saver.stop.is_set():
+            if time.time() > deadline:
+                saver.stop.set()
+                return
+            t = take()
+            if t is not None:
+                try:
+                    submit(t)
+                finally:
+                    with lock:
+                        trying.discard(urlparse(t["url"]).netloc)
+                continue
+            with lock:
+                left = [p["url"] for p in pending]
+            if not left:
+                return
+            wait = hosts.seconds_left(left)
             if time.time() + wait > deadline:
-                break
-            print(f"{len(pending)} pages of paused sites left; trying them again in {wait / 60:.0f} minutes", flush=True)
-            time.sleep(wait)
+                return  # the paused sites' pages stay due for the next run
+            time.sleep(min(wait, 30) or 2)  # 0 = another worker is trying the site right now
+
+    with ThreadPoolExecutor(max_workers=workers) as ex:
+        for f in [ex.submit(worker) for _ in range(workers)]:
+            f.result()
+    if pending and not saver.stop.is_set():
+        print(f"{len(pending)} pages of paused sites were not submitted; they stay due", flush=True)
     return counts
 
 
