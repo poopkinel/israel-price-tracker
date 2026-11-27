@@ -1,0 +1,89 @@
+date,store,product_id,url,sale_since,result,job_id,submitted_at
+2026-11-27,fox,14620221112690,https://fox.co.il/products/גרביון-2,2026-10-27,submitted,spn2-e1ce4dc3478abb8df14a57ca96cfdb0284edfeca,2026-11-26T23:51:02
+2026-11-27,fox,14620904587634,https://fox.co.il/products/9268503802,2026-10-27,submitted,spn2-9631ab5902503158153e0c3eea7848f59a8b6e19,2026-11-26T23:51:03
+2026-11-27,fox,14590685282674,https://fox.co.il/products/9345350200,2026-10-27,submitted,spn2-1e563472612f616725a44656cc7883c983c94c33,2026-11-26T23:51:03
+2026-11-27,fox,14591100584306,https://fox.co.il/products/9345245802,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-26T23:52:00
+2026-11-27,fox,14620904620402,https://fox.co.il/products/9268502102,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-26T23:52:00
+2026-11-27,fox,14634128310642,https://fox.co.il/products/9345539996,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-26T23:52:00
+2026-11-27,fox,14590685184370,https://fox.co.il/products/9345382200,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-26T23:52:04
+2026-11-27,fox,14628678664562,https://fox.co.il/products/9345390200,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-26T23:52:04
+2026-11-27,fox,14591100617074,https://fox.co.il/products/9345231000,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-26T23:52:04
+2026-11-27,megasport,8570792509576,https://www.megasport.co.il/products/adhn1044,2026-10-27,submitted,spn2-921aab944ac6564548812d9902652994d7a29fc2,2026-11-26T23:52:10
+2026-11-27,megasport,8570785136776,https://www.megasport.co.il/products/ua1360939001,2026-10-27,submitted,spn2-57a9747e589ca8a95969256581bdbee894ced48c,2026-11-26T23:52:10
+2026-11-27,megasport,8570845593736,https://www.megasport.co.il/products/ua1379755025,2026-10-27,submitted,spn2-b2661b7130d446c22258084228b4d4e45526bd17,2026-11-26T23:52:10
+2026-11-27,megasport,8570852311176,https://www.megasport.co.il/products/adif6118,2026-10-27,submitted,spn2-3209af10d0ac9b57dd4d85f00488d51780233488,2026-11-26T23:53:03
+2026-11-27,megasport,8570858307720,https://www.megasport.co.il/products/ua1382436001,2026-10-27,submitted,spn2-b62262bfcea430c32d11fda64f293990171d4c55,2026-11-26T23:53:03
+2026-11-27,megasport,8570847658120,https://www.megasport.co.il/products/adid0305,2026-10-27,submitted,spn2-59874312aa5dca8ef80297ce038852ff0bf0b532,2026-11-26T23:53:03
+2026-11-27,megasport,8570864664712,https://www.megasport.co.il/products/ua1383627001,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-26T23:54:01
+2026-11-27,megasport,8570887536776,https://www.megasport.co.il/products/ua1388647001,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-26T23:54:01
+2026-11-27,megasport,8570885931144,https://www.megasport.co.il/products/adih5289,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-26T23:54:01
+2026-11-27,megasport,8570889797768,https://www.megasport.co.il/products/ua1382911100,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-26T23:54:05
+2026-11-27,megasport,8570890059912,https://www.megasport.co.il/products/nbm680lk84e,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-26T23:54:05
+2026-11-27,megasport,8570866466952,https://www.megasport.co.il/products/ua1382617025,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-26T23:54:05
+2026-11-27,factory54,9277770203358,https://factory54.co.il/products/polo-ralph-lauren-classic-fit-linen-shirt-brown-211970730-520,2026-10-27,submitted,spn2-709791beac421085a059390f838b0e76c728df67,2026-11-26T23:54:10
+2026-11-27,factory54,9277771383006,https://factory54.co.il/products/polo-ralph-lauren-classic-fit-linen-shirt-white-211970730-518,2026-10-27,submitted,spn2-1ccb3cb0dabdda2f7d6286c3dd7641437328efc6,2026-11-26T23:54:10
+2026-11-27,factory54,9277772234974,https://factory54.co.il/products/polo-ralph-lauren-relaxed-tapered-jeans-blue-211970179-001,2026-10-27,submitted,spn2-da14407093d159b9ef043c128cce5382349abf8a,2026-11-26T23:54:10
+2026-11-27,factory54,9282712830174,https://factory54.co.il/products/lululemon-pace-breaker-short-7-ll-white-lm7bc2s-023315,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-26T23:55:00
+2026-11-27,factory54,9283063447774,https://factory54.co.il/products/ck-relaxed-cotton-t-shirt-white-lv04rc851g-yaf,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-26T23:55:00
+2026-11-27,factory54,9283046965470,https://factory54.co.il/products/polo-ralph-lauren-custom-fit-chambray-shirt-blue-710792042-001,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-26T23:55:01
+2026-11-27,factory54,9277776036062,https://factory54.co.il/products/polo-ralph-lauren-slim-fit-linen-shirt-white-710968915-014,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-26T23:55:04
+2026-11-27,factory54,9277775479006,https://factory54.co.il/products/polo-ralph-lauren-polo-id-leather-small-shoulder-bag-black-428944017-001,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-26T23:55:04
+2026-11-27,factory54,9277772890334,https://factory54.co.il/products/polo-ralph-lauren-polo-id-leather-mini-shoulder-bag-brown-428871248-003,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-26T23:55:04
+2026-11-27,commeilfaut,7561512747096,https://comme-il-faut.com/products/טישירט-גלי-1-פודרה,2026-10-27,submitted,spn2-59fe6a99d26f4f44a815e7f6c0e72dbfa9e8af9f,2026-11-26T23:55:10
+2026-11-27,commeilfaut,7561666920536,https://comme-il-faut.com/products/printed-t-מודפס,2026-10-27,submitted,spn2-9da3a581f97cc4af7d4b9ad12abb07f8549b0567,2026-11-26T23:55:11
+2026-11-27,commeilfaut,15400292712536,https://comme-il-faut.com/products/מארז-גרביים,2026-10-27,submitted,spn2-f04ded702af2ded363b90a51f8fc029413c4ef6b,2026-11-26T23:55:11
+2026-11-27,commeilfaut,7608959729752,https://comme-il-faut.com/products/stripes-seal-shirt,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-26T23:56:03
+2026-11-27,commeilfaut,7561532670040,https://comme-il-faut.com/products/guttman-jeans-grey,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-26T23:56:03
+2026-11-27,commeilfaut,7724170248280,https://comme-il-faut.com/products/black-27001-top,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-26T23:56:03
+2026-11-27,commeilfaut,8084792934488,https://comme-il-faut.com/products/תיק-aldo-גב-צד,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-26T23:56:07
+2026-11-27,commeilfaut,8084969750616,https://comme-il-faut.com/products/נעל-bianca-בובה-קוריאנית,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-26T23:56:08
+2026-11-27,commeilfaut,8125818142808,https://comme-il-faut.com/products/blue-sylvia-pants,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-26T23:56:08
+2026-11-27,gertrud,7404865323190,https://gertrudshop.com/products/copy-of-חולצת-אנט,2026-10-27,submitted,spn2-a7a4f6f379aa71ee81accab0c62beb14f04b8ee7,2026-11-26T23:56:13
+2026-11-27,gertrud,8065431273654,https://gertrudshop.com/products/וסט-ברונו-copy-1,2026-10-27,submitted,spn2-2ed70568fee4ef88b8e2d2cc2adb6f9d878bce09,2026-11-26T23:56:13
+2026-11-27,gertrud,7612771565750,https://gertrudshop.com/products/חצאית-גולייט,2026-10-27,submitted,spn2-b6c954e3e79dd5df9cb8cbfae0a7df0337fd621a,2026-11-26T23:56:13
+2026-11-27,gertrud,8104523104438,https://gertrudshop.com/products/גקט-לורנזו,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-26T23:57:02
+2026-11-27,gertrud,8103671333046,https://gertrudshop.com/products/מכנסי-ראיין-פסים-copy,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-26T23:57:02
+2026-11-27,gertrud,8085498888374,https://gertrudshop.com/products/חולצת-סלין-copy-3,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-26T23:57:02
+2026-11-27,gertrud,8104541454518,https://gertrudshop.com/products/גקט-בקרדי-copy-1,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-26T23:57:06
+2026-11-27,gertrud,8105947922614,https://gertrudshop.com/products/מכנס-דאגלס-קורדרוי-copy-2,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-26T23:57:06
+2026-11-27,gertrud,8104544338102,https://gertrudshop.com/products/מכנס-דאגלס-קורדרוי-copy,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-26T23:57:06
+2026-11-27,netaefrati,9034443915479,https://netaefrati.com/products/stefany-dress-black,2026-10-27,submitted,spn2-cd8bade45cdb83f612e9040f8530baefaa2acfe4,2026-11-26T23:57:12
+2026-11-27,netaefrati,9034441359575,https://netaefrati.com/products/rasel-short-green,2026-10-27,submitted,spn2-57668b74055dde607321369915be0ceffd09f333,2026-11-26T23:57:12
+2026-11-27,netaefrati,9034440212695,https://netaefrati.com/products/adrian-skirt-fuchsia,2026-10-27,submitted,spn2-0cff1c393f72ad134ff9719db27941fec1c3aa87,2026-11-26T23:57:12
+2026-11-27,netaefrati,9034452238551,https://netaefrati.com/products/tommy-hoodie-dress-green,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-26T23:58:01
+2026-11-27,netaefrati,9034445422807,https://netaefrati.com/products/audrey-top-blue,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-26T23:58:02
+2026-11-27,netaefrati,9034445324503,https://netaefrati.com/products/audrey-top-black,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-26T23:58:02
+2026-11-27,netaefrati,9034459447511,https://netaefrati.com/products/monica-dress-white,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-26T23:58:05
+2026-11-27,netaefrati,9034442768599,https://netaefrati.com/products/top-coachella-lorex-black,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-26T23:58:06
+2026-11-27,netaefrati,9034445291735,https://netaefrati.com/products/adriana-top-brown,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-26T23:58:06
+2026-11-27,ronenchen,15250496192557,https://ronenchen.co.il/products/תיק-קיץ-קליל,2026-10-27,submitted,spn2-060d96a297be56ed48ac4b82a9c3f3680768bab5,2026-11-26T23:58:11
+2026-11-27,ronenchen,8172802474029,https://ronenchen.co.il/products/עליונית-עפרי,2026-10-27,submitted,spn2-5f9b59c06c805ec3ea8c3ac2460813fc27a1d32b,2026-11-26T23:58:11
+2026-11-27,ronenchen,8172782682157,https://ronenchen.co.il/products/זקט-עמנואל,2026-10-27,submitted,spn2-18fee7bf58f04ef89c7ffd94185f1398c29be723,2026-11-26T23:58:11
+2026-11-27,ronenchen,15250497503277,https://ronenchen.co.il/products/תיק-ניילון-ליום-יום,2026-10-27,submitted,spn2-9a260981aa6b5a2321be03f2c6880a9727cd923e,2026-11-26T23:59:01
+2026-11-27,ronenchen,8172715049005,https://ronenchen.co.il/products/bel-shirt,2026-10-27,submitted,spn2-0c63106b6e312f7b92c22d2642c66ed76d9203d6,2026-11-26T23:59:01
+2026-11-27,ronenchen,8172804898861,https://ronenchen.co.il/products/מכנסי-רונה,2026-10-27,submitted,spn2-ca51125ac46921b239410273dad344d3aa752c00,2026-11-26T23:59:01
+2026-11-27,ronenchen,8172826492973,https://ronenchen.co.il/products/connie-white-sandals,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T00:00:03
+2026-11-27,ronenchen,8172826198061,https://ronenchen.co.il/products/effie-classic-slides-1,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T00:00:03
+2026-11-27,ronenchen,8172812369965,https://ronenchen.co.il/products/malori-mid-heel-shoes,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T00:00:03
+2026-11-27,ronenchen,8173883621421,https://ronenchen.co.il/products/ארנק-עור-בננה,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T00:00:06
+2026-11-27,ronenchen,8172818694189,https://ronenchen.co.il/products/גינס-אלכס-1,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T00:00:06
+2026-11-27,ronenchen,8172813680685,https://ronenchen.co.il/products/גינס-רון,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T00:00:07
+2026-11-27,salinka,648884,https://salinka.co.il/product/%d7%a9%d7%9e%d7%9c%d7%aa-%d7%a2%d7%a8%d7%91-%d7%9c%d7%95%d7%a7%d7%95,2026-10-27,submitted,spn2-d3cd10694df64e6f7ce9761a64eadc6a5a545060,2026-11-27T00:00:12
+2026-11-27,salinka,63391,https://salinka.co.il/product/%d7%a9%d7%9e%d7%9c%d7%aa-%d7%a2%d7%a8%d7%91-%d7%9c%d7%99%d7%a8%d7%99,2026-10-27,submitted,spn2-1329cdc1402e600559115c8f7c4599cb689aa565,2026-11-27T00:00:13
+2026-11-27,salinka,532169,https://salinka.co.il/product/%d7%a9%d7%9e%d7%9c%d7%aa-%d7%a2%d7%a8%d7%91-%d7%a1%d7%94%d7%a8,2026-10-27,submitted,spn2-0e8d93d36c606f94453626f72cee643156ca5c70,2026-11-27T00:00:13
+2026-11-27,salinka,58759,https://salinka.co.il/product/%d7%a1%d7%a0%d7%93%d7%9c-%d7%a2%d7%a8%d7%91-roxenne,2026-10-27,submitted,spn2-bd378fd521d2fa9c8011099e4085ad387fe3326e,2026-11-27T00:01:01
+2026-11-27,salinka,65068,https://salinka.co.il/product/%d7%a9%d7%9e%d7%9c%d7%aa-%d7%a2%d7%a8%d7%91-%d7%aa%d7%94%d7%9c,2026-10-27,submitted,spn2-50bf131a81e003754e8f3c204e7fb4cde4b90eb1,2026-11-27T00:01:01
+2026-11-27,salinka,60340,https://salinka.co.il/product/%d7%a9%d7%9e%d7%9c%d7%aa-%d7%a2%d7%a8%d7%91-%d7%90%d7%a8%d7%99%d7%9f,2026-10-27,submitted,spn2-d4b8541406283260d2c6567ac9c3b0d5a1c3d666,2026-11-27T00:01:02
+2026-11-27,salinka,947027,https://salinka.co.il/product/%d7%a9%d7%9e%d7%9c%d7%aa-%d7%a2%d7%a8%d7%91-%d7%92%d7%95%d7%a1%d7%99-%d7%a6%d7%94%d7%95%d7%91,2026-10-27,submitted,spn2-49d2c4fc02c351f33803eaf34a4ae7eb0101079a,2026-11-27T00:02:00
+2026-11-27,salinka,944103,https://salinka.co.il/product/%d7%a9%d7%9e%d7%9c%d7%aa-%d7%a2%d7%a8%d7%91-%d7%a0%d7%99%d7%a1%d7%90%d7%9f-%d7%95%d7%a8%d7%95%d7%93,2026-10-27,submitted,spn2-4c18b603d9cb0e2b5b29954266a3a7496745eabf,2026-11-27T00:02:00
+2026-11-27,salinka,69978,https://salinka.co.il/product/%d7%a0%d7%a2%d7%9c-%d7%a1%d7%99%d7%a8%d7%94-holly-33,2026-10-27,submitted,spn2-b629bdc3801011bbf4d3410636e27096ca096ed0,2026-11-27T00:02:00
+2026-11-27,princessa,13140,https://www.princessafashion.com/shop/clothes/dresses/midi-dresses/midi-dress-hili-tiger/,2026-10-27,submitted,spn2-95b9cef099040e9ff989678136236b8ec6df9b21,2026-11-27T00:03:02
+2026-11-27,salinka,698657,https://salinka.co.il/product/%d7%a9%d7%9e%d7%9c%d7%aa-%d7%a2%d7%a8%d7%91-%d7%91%d7%9c-2,2026-10-27,submitted,spn2-78ee9459de7a82714ed4f232d0759e7dc049282c,2026-11-27T00:03:02
+2026-11-27,salinka,714742,https://salinka.co.il/product/%d7%a0%d7%a2%d7%9c-%d7%a2%d7%a8%d7%91-emmma-20,2026-10-27,submitted,spn2-5b409573e937be6c3a7f4e7783551d534bdd233d,2026-11-27T00:03:02
+2026-11-27,salinka,65886,https://salinka.co.il/product/%d7%90%d7%95%d7%91%d7%a8%d7%95%d7%9c-%d7%92%d7%a8%d7%99%d7%9f,2026-10-27,submitted,spn2-b7dbd0a8cc40411aae4eedfa25bdc2ebfa7f7d5b,2026-11-27T00:04:03
+2026-11-27,princessa,13360,https://www.princessafashion.com/shop/clothes/shirts/button-shirts/buttons-shirt-with-top-ari-white/,2026-10-27,submitted,spn2-10c27e70157e2053453037f10879ea28099c5048,2026-11-27T00:04:03
+2026-11-27,princessa,16729,https://www.princessafashion.com/shop/clothes/shirts/button-shirts/buttons-shirt-pami-blue/,2026-10-27,submitted,spn2-aa6f16fe89316176beb37e8bf813fd54129e3f1a,2026-11-27T00:04:04
+2026-11-27,princessa,16813,https://www.princessafashion.com/shop/clothes/white-collection/doll-princess-all-white/,2026-10-27,recent,,2026-11-27T00:05:02
+2026-11-27,princessa,13150,https://www.princessafashion.com/shop/clothes/dresses/midi-dresses/midi-dress-hili-green/,2026-10-27,submitted,spn2-e2e27167bd235b602f2f258df2f10dc5c00dbb1c,2026-11-27T00:05:02
+2026-11-27,princessa,11669,https://www.princessafashion.com/shop/swimwear/one-piece-swimwear/swimwear-shine-princess-blinks-beige/,2026-10-27,submitted,spn2-a6ffb50b2af40756bc945e17bc5a6c308fd94b7e,2026-11-27T00:05:02
+2026-11-27,princessa,18235,https://www.princessafashion.com/shop/clothes/pants/short-pants/short-pants-joey-beige/,2026-10-27,submitted,spn2-9fab2a75b74643c607725301cb7574a85e5b52ab,2026-11-27T00:05:06
