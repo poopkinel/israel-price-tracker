@@ -11,7 +11,7 @@
  {
   "id": "megasport",
   "platform": "shopify",
-  "seen": 1644,
+  "seen": 1641,
   "on_sale": 1085,
   "changes": 0,
   "status": "ok",
@@ -29,7 +29,7 @@
  {
   "id": "commeilfaut",
   "platform": "shopify",
-  "seen": 653,
+  "seen": 589,
   "on_sale": 427,
   "changes": 0,
   "status": "ok",
@@ -76,9 +76,9 @@
   "platform": "woocommerce",
   "seen": 520,
   "on_sale": 140,
-  "changes": 1,
+  "changes": 0,
   "status": "ok",
-  "seconds": 17
+  "seconds": 19
  },
  {
   "id": "idigital",
@@ -87,7 +87,7 @@
   "on_sale": 0,
   "changes": 0,
   "status": "ok",
-  "seconds": 10
+  "seconds": 9
  },
  {
   "id": "gadgetline",
@@ -115,9 +115,9 @@
  {
   "id": "homecenter",
   "platform": "shopify",
-  "seen": 21614,
-  "on_sale": 7508,
-  "changes": 0,
+  "seen": 21643,
+  "on_sale": 7522,
+  "changes": 13,
   "status": "ok",
   "seconds": 98
  },
@@ -146,7 +146,7 @@
   "on_sale": 128,
   "changes": 0,
   "status": "ok",
-  "seconds": 10
+  "seconds": 11
  },
  {
   "id": "cookbake",
@@ -158,11 +158,11 @@
  {
   "id": "betili",
   "platform": "magento",
-  "seen": 5697,
+  "seen": 5679,
   "on_sale": 4942,
   "changes": 0,
   "status": "ok",
-  "seconds": 29
+  "seconds": 34
  },
  {
   "id": "ahava",
@@ -176,11 +176,11 @@
  {
   "id": "dealcosmetics",
   "platform": "shopify",
-  "seen": 5389,
+  "seen": 5376,
   "on_sale": 1716,
   "changes": 0,
   "status": "ok",
-  "seconds": 22
+  "seconds": 23
  },
  {
   "id": "laline",
@@ -198,7 +198,7 @@
   "on_sale": 0,
   "changes": 0,
   "status": "ok",
-  "seconds": 5
+  "seconds": 6
  },
  {
   "id": "drugstore",
