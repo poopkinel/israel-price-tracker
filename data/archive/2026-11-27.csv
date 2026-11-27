@@ -2192,3 +2192,48 @@ date,store,product_id,url,sale_since,result,job_id,submitted_at
 2026-11-27,homecenter,8112068034807,https://www.homecenter.co.il/products/2223304329,2026-10-27,submitted,spn2-12c7e3dd366d645329f69fe689c36e514c76d377,2026-11-27T19:41:04
 2026-11-27,homecenter,8112069247223,https://www.homecenter.co.il/products/2223407862,2026-10-27,submitted,spn2-828d9877417d55d4b5fbd800e86d3b11e4e3b190,2026-11-27T19:41:04
 2026-11-27,homecenter,8112069083383,https://www.homecenter.co.il/products/2223305588,2026-10-27,submitted,spn2-0dfa54c126323356c14ca25cfea653b6c45377ad,2026-11-27T19:41:04
+2026-11-27,homecenter,8112070197495,https://www.homecenter.co.il/products/2223704116,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T19:42:02
+2026-11-27,homecenter,8112066920695,https://www.homecenter.co.il/products/2223004750,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T19:42:02
+2026-11-27,homecenter,8112069148919,https://www.homecenter.co.il/products/2223406927,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T19:42:02
+2026-11-27,foxhome,8335099396246,https://www.foxhome.co.il/products/308953939,2026-10-27,submitted,spn2-f5c4fa9a66dd4c5548d8e2671da9267da466a15c,2026-11-27T19:44:25
+2026-11-27,foxhome,8335067283606,https://www.foxhome.co.il/products/303475700,2026-10-27,submitted,spn2-929312eaef5024f84f9777c1438a050667191073,2026-11-27T19:44:29
+2026-11-27,foxhome,8335065481366,https://www.foxhome.co.il/products/0301779998,2026-10-27,submitted,spn2-1c11509e442ad928f7011726d4e9ecc0f0562594,2026-11-27T19:44:29
+2026-11-27,homecenter,8112061120759,https://www.homecenter.co.il/products/2020485409,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T19:45:02
+2026-11-27,homecenter,8112069640439,https://www.homecenter.co.il/products/2223505598,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T19:45:02
+2026-11-27,foxhome,8335123710102,https://www.foxhome.co.il/products/309879956,2026-10-27,submitted,spn2-5e74e8cd3576e274cf8fd14bc36b25c8dbcc4c59,2026-11-27T19:45:03
+2026-11-27,homecenter,8112069968119,https://www.homecenter.co.il/products/2223704110,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-27T19:45:07
+2026-11-27,foxhome,8335126495382,https://www.foxhome.co.il/products/310026100,2026-10-27,submitted,spn2-d970b54dddf132457a49ab4f6435aee015ffefb4,2026-11-27T19:45:07
+2026-11-27,foxhome,8335099658390,https://www.foxhome.co.il/products/0308959400,2026-10-27,submitted,spn2-722a179a7a52f13c35cb1d2cf2d8c492b2d94825,2026-11-27T19:45:11
+2026-11-27,foxhome,8343311974550,https://www.foxhome.co.il/products/0315289900,2026-10-27,submitted,spn2-bcc6ec420c2fd8d6eb854d2593789e3c9705be25,2026-11-27T19:46:01
+2026-11-27,foxhome,8343311188118,https://www.foxhome.co.il/products/0315249900,2026-10-27,submitted,spn2-3bfa5bcd388415b1ea45cae281a5d15c4934f072,2026-11-27T19:46:01
+2026-11-27,foxhome,8343284809878,https://www.foxhome.co.il/products/0310910200,2026-10-27,submitted,spn2-749f27f9de908809213094c2778cbde4b8df0fff,2026-11-27T19:46:01
+2026-11-27,foxhome,8343303684246,https://www.foxhome.co.il/products/0314040100,2026-10-27,submitted,spn2-0a55cf52a5e6e22ec0e3971079c30f7c77f42163,2026-11-27T19:47:04
+2026-11-27,foxhome,8343288381590,https://www.foxhome.co.il/products/311485900,2026-10-27,submitted,spn2-1814b37a43ee224d03666f3cd6ac30c8d25c1ad9,2026-11-27T19:47:04
+2026-11-27,foxhome,8343329276054,https://www.foxhome.co.il/products/0317320200,2026-10-27,submitted,spn2-312711045c691ca7d0ac2c6b31663c28c2348875,2026-11-27T19:47:04
+2026-11-27,foxhome,8349229252758,https://www.foxhome.co.il/products/1751086,2026-10-27,submitted,spn2-ef58bab9fe2da5b55b6b35b8317b1e04614d8f43,2026-11-27T19:48:02
+2026-11-27,foxhome,8343320101014,https://www.foxhome.co.il/products/0316077500,2026-10-27,submitted,spn2-30aae4d11479da882da070e3adb522164f13ef87,2026-11-27T19:48:02
+2026-11-27,foxhome,8349230235798,https://www.foxhome.co.il/products/1382400,2026-10-27,submitted,spn2-8622a22c6522eeca1c34088e507a5f427f996b99,2026-11-27T19:48:02
+2026-11-27,foxhome,8386705391766,https://www.foxhome.co.il/products/0305340103,2026-10-27,submitted,spn2-71d743551dd8f022134e8cbf7388134490d0c4f7,2026-11-27T19:49:00
+2026-11-27,foxhome,8396917473430,https://www.foxhome.co.il/products/305625800,2026-10-27,submitted,spn2-6cef19f0bf1275f14f43af23858800ac4f2c9f8a,2026-11-27T19:49:00
+2026-11-27,foxhome,8354257207446,https://www.foxhome.co.il/products/307192400,2026-10-27,submitted,spn2-0b20d21b68227d14e426d830fc142d5cffbee281,2026-11-27T19:49:00
+2026-11-27,foxhome,8444685648022,https://www.foxhome.co.il/products/2280100,2026-10-27,submitted,spn2-4bc203d1021a7abd27abe3c48699c17db8d0c4bf,2026-11-27T19:50:02
+2026-11-27,foxhome,8442417610902,https://www.foxhome.co.il/products/320799900,2026-10-27,submitted,spn2-39f080a65ffb766a67a6c7fafcfb19d62cf7a08c,2026-11-27T19:50:02
+2026-11-27,foxhome,8388845895830,https://www.foxhome.co.il/products/1369900,2026-10-27,submitted,spn2-53770d150c7a734a19bceac469a5061b1aa712d9,2026-11-27T19:50:02
+2026-11-27,foxhome,8468892844182,https://www.foxhome.co.il/products/323249998,2026-10-27,submitted,spn2-cb58baffde279fdcc32d71049f6c812f18cf4630,2026-11-27T19:51:04
+2026-11-27,foxhome,8349228302486,https://www.foxhome.co.il/products/0183939998,2026-10-27,submitted,spn2-63dfde6add111b11844dcc60324ba4932cd5c0c3,2026-11-27T19:51:04
+2026-11-27,foxhome,8402885902486,https://www.foxhome.co.il/products/0319085800,2026-10-27,submitted,spn2-a5e93e265150f6b5bdeb7fbca150f78d59fa945c,2026-11-27T19:51:04
+2026-11-27,foxhome,8518885965974,https://www.foxhome.co.il/products/0323016000,2026-10-27,submitted,spn2-431361ccafdccd878f8bccb193886177d9569fbf,2026-11-27T19:52:02
+2026-11-27,foxhome,8464953606294,https://www.foxhome.co.il/products/0321975800,2026-10-27,submitted,spn2-fd5c0fefb77ac873fca902068929d5f178789bd0,2026-11-27T19:52:02
+2026-11-27,foxhome,8349230170262,https://www.foxhome.co.il/products/1349900,2026-10-27,submitted,spn2-98e6b5a077802e48de420d5047ffa1f6558dc6b1,2026-11-27T19:52:02
+2026-11-27,foxhome,8495645327510,https://www.foxhome.co.il/products/0329296500,2026-10-27,submitted,spn2-5a52b94d08928689a88cdd4dfd2840baecf166dd,2026-11-27T19:53:04
+2026-11-27,foxhome,8573830594710,https://www.foxhome.co.il/products/0330239401,2026-10-27,submitted,spn2-2cf896c6f52220769a53cf9461bfb292bedcb551,2026-11-27T19:53:04
+2026-11-27,foxhome,8495616295062,https://www.foxhome.co.il/products/0325079901,2026-10-27,submitted,spn2-e9eb6294a3aaf72851f8c1a204d421da73551696,2026-11-27T19:53:04
+2026-11-27,foxhome,8604273737878,https://www.foxhome.co.il/products/0329940100,2026-10-27,submitted,spn2-8b35e486499587b7d8075ed9c6821750de43f63a,2026-11-27T19:54:01
+2026-11-27,foxhome,8576131793046,https://www.foxhome.co.il/products/0325709956,2026-10-27,submitted,spn2-ed4f4cb3fa61f4244580f97fc7f958345c6a0a65,2026-11-27T19:54:01
+2026-11-27,foxhome,8468182335638,https://www.foxhome.co.il/products/1359900,2026-10-27,submitted,spn2-8afc1e14f3c396d8c77b9e150003f28e1709ce25,2026-11-27T19:54:01
+2026-11-27,foxhome,8604274131094,https://www.foxhome.co.il/products/0330699998,2026-10-27,submitted,spn2-c06beab3807c84c270756ee7f936854f4d325392,2026-11-27T19:55:03
+2026-11-27,foxhome,8604273901718,https://www.foxhome.co.il/products/0330669900,2026-10-27,submitted,spn2-4db925b9c70b8da484aaa95c5811040f4e283cd4,2026-11-27T19:55:03
+2026-11-27,foxhome,8604273180822,https://www.foxhome.co.il/products/0328716000,2026-10-27,submitted,spn2-a7dc3b6e0e0b7c13767c980f048643468a709bf9,2026-11-27T19:55:06
+2026-11-27,foxhome,8609434534038,https://www.foxhome.co.il/products/0327919996,2026-10-27,submitted,spn2-672f22a18e1d4be757c916dcff66058f44bf9053,2026-11-27T19:56:02
+2026-11-27,foxhome,8604274163862,https://www.foxhome.co.il/products/0330849900,2026-10-27,submitted,spn2-6d2dd7158894bf253ac9d8a4136667a390a980df,2026-11-27T19:56:02
+2026-11-27,foxhome,8649962324118,https://www.foxhome.co.il/products/0251663939,2026-10-27,submitted,spn2-85f0488dc3f00c5b6706645c09b24472f72dbad2,2026-11-27T19:56:02
