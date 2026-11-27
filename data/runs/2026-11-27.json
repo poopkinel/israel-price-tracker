@@ -4,7 +4,7 @@
   "platform": "shopify",
   "seen": 2767,
   "on_sale": 2383,
-  "changes": 9,
+  "changes": 0,
   "status": "ok",
   "seconds": 19
  },
@@ -13,7 +13,7 @@
   "platform": "shopify",
   "seen": 1644,
   "on_sale": 1085,
-  "changes": 7,
+  "changes": 0,
   "status": "ok",
   "seconds": 7
  },
@@ -22,16 +22,16 @@
   "platform": "shopify",
   "seen": 17167,
   "on_sale": 788,
-  "changes": 2,
+  "changes": 0,
   "status": "ok",
-  "seconds": 80
+  "seconds": 70
  },
  {
   "id": "commeilfaut",
   "platform": "shopify",
   "seen": 653,
   "on_sale": 427,
-  "changes": 1,
+  "changes": 0,
   "status": "ok",
   "seconds": 4
  },
@@ -49,16 +49,16 @@
   "platform": "shopify",
   "seen": 385,
   "on_sale": 379,
-  "changes": 5,
+  "changes": 0,
   "status": "ok",
-  "seconds": 2
+  "seconds": 3
  },
  {
   "id": "ronenchen",
   "platform": "shopify",
   "seen": 827,
   "on_sale": 618,
-  "changes": 2,
+  "changes": 0,
   "status": "ok",
   "seconds": 4
  },
@@ -69,21 +69,23 @@
   "on_sale": 35,
   "changes": 0,
   "status": "ok",
-  "seconds": 12
+  "seconds": 13
  },
  {
   "id": "princessa",
   "platform": "woocommerce",
-  "status": "error",
-  "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.princessafashion.com/wp-json/wc/store/v1/products?per_page=100&page=1",
-  "seconds": 1
+  "seen": 520,
+  "on_sale": 140,
+  "changes": 1,
+  "status": "ok",
+  "seconds": 17
  },
  {
   "id": "idigital",
   "platform": "shopify",
   "seen": 2095,
   "on_sale": 0,
-  "changes": 26,
+  "changes": 0,
   "status": "ok",
   "seconds": 10
  },
@@ -115,16 +117,16 @@
   "platform": "shopify",
   "seen": 21614,
   "on_sale": 7508,
-  "changes": 118,
+  "changes": 0,
   "status": "ok",
-  "seconds": 88
+  "seconds": 98
  },
  {
   "id": "foxhome",
   "platform": "shopify",
   "seen": 1256,
   "on_sale": 1245,
-  "changes": 2,
+  "changes": 0,
   "status": "ok",
   "seconds": 6
  },
@@ -133,7 +135,7 @@
   "platform": "shopify",
   "seen": 6229,
   "on_sale": 0,
-  "changes": 1,
+  "changes": 0,
   "status": "ok",
   "seconds": 25
  },
@@ -142,7 +144,7 @@
   "platform": "woocommerce",
   "seen": 403,
   "on_sale": 128,
-  "changes": 3,
+  "changes": 0,
   "status": "ok",
   "seconds": 10
  },
@@ -158,9 +160,9 @@
   "platform": "magento",
   "seen": 5697,
   "on_sale": 4942,
-  "changes": 15,
+  "changes": 0,
   "status": "ok",
-  "seconds": 31
+  "seconds": 29
  },
  {
   "id": "ahava",
@@ -176,7 +178,7 @@
   "platform": "shopify",
   "seen": 5389,
   "on_sale": 1716,
-  "changes": 187,
+  "changes": 0,
   "status": "ok",
   "seconds": 22
  },
@@ -196,7 +198,7 @@
   "on_sale": 0,
   "changes": 0,
   "status": "ok",
-  "seconds": 4
+  "seconds": 5
  },
  {
   "id": "drugstore",
