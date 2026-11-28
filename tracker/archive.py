@@ -80,7 +80,10 @@ def bucket(url: str) -> int:
 
 def todays_targets(day: str) -> list[dict]:
     b = dt.date.fromisoformat(day).toordinal() % 3
-    done = {r["url"] for r in read_csv(ARCHIVE_LOG / f"{day}.csv") if r["result"] in ("submitted", "saved", "recent")}
+    rows = read_csv(ARCHIVE_LOG / f"{day}.csv")
+    # an accepted request whose capture failed afterwards (a later row with the same job number) is not done
+    failed = {r["job_id"] for r in rows if r["result"].startswith(CAPTURE_FAILED) and r.get("job_id")}
+    done = {r["url"] for r in rows if r["result"] in ("submitted", "saved", "recent") and r.get("job_id", "") not in failed}
     out = []
     for s in load_stores():
         for r in read_csv(CURRENT / f"{s['id']}.csv"):
@@ -96,6 +99,7 @@ def todays_targets(day: str) -> list[dict]:
     return out
 
 
+CAPTURE_FAILED = "capture-failed"  # log result of an accepted request that the archive failed to save
 HOST_PAUSED = "host is paused"  # in the Wayback Machine's reply "crawling this host is paused because ..."
 HOST_PAUSE_MIN = 15  # the first pause; each further one in a row is twice as long, up to HOST_PAUSE_MAX_MIN
 HOST_PAUSE_MAX_MIN = 60
@@ -296,8 +300,9 @@ def submit_all(batch: list[dict], saver, logfile, day: str, deadline: float, wor
     If the saver can tell what became of an accepted request (Saver.outcome), the workers also ask
     about each one a little later. A capture that failed because the site was paused pauses the
     site here too, and from then on the site stays on trial until the run ends: one page at a
-    time, the next one only when the outcome of the last is known. The log is not touched by
-    this: the row of an accepted request stays "submitted"."""
+    time, the next one only when the outcome of the last is known. A capture that failed gets a
+    second row in the log, "capture-failed:...", with the job number of its "submitted" row; such
+    a page is not done for the day (todays_targets)."""
     hosts = hosts or HostPauses()
     ask = getattr(saver, "outcome", None) if saver.authed else None
     watch: list[list] = []  # [when to ask, times asked, page, is this its site's trial page]
@@ -352,6 +357,10 @@ def submit_all(batch: list[dict], saver, logfile, day: str, deadline: float, wor
                         print(f"{urlparse(t['url']).netloc}: a capture failed because crawling is paused; its pages wait {wait / 60:.0f} minutes", flush=True)
                 elif res == "saved":
                     hosts.saved(t["url"])
+                if res in ("paused", "failed"):
+                    # a second row for the same job: the request was accepted, nothing was saved, the page stays due
+                    why = "site paused" if res == "paused" else "other"
+                    append_csv(logfile, [dict(t, date=day, result=f"{CAPTURE_FAILED}:{why}", submitted_at=dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%S"))], LOG_FIELDS)
                 if trial:
                     trying.discard(urlparse(t["url"]).netloc)
 

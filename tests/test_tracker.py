@@ -440,16 +440,38 @@ class LateFailureTest(unittest.TestCase):
         self.assertEqual(sum("b.co.il" in u for u in saver.asked), 305)  # the other store is not held up
         self.assertLessEqual(len(asked_a), 12)  # a few before the first answer, then one per 15 minutes; not all 40
         self.assertGreaterEqual(len(asked_a), 5)
-        # the log is left as it was: every accepted request is a "submitted" row
         self.assertEqual(counts, {"submitted": 305 + len(asked_a)})
-        self.assertEqual({r["result"] for r in common.read_csv(self.log)}, {"submitted"})
+        # every failed capture has a second row with the job number of its "submitted" row
+        rows = common.read_csv(self.log)
+        failed = [r for r in rows if r["result"] == "capture-failed:site paused"]
+        self.assertLessEqual({r["url"] for r in failed}, set(asked_a))
+        self.assertGreaterEqual(len(failed), len(asked_a) - 1)  # the last one may not have been asked about before the run ended
+        self.assertLessEqual({r["job_id"] for r in failed}, {r["job_id"] for r in rows if r["result"] == "submitted" and r["store"] == "a"})
+        self.assertEqual(sum(r["result"] == "submitted" for r in rows), 305 + len(asked_a))
+
+    def test_page_whose_capture_failed_is_due_again_the_same_day(self):
+        with tempfile.TemporaryDirectory() as d:
+            d = Path(d)
+            (d / "current").mkdir()
+            cur = dict(title="", price="5.00", compare_at="9.00", on_sale="1", discount_pct="44", first_seen="2026-10-27",
+                       last_seen="2026-11-28", sale_since="2026-10-27", last_full_price_seen="")
+            urls = [u for u in (f"https://s/{i}" for i in range(40)) if archive.bucket(u) == archive.dt.date(2026, 11, 28).toordinal() % 3][:3]
+            common.append_csv(d / "current" / "s.csv", [dict(cur, product_id=u[-2:], url=u) for u in urls], common.CURRENT_FIELDS)
+            row = dict(date="2026-11-28", store="s", product_id="1", sale_since="2026-10-27", submitted_at="2026-11-28T01:00:00")
+            common.append_csv(d / "2026-11-28.csv", [dict(row, url=urls[0], result="submitted", job_id="spn2-a"),
+                                                     dict(row, url=urls[1], result="submitted", job_id="spn2-b"),
+                                                     dict(row, url=urls[1], result="capture-failed:site paused", job_id="spn2-b")], archive.LOG_FIELDS)
+            with mock.patch.object(archive, "ARCHIVE_LOG", d), mock.patch.object(archive, "CURRENT", d / "current"), \
+                    mock.patch.object(archive, "load_stores", return_value=[{"id": "s"}]):
+                due = [t["url"] for t in archive.todays_targets("2026-11-28")]
+        self.assertEqual(sorted(due), sorted(urls[1:]))  # the saved page is done; the failed one and the untouched one are due
 
     def test_site_that_was_paused_stays_at_one_page_at_a_time_when_captures_are_saved_again(self):
         self.more_of_b()
         failing = {f"https://a.co.il/p{i}" for i in range(6)}
         saver = self.saver(lambda url, n: "paused" if url in failing else "saved")
         self.run_with_clock(saver)
-        stores = [r["store"] for r in common.read_csv(self.log)]
+        stores = [r["store"] for r in common.read_csv(self.log) if r["result"] == "submitted"]
         self.assertEqual(stores.count("a"), 40)  # every page of the site is sent in the end
         last_b = max(i for i, s in enumerate(stores) if s == "b")
         after = "".join(stores[stores.index("b"):last_b])  # from the first pause on, while the other store has pages
