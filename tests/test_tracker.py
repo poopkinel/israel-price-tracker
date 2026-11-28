@@ -395,6 +395,73 @@ class PausedHostTest(unittest.TestCase):
             self.assertEqual(hosts.seconds_left(["https://a.co.il/p3"]), 0.0)
 
 
+class LateFailureTest(unittest.TestCase):
+    """The archive can accept a page and fail the capture a moment later because the site is paused.
+    The run asks what became of accepted requests and treats that as a pause too."""
+
+    setUp = PausedHostTest.setUp  # the same batch: 40 pages of store a, then 5 of store b
+    run_with_clock = PausedHostTest.run_with_clock
+
+    def saver(self, outcome):
+        s = FakeSaver(lambda url, n: ("submitted", "job:" + url))
+        s.authed, s.asked_jobs = True, []
+
+        def ask(job):
+            s.asked_jobs.append(job)
+            return outcome(job[4:], s.asked_jobs.count(job))
+
+        s.outcome = ask
+        return s
+
+    def more_of_b(self):
+        self.batch += [{"store": "b", "product_id": f"x{i}", "url": f"https://b.co.il/x{i}", "sale_since": "2025-12-03"} for i in range(300)]
+
+    def test_site_whose_captures_fail_gets_one_page_per_pause(self):
+        self.more_of_b()
+        saver = self.saver(lambda url, n: "paused" if "a.co.il" in url else "saved")
+        counts = self.run_with_clock(saver, minutes=110)
+        asked_a = [u for u in saver.asked if "a.co.il" in u]
+        self.assertEqual(sum("b.co.il" in u for u in saver.asked), 305)  # the other store is not held up
+        self.assertLessEqual(len(asked_a), 12)  # a few before the first answer, then one per 15 minutes; not all 40
+        self.assertGreaterEqual(len(asked_a), 5)
+        # the log is left as it was: every accepted request is a "submitted" row
+        self.assertEqual(counts, {"submitted": 305 + len(asked_a)})
+        self.assertEqual({r["result"] for r in common.read_csv(self.log)}, {"submitted"})
+
+    def test_site_is_sent_freely_again_once_a_capture_is_saved(self):
+        self.more_of_b()
+        failing = {f"https://a.co.il/p{i}" for i in range(6)}
+        saver = self.saver(lambda url, n: "paused" if url in failing else "saved")
+        self.run_with_clock(saver)
+        stores = [r["store"] for r in common.read_csv(self.log)]
+        self.assertEqual(stores.count("a"), 40)
+        self.assertLess(max(i for i, s in enumerate(stores) if s == "a"), 200)  # done long before store b's 305 pages
+
+    def test_trial_page_waits_for_its_answer_and_a_slow_answer_is_given_up(self):
+        self.batch = self.batch[:40]  # store a only
+        saver = self.saver(lambda url, n: "paused" if url.endswith("/p0") else "pending")
+        self.run_with_clock(saver, minutes=60)
+        asked_a = saver.asked
+        # after the pause: one page, its answer awaited up to OUTCOME_TRIES times, then the next page
+        self.assertLessEqual(len(asked_a), 4 + 45 * 60 // (archive.OUTCOME_AFTER + (archive.OUTCOME_TRIES - 1) * archive.OUTCOME_AGAIN))
+        self.assertGreaterEqual(len(asked_a), 10)  # but the site is not stuck for good
+        self.assertTrue(all(saver.asked_jobs.count(j) <= archive.OUTCOME_TRIES for j in set(saver.asked_jobs)))
+
+    def test_saver_reads_the_archives_answer_about_a_job(self):
+        with mock.patch.dict("os.environ", {"IA_ACCESS_KEY": "a", "IA_SECRET_KEY": "b"}):
+            s = archive.Saver()
+        late = {"status": "error", "message": "Job failed.",
+                "status_ext": "please try again in ~10 min. crawling this host is paused because they notified us that they are overloaded right now. (http status=429)"}
+        for answer, want in ((late, "paused"), ({"status": "success", "http_status": 200}, "saved"), ({"status": "success"}, "saved"),
+                             ({"status": "success", "http_status": 429}, "failed"), ({"status": "pending"}, "pending"),
+                             ({"status": "error", "status_ext": "error:not-found"}, "failed"), ({}, "pending"), ([], "pending")):
+            with mock.patch.object(s.s, "get", return_value=FakeResp(answer)) as get:
+                self.assertEqual(s.outcome("spn2-1"), want, answer)
+            self.assertEqual(get.call_args[0][0], "https://web.archive.org/save/status/spn2-1")
+        with mock.patch.object(s.s, "get", side_effect=archive.requests.ConnectionError()):
+            self.assertEqual(s.outcome("spn2-1"), "pending")
+
+
 class SnapshotCheckTest(unittest.TestCase):
     """checks/snapshots.py: the parts that need no network."""
 
