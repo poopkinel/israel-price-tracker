@@ -24,7 +24,7 @@
   "on_sale": 788,
   "changes": 0,
   "status": "ok",
-  "seconds": 70
+  "seconds": 80
  },
  {
   "id": "commeilfaut",
@@ -78,7 +78,7 @@
   "on_sale": 140,
   "changes": 0,
   "status": "ok",
-  "seconds": 13
+  "seconds": 14
  },
  {
   "id": "idigital",
@@ -128,7 +128,7 @@
   "on_sale": 1245,
   "changes": 0,
   "status": "ok",
-  "seconds": 6
+  "seconds": 7
  },
  {
   "id": "shilav",
@@ -137,7 +137,7 @@
   "on_sale": 0,
   "changes": 0,
   "status": "ok",
-  "seconds": 26
+  "seconds": 25
  },
  {
   "id": "nammal",
@@ -146,7 +146,7 @@
   "on_sale": 126,
   "changes": 0,
   "status": "ok",
-  "seconds": 8
+  "seconds": 9
  },
  {
   "id": "cookbake",
@@ -158,11 +158,11 @@
  {
   "id": "betili",
   "platform": "magento",
-  "seen": 5695,
+  "seen": 5667,
   "on_sale": 4940,
   "changes": 0,
   "status": "ok",
-  "seconds": 30
+  "seconds": 32
  },
  {
   "id": "ahava",
@@ -180,7 +180,7 @@
   "on_sale": 1713,
   "changes": 0,
   "status": "ok",
-  "seconds": 22
+  "seconds": 23
  },
  {
   "id": "laline",
@@ -198,7 +198,7 @@
   "on_sale": 0,
   "changes": 0,
   "status": "ok",
-  "seconds": 4
+  "seconds": 5
  },
  {
   "id": "drugstore",
