@@ -428,14 +428,16 @@ class LateFailureTest(unittest.TestCase):
         self.assertEqual(counts, {"submitted": 305 + len(asked_a)})
         self.assertEqual({r["result"] for r in common.read_csv(self.log)}, {"submitted"})
 
-    def test_site_is_sent_freely_again_once_a_capture_is_saved(self):
+    def test_site_that_was_paused_stays_at_one_page_at_a_time_when_captures_are_saved_again(self):
         self.more_of_b()
         failing = {f"https://a.co.il/p{i}" for i in range(6)}
         saver = self.saver(lambda url, n: "paused" if url in failing else "saved")
         self.run_with_clock(saver)
         stores = [r["store"] for r in common.read_csv(self.log)]
-        self.assertEqual(stores.count("a"), 40)
-        self.assertLess(max(i for i, s in enumerate(stores) if s == "a"), 200)  # done long before store b's 305 pages
+        self.assertEqual(stores.count("a"), 40)  # every page of the site is sent in the end
+        after = "".join(stores[stores.index("b"):])  # from the first pause on
+        self.assertNotIn("aa", after)  # never two pages of the site in a row: each waits for the one before
+        self.assertIn("bbbbb", after)  # the store that was never paused is not slowed
 
     def test_trial_page_waits_for_its_answer_and_a_slow_answer_is_given_up(self):
         self.batch = self.batch[:40]  # store a only

@@ -10,8 +10,9 @@ their place in the order again (see HostPauses and submit_all).
 
 The archive can also accept a request and only then find the site paused: the request gets a job
 number, and the capture fails a moment later. So the run asks about each accepted request about a
-minute afterwards (Saver.outcome) and treats such a late failure as the same pause. Until a capture
-of a paused site is known to have been saved, that site gets one page at a time.
+minute afterwards (Saver.outcome) and treats such a late failure as the same pause. A site that was
+paused gets one page at a time for the rest of the run, each waiting for the outcome of the one
+before: three pages a minute is what the stores' sites refuse, and a new run starts afresh.
 
 Environment:
   IA_ACCESS_KEY / IA_SECRET_KEY  archive.org S3 keys (optional; higher limits when set)
@@ -107,8 +108,9 @@ class HostPauses:
 
     The reply "crawling this host is paused" is about one site, not about our account. Its pages
     are left alone for HOST_PAUSE_MIN minutes (not submitted, not logged, so they stay due) while
-    the other stores' pages go on. After that the site is on trial: one page at a time is sent
-    until the archive has saved one, so a site that is still paused costs one request, not a burst."""
+    the other stores' pages go on. After that the site is on trial: one page at a time is sent, so
+    a site that is still paused costs one request, not a burst. The trial ends when accepted() is
+    called; submit_all does that only when it cannot ask what became of a request."""
 
     def __init__(self, minutes: float = HOST_PAUSE_MIN):
         self.seconds = 60 * minutes
@@ -122,7 +124,7 @@ class HostPauses:
             self.trial.add(urlparse(url).netloc)
 
     def accepted(self, url: str) -> None:
-        """The archive saved a page of this site, so the site is no longer on trial."""
+        """The archive took a page of this site, so the site is no longer on trial."""
         with self.lock:
             self.trial.discard(urlparse(url).netloc)
 
@@ -273,8 +275,9 @@ def submit_all(batch: list[dict], saver, logfile, day: str, deadline: float, wor
 
     If the saver can tell what became of an accepted request (Saver.outcome), the workers also ask
     about each one a little later. A capture that failed because the site was paused pauses the
-    site here too, and a site on trial waits for the outcome of its one page before the next one
-    is sent. The log is not touched by this: the row of an accepted request stays "submitted"."""
+    site here too, and from then on the site stays on trial until the run ends: one page at a
+    time, the next one only when the outcome of the last is known. The log is not touched by
+    this: the row of an accepted request stays "submitted"."""
     hosts = hosts or HostPauses()
     ask = getattr(saver, "outcome", None) if saver.authed else None
     watch: list[list] = []  # [when to ask, times asked, page, is this its site's trial page]
@@ -299,6 +302,13 @@ def submit_all(batch: list[dict], saver, logfile, day: str, deadline: float, wor
                 return pending.pop(i)
         return None
 
+    def total_outcomes() -> dict[str, int]:
+        out: dict[str, int] = {}
+        for by in outcomes.values():
+            for k, v in by.items():
+                out[k] = out.get(k, 0) + v
+        return out
+
     def check_outcomes():
         """Ask about the accepted requests whose time has come (a few at most, then back to submitting)."""
         for _ in range(3):
@@ -319,8 +329,6 @@ def submit_all(batch: list[dict], saver, logfile, day: str, deadline: float, wor
                     if not hosts.paused(t["url"]):
                         print(f"{urlparse(t['url']).netloc}: a capture failed because crawling is paused; its pages wait {hosts.seconds / 60:.0f} minutes", flush=True)
                     hosts.pause(t["url"])
-                elif res == "saved":
-                    hosts.accepted(t["url"])
                 if trial:
                     trying.discard(urlparse(t["url"]).netloc)
 
@@ -352,7 +360,7 @@ def submit_all(batch: list[dict], saver, logfile, day: str, deadline: float, wor
                 saver.stop.set()
             n = sum(counts.values())
             if n % 100 == 0:
-                print(n, counts, flush=True)
+                print(n, counts, "outcomes so far:", total_outcomes(), flush=True)
         if saver.authed:
             time.sleep(1)
         return held

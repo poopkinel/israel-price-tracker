@@ -11,6 +11,10 @@ on:
         description: "Max pages to submit in this run"
         required: false
         default: "2500"
+      minutes:
+        description: "Stop after this many minutes (manual runs only; scheduled runs use 300)"
+        required: false
+        default: "300"
 
 permissions:
   contents: write
@@ -36,7 +40,7 @@ jobs:
           IA_ACCESS_KEY: ${{ secrets.IA_ACCESS_KEY }}
           IA_SECRET_KEY: ${{ secrets.IA_SECRET_KEY }}
           MAX_SAVES: ${{ github.event.inputs.max_saves || '4000' }}
-          TIME_BUDGET_MIN: "300"
+          TIME_BUDGET_MIN: ${{ github.event.inputs.minutes || '300' }}
           ARCHIVE_LOG_DIR: ${{ runner.temp }}/archive-log
         run: |
           git config user.name "price-tracker-bot"
