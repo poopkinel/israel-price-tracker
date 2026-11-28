@@ -1083,3 +1083,69 @@ date,store,product_id,url,sale_since,result,job_id,submitted_at
 2026-11-28,megasport,9131733844104,https://www.megasport.co.il/products/adia7570,2026-10-27,submitted,spn2-8ffb48026825bf71360d3a788b39059f7a1a4bff,2026-11-28T04:12:05
 2026-11-28,megasport,9127323173000,https://www.megasport.co.il/products/ua6013773200,2026-10-27,submitted,spn2-3ab722a80f6fa7dd38901c2470501d60dcc3b32a,2026-11-28T04:12:05
 2026-11-28,megasport,9127323566216,https://www.megasport.co.il/products/ua6013801481,2026-10-27,submitted,spn2-680bdeba03fb68adabc00a4832431aee96bb97a6,2026-11-28T04:12:05
+2026-11-28,ronenchen,8214745120813,https://ronenchen.co.il/products/חולצת-שלי,2026-10-27,submitted,spn2-3d09db0c8dbb0198f9b2ad918288e767f9b4d71c,2026-11-28T04:13:04
+2026-11-28,ronenchen,8214745317421,https://ronenchen.co.il/products/סריג-ליב,2026-10-27,submitted,spn2-14c849bbbe0bced94539b8930acbb74854d771a4,2026-11-28T04:13:04
+2026-11-28,ronenchen,8214744727597,https://ronenchen.co.il/products/גינס-רז-pants-jeans,2026-10-27,submitted,spn2-e32ab7807161d9a0859198d0fc82eca6097d38e4,2026-11-28T04:13:04
+2026-11-28,ronenchen,8214744170541,https://ronenchen.co.il/products/מכנסי-רותם-pants-jeans,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-28T04:14:01
+2026-11-28,ronenchen,8214324674605,https://ronenchen.co.il/products/חולצת-מרוקו-top,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-28T04:14:02
+2026-11-28,ronenchen,8214745579565,https://ronenchen.co.il/products/סריג-מרב-1,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-28T04:14:02
+2026-11-28,ronenchen,8214836052013,https://ronenchen.co.il/products/סריג-הילית-top,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-28T04:14:06
+2026-11-28,ronenchen,8214836707373,https://ronenchen.co.il/products/גינס-ריי-pants-jeans,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-28T04:14:06
+2026-11-28,ronenchen,8214745382957,https://ronenchen.co.il/products/סריג-שיר,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-28T04:14:06
+2026-11-28,homecenter,10028633981175,https://www.homecenter.co.il/products/1755761836379,2026-10-27,recent,,2026-11-28T04:14:11
+2026-11-28,homecenter,10026704404727,https://www.homecenter.co.il/products/1779701191327,2026-10-27,recent,,2026-11-28T04:14:11
+2026-11-28,homecenter,10027502633207,https://www.homecenter.co.il/products/1783314231790,2026-10-27,submitted,spn2-4f3fe956640bacec3bda8d93e8d922a0ddb9116c,2026-11-28T04:14:11
+2026-11-28,homecenter,10028635816183,https://www.homecenter.co.il/products/1764227875310,2026-10-27,recent,,2026-11-28T04:14:15
+2026-11-28,homecenter,10028637716727,https://www.homecenter.co.il/products/1769587405731,2026-10-27,submitted,spn2-a0bc507abcedd1a2cb98d22042df0d317710acf4,2026-11-28T04:14:15
+2026-11-28,homecenter,10028638011639,https://www.homecenter.co.il/products/1769587405739,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-28T04:14:20
+2026-11-28,homecenter,10028638109943,https://www.homecenter.co.il/products/1769587405742,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-28T04:14:24
+2026-11-28,homecenter,10028639912183,https://www.homecenter.co.il/products/1783856467545,2026-10-27,recent,,2026-11-28T04:14:29
+2026-11-28,homecenter,10029394329847,https://www.homecenter.co.il/products/1779701191326,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-28T04:14:33
+2026-11-28,homecenter,10029394428151,https://www.homecenter.co.il/products/1783494331312,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-28T04:14:38
+2026-11-28,homecenter,10029394362615,https://www.homecenter.co.il/products/1781609137354,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-28T04:14:41
+2026-11-28,foxhome,8539801190550,https://www.foxhome.co.il/products/0329595252,2026-10-27,submitted,spn2-444be5a5f260f82f94257b96f826931dbf008dd2,2026-11-28T04:14:48
+2026-11-28,foxhome,8539802402966,https://www.foxhome.co.il/products/0330023939,2026-10-27,submitted,spn2-8751dc34eb47b50398d2f97bada47a9910e8f9a0,2026-11-28T04:15:03
+2026-11-28,foxhome,8643254583446,https://www.foxhome.co.il/products/0325733939,2026-10-27,submitted,spn2-c9eb386192a369cef3c578beb4e71f5a0fd96dfd,2026-11-28T04:15:03
+2026-11-28,foxhome,8604272984214,https://www.foxhome.co.il/products/0328700100,2026-10-27,submitted,spn2-cf8062b404cf7a17381250f52ba627a9192d9ef1,2026-11-28T04:15:03
+2026-11-28,foxhome,8656001990806,https://www.foxhome.co.il/products/0332680300,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-28T04:16:00
+2026-11-28,foxhome,8604274196630,https://www.foxhome.co.il/products/0330889900,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-28T04:16:00
+2026-11-28,foxhome,8604273967254,https://www.foxhome.co.il/products/0330679998,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-28T04:16:00
+2026-11-28,foxhome,8649961963670,https://www.foxhome.co.il/products/0251660100,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-28T04:16:04
+2026-11-28,foxhome,8643254616214,https://www.foxhome.co.il/products/0325739996,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-28T04:16:04
+2026-11-28,foxhome,8609432240278,https://www.foxhome.co.il/products/1916361,2026-10-27,error:please try again in ~1 min. crawling this host is paused bec,,2026-11-28T04:16:05
+2026-11-28,betili,102169,https://www.betili-shop.com/102169.html,2026-10-27,submitted,spn2-b63df5edcf7959766d3123b28f58b01273f343e6,2026-11-28T04:16:10
+2026-11-28,betili,102217,https://www.betili-shop.com/102217.html,2026-10-27,submitted,spn2-04ae0107f0ea61e7f99afbc75715a46e96286f1a,2026-11-28T04:16:10
+2026-11-28,betili,102179,https://www.betili-shop.com/102179.html,2026-10-27,submitted,spn2-71e10920b10858867df1845db227e2a639229948,2026-11-28T04:16:10
+2026-11-28,betili,102248,https://www.betili-shop.com/102248.html,2026-10-27,submitted,spn2-602fb8834da4290465aa61fcd20bd29ccb1130d8,2026-11-28T04:17:04
+2026-11-28,betili,102275,https://www.betili-shop.com/102275.html,2026-10-27,submitted,spn2-0df0d815f046cc8ac8a9527bd78cc162b48fdbf0,2026-11-28T04:17:04
+2026-11-28,betili,102752,https://www.betili-shop.com/102752.html,2026-10-27,submitted,spn2-30f018d021715ccdd161fa60b26a5d3397d83ea7,2026-11-28T04:17:04
+2026-11-28,betili,102751,https://www.betili-shop.com/102751.html,2026-10-27,submitted,spn2-f1c854dc1e0964cfa30915e51d829f1858cab599,2026-11-28T04:18:02
+2026-11-28,betili,102799,https://www.betili-shop.com/102799.html,2026-10-27,submitted,spn2-b811ceb426828e1dc20906c3b6c77cfb8f8a826a,2026-11-28T04:18:02
+2026-11-28,betili,102745,https://www.betili-shop.com/102745.html,2026-10-27,submitted,spn2-70d235dfa6d8b9758964ebcd36697f275b614b10,2026-11-28T04:18:02
+2026-11-28,betili,102837,https://www.betili-shop.com/102837.html,2026-10-27,submitted,spn2-3012a5d06115e34d7cfc88fdf2674e65ae6f33d2,2026-11-28T04:19:01
+2026-11-28,betili,102801,https://www.betili-shop.com/102801.html,2026-10-27,submitted,spn2-7bc088a4d01a5cc71c1d7d3a0bdb8153a739229d,2026-11-28T04:19:01
+2026-11-28,betili,102841,https://www.betili-shop.com/102841.html,2026-10-27,submitted,spn2-d8484229606e75989a42258c758b8f5c56fd9c2d,2026-11-28T04:19:01
+2026-11-28,betili,102846,https://www.betili-shop.com/102846.html,2026-10-27,submitted,spn2-85c31f36d99bbc796b8ef09a2d90de7d977e77d3,2026-11-28T04:20:03
+2026-11-28,betili,102182,https://www.betili-shop.com/102182.html,2026-10-27,submitted,spn2-3b235ce2f44ab9c51bc2b30b24ea653347868d18,2026-11-28T04:20:03
+2026-11-28,betili,102803,https://www.betili-shop.com/102803.html,2026-10-27,submitted,spn2-f090a5a33521b6f8ca97f13db359e7837c0cdae7,2026-11-28T04:20:04
+2026-11-28,betili,102915,https://www.betili-shop.com/102915.html,2026-10-27,submitted,spn2-bdaa2a232e58fd834008c5ff4b43fd5983551e1d,2026-11-28T04:21:01
+2026-11-28,betili,102916,https://www.betili-shop.com/102916.html,2026-10-27,submitted,spn2-f83f161d6847b9604fff786eee83da583a11ad53,2026-11-28T04:21:01
+2026-11-28,betili,102910,https://www.betili-shop.com/102910.html,2026-10-27,submitted,spn2-11845baa0002a0c25d3eb58355311b4ed6382d22,2026-11-28T04:21:01
+2026-11-28,betili,102984,https://www.betili-shop.com/102984.html,2026-10-27,submitted,spn2-8fbece56d0c50ec2f43f49a145e15f18891ce2f7,2026-11-28T04:22:03
+2026-11-28,betili,102917,https://www.betili-shop.com/102917.html,2026-10-27,submitted,spn2-05e88d946e7a5074ec1683fdd3a04de7c4e66fd3,2026-11-28T04:22:03
+2026-11-28,betili,102999,https://www.betili-shop.com/102999.html,2026-10-27,submitted,spn2-32f0b174eed9ce54dee5573acef827fd0df0d669,2026-11-28T04:22:03
+2026-11-28,betili,102943,https://www.betili-shop.com/102943.html,2026-10-27,submitted,spn2-4aaefc328d301e60f041adffaeb108180e1c30fb,2026-11-28T04:23:01
+2026-11-28,betili,103047,https://www.betili-shop.com/103047.html,2026-10-27,submitted,spn2-d0eade225b72b4b2b2a44977558b8a98f07ab4e2,2026-11-28T04:23:01
+2026-11-28,betili,103002,https://www.betili-shop.com/103002.html,2026-10-27,submitted,spn2-38e1237e4eb20de9bd71dfe31a69028cb244d273,2026-11-28T04:23:01
+2026-11-28,betili,102988,https://www.betili-shop.com/102988.html,2026-10-27,submitted,spn2-4c45d01ec1732b613b71f11ea0804a6b4c367962,2026-11-28T04:24:04
+2026-11-28,betili,103057,https://www.betili-shop.com/103057.html,2026-10-27,submitted,spn2-01c63c217a35f41d9c6d4f85ceb8648377a77163,2026-11-28T04:24:04
+2026-11-28,betili,103062,https://www.betili-shop.com/103062.html,2026-10-27,submitted,spn2-0910f42683d78328c52d30466e1bfffc1d6092fc,2026-11-28T04:24:04
+2026-11-28,betili,103003,https://www.betili-shop.com/103003.html,2026-10-27,submitted,spn2-649f2ff3fbca69400c69d161a05b33a7bddb3d43,2026-11-28T04:25:02
+2026-11-28,betili,103156,https://www.betili-shop.com/103156.html,2026-10-27,submitted,spn2-05f4ce3936f59fd1e0b6d3e9d5950bd7dc8676e4,2026-11-28T04:25:02
+2026-11-28,betili,103111,https://www.betili-shop.com/103111.html,2026-10-27,submitted,spn2-b0e068770e3ba5f4df719342b87099304d307fae,2026-11-28T04:25:02
+2026-11-28,betili,103293,https://www.betili-shop.com/103293.html,2026-10-27,submitted,spn2-0c66c415bb9e85fe2587137f51b194fe11a35026,2026-11-28T04:26:01
+2026-11-28,betili,103061,https://www.betili-shop.com/103061.html,2026-10-27,submitted,spn2-f5c1319189a9a3f4da8a70eab842ad6ba62c8d1b,2026-11-28T04:26:02
+2026-11-28,betili,103155,https://www.betili-shop.com/103155.html,2026-10-27,submitted,spn2-ccd319548908b60d384aa249b7ff2e321914da26,2026-11-28T04:26:02
+2026-11-28,betili,103159,https://www.betili-shop.com/103159.html,2026-10-27,submitted,spn2-d467831a89fddf92f70ed2535753470e12e292d8,2026-11-28T04:27:04
+2026-11-28,betili,103296,https://www.betili-shop.com/103296.html,2026-10-27,submitted,spn2-e04a73714a415b1a3c1d04cf6b1934ee5113542e,2026-11-28T04:27:04
+2026-11-28,betili,103193,https://www.betili-shop.com/103193.html,2026-10-27,submitted,spn2-ebd629cb413768522f21db8316e766649c05a625,2026-11-28T04:27:04
