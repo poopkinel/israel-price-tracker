@@ -457,5 +457,45 @@ class SnapshotCheckTest(unittest.TestCase):
                 self.assertEqual(len(snapshots.pick_sample(1, "2026-10-27", "2026-11-25")), 1)
 
 
+class CaptureCheckTest(unittest.TestCase):
+    """checks/captures.py: the parts that need no network."""
+
+    def test_outcome_names_what_the_archive_answered(self):
+        from checks import captures
+        self.assertEqual(captures.outcome({"status": "success", "http_status": 200}), "saved")
+        self.assertEqual(captures.outcome({"status": "success"}), "saved")
+        self.assertEqual(captures.outcome({"status": "success", "http_status": 429}), "saved:429")
+        self.assertEqual(captures.outcome({"status": "pending", "resources": []}), "pending")
+        self.assertEqual(captures.outcome({"status": "error", "status_ext": "error:service-unavailable", "message": "x"}), "error:service-unavailable")
+        self.assertEqual(captures.outcome({"status": "error", "exception": "Timeout"}), "error:Timeout")
+        self.assertEqual(captures.outcome({"status": "error"}), "error:no reason given")
+        self.assertEqual(captures.outcome({"message": "job not found"}), "unknown")
+        self.assertEqual(captures.outcome({}), "unknown")
+
+    def test_jobs_are_accepted_requests_and_the_same_ones_every_time(self):
+        from checks import captures
+        with tempfile.TemporaryDirectory() as d:
+            d = Path(d)
+            row = dict(date="2026-11-27", product_id="1", sale_since="2026-10-27", submitted_at="2026-11-27T01:00:00")
+            rows = [dict(row, store="a", url=f"https://a/{i}", result="submitted", job_id=f"spn2-{i}") for i in range(5)]
+            rows += [dict(row, store="a", url="https://a/e", result="error:host is paused", job_id=""),
+                     dict(row, store="a", url="https://a/r", result="recent", job_id=""),
+                     dict(row, store="b", url="https://b/1", result="submitted", job_id="spn2-b")]
+            common.append_csv(d / "2026-11-27.csv", rows, archive.LOG_FIELDS)
+            common.append_csv(d / "2026-11-28.csv", [dict(row, date="2026-11-28", store="a", url="https://a/9", result="submitted", job_id="spn2-9")], archive.LOG_FIELDS)
+            with mock.patch.object(captures, "ARCHIVE_LOG", d):
+                got = captures.pick_jobs(["2026-11-27", "2026-11-28", "2026-11-29"], 2)
+                again = captures.pick_jobs(["2026-11-27", "2026-11-28", "2026-11-29"], 2)
+        self.assertEqual(got, again)
+        self.assertEqual([(r["date"], r["store"]) for r in got], [("2026-11-27", "a")] * 2 + [("2026-11-27", "b"), ("2026-11-28", "a")])
+        self.assertTrue(all(r["result"] == "submitted" and r["job_id"] for r in got))
+
+    def test_table_has_a_column_for_every_outcome_seen(self):
+        from checks import captures
+        lines = captures.table({"fox": {"saved": 3, "error:x": 1}, "betili": {"saved": 4}}, "store")
+        self.assertEqual(lines[0], "| store | asked | saved | error:x |")
+        self.assertEqual(lines[2:], ["| fox | 4 | 3 | 1 |", "| betili | 4 | 4 | 0 |"])
+
+
 if __name__ == "__main__":
     unittest.main()

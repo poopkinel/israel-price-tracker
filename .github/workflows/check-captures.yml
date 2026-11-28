@@ -1,0 +1,39 @@
+name: check capture outcomes
+
+# Manual only, no schedule. Asks the Wayback Machine what became of a fixed sample of the pages it
+# accepted from us in the last days (saved, failed and why, still pending) and prints the counts per
+# store in the job summary. Reads web.archive.org only (never the stores) and writes nothing to the
+# repository. Uses the archive run's existing keys, because the archive tells the outcome of a
+# request only to the account that made it.
+
+on:
+  workflow_dispatch:
+    inputs:
+      per_store:
+        description: "Requests to ask about, per store and day"
+        required: false
+        default: "10"
+      days:
+        description: "How many of the latest archive-log days to sample"
+        required: false
+        default: "3"
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - env:
+          IA_ACCESS_KEY: ${{ secrets.IA_ACCESS_KEY }}
+          IA_SECRET_KEY: ${{ secrets.IA_SECRET_KEY }}
+        run: python -m checks.captures ${{ github.event.inputs.per_store || '10' }} ${{ github.event.inputs.days || '3' }}
