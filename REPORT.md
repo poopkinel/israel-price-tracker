@@ -40,7 +40,7 @@
 |---|---|
 | 2026-11-26 | error: 6, submitted: 2712 |
 | 2026-11-27 | error: 119, recent: 115, submitted: 2709 |
-| 2026-11-28 | error: 307, recent: 10, submitted: 900 |
+| 2026-11-28 | error: 314, recent: 10, submitted: 910 |
 
 ## הערות על חנויות
 
