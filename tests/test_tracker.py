@@ -394,6 +394,22 @@ class PausedHostTest(unittest.TestCase):
             self.assertFalse(hosts.paused("https://a.co.il/p2"))
             self.assertEqual(hosts.seconds_left(["https://a.co.il/p3"]), 0.0)
 
+    def test_pauses_in_a_row_get_longer_until_a_page_is_saved(self):
+        hosts = archive.HostPauses(minutes=15, max_minutes=60)
+        now = [1000.0]
+        with mock.patch.object(archive.time, "time", lambda: now[0]):
+            waits = []
+            for _ in range(4):
+                waits.append(hosts.pause("https://a.co.il/p1"))
+                self.assertLess(hosts.pause("https://a.co.il/p2"), waits[-1] + 1)  # a second answer during the pause changes nothing
+                now[0] += waits[-1] + 1
+            self.assertEqual(waits, [900, 1800, 3600, 3600])
+            self.assertEqual(hosts.pause("https://b.co.il/p1"), 900)  # every site has its own count
+            now[0] += 5000
+            hosts.saved("https://a.co.il/p1")
+            self.assertTrue(hosts.on_trial("https://a.co.il/p1"))  # still one page at a time
+            self.assertEqual(hosts.pause("https://a.co.il/p3"), 900)
+
 
 class LateFailureTest(unittest.TestCase):
     """The archive can accept a page and fail the capture a moment later because the site is paused.
@@ -435,7 +451,8 @@ class LateFailureTest(unittest.TestCase):
         self.run_with_clock(saver)
         stores = [r["store"] for r in common.read_csv(self.log)]
         self.assertEqual(stores.count("a"), 40)  # every page of the site is sent in the end
-        after = "".join(stores[stores.index("b"):])  # from the first pause on
+        last_b = max(i for i, s in enumerate(stores) if s == "b")
+        after = "".join(stores[stores.index("b"):last_b])  # from the first pause on, while the other store has pages
         self.assertNotIn("aa", after)  # never two pages of the site in a row: each waits for the one before
         self.assertIn("bbbbb", after)  # the store that was never paused is not slowed
 

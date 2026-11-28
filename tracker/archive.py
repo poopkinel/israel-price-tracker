@@ -97,7 +97,8 @@ def todays_targets(day: str) -> list[dict]:
 
 
 HOST_PAUSED = "host is paused"  # in the Wayback Machine's reply "crawling this host is paused because ..."
-HOST_PAUSE_MIN = 15
+HOST_PAUSE_MIN = 15  # the first pause; each further one in a row is twice as long, up to HOST_PAUSE_MAX_MIN
+HOST_PAUSE_MAX_MIN = 60
 OUTCOME_AFTER = 45  # seconds after a request is accepted before asking what became of it
 OUTCOME_AGAIN = 30  # seconds before asking again while the capture is still running
 OUTCOME_TRIES = 4
@@ -110,23 +111,42 @@ class HostPauses:
     are left alone for HOST_PAUSE_MIN minutes (not submitted, not logged, so they stay due) while
     the other stores' pages go on. After that the site is on trial: one page at a time is sent, so
     a site that is still paused costs one request, not a burst. The trial ends when accepted() is
-    called; submit_all does that only when it cannot ask what became of a request."""
+    called; submit_all does that only when it cannot ask what became of a request.
 
-    def __init__(self, minutes: float = HOST_PAUSE_MIN):
+    A site that is paused again and again waits longer each time (15, 30, then 60 minutes), until
+    one of its pages is taken or saved."""
+
+    def __init__(self, minutes: float = HOST_PAUSE_MIN, max_minutes: float = HOST_PAUSE_MAX_MIN):
         self.seconds = 60 * minutes
+        self.max_seconds = max(60 * max_minutes, self.seconds)
         self.until: dict[str, float] = {}
         self.trial: set[str] = set()
+        self.strikes: dict[str, int] = {}  # pauses in a row, per site
         self.lock = threading.Lock()
 
-    def pause(self, url: str) -> None:
+    def pause(self, url: str) -> float:
+        """Pause the site; returns for how many seconds. Answers that arrive while the site is
+        already paused (pages sent before the pause) do not make the pause longer."""
+        host = urlparse(url).netloc
         with self.lock:
-            self.until[urlparse(url).netloc] = time.time() + self.seconds
-            self.trial.add(urlparse(url).netloc)
+            if self.until.get(host, 0) > time.time():
+                return self.until[host] - time.time()
+            self.strikes[host] = self.strikes.get(host, 0) + 1
+            wait = min(self.seconds * 2 ** (self.strikes[host] - 1), self.max_seconds)
+            self.until[host] = time.time() + wait
+            self.trial.add(host)
+            return wait
+
+    def saved(self, url: str) -> None:
+        """A page of this site was saved: the next pause starts short again. The site stays on trial."""
+        with self.lock:
+            self.strikes.pop(urlparse(url).netloc, None)
 
     def accepted(self, url: str) -> None:
         """The archive took a page of this site, so the site is no longer on trial."""
         with self.lock:
             self.trial.discard(urlparse(url).netloc)
+            self.strikes.pop(urlparse(url).netloc, None)
 
     def on_trial(self, url: str) -> bool:
         with self.lock:
@@ -326,9 +346,12 @@ def submit_all(batch: list[dict], saver, logfile, day: str, deadline: float, wor
                 by = outcomes.setdefault(t["store"], {})
                 by[res] = by.get(res, 0) + 1
                 if res == "paused":
-                    if not hosts.paused(t["url"]):
-                        print(f"{urlparse(t['url']).netloc}: a capture failed because crawling is paused; its pages wait {hosts.seconds / 60:.0f} minutes", flush=True)
-                    hosts.pause(t["url"])
+                    new = not hosts.paused(t["url"])
+                    wait = hosts.pause(t["url"])
+                    if new:
+                        print(f"{urlparse(t['url']).netloc}: a capture failed because crawling is paused; its pages wait {wait / 60:.0f} minutes", flush=True)
+                elif res == "saved":
+                    hosts.saved(t["url"])
                 if trial:
                     trying.discard(urlparse(t["url"]).netloc)
 
@@ -344,9 +367,10 @@ def submit_all(batch: list[dict], saver, logfile, day: str, deadline: float, wor
             counts[res.split(":")[0]] = counts.get(res.split(":")[0], 0) + 1
             if HOST_PAUSED in res:
                 # one site's problem: set the site aside, and do not count it towards giving up
-                if not hosts.paused(t["url"]):
-                    print(f"{urlparse(t['url']).netloc}: crawling paused by the Wayback Machine; its pages wait {hosts.seconds / 60:.0f} minutes", flush=True)
-                hosts.pause(t["url"])
+                new = not hosts.paused(t["url"])
+                wait = hosts.pause(t["url"])
+                if new:
+                    print(f"{urlparse(t['url']).netloc}: crawling paused by the Wayback Machine; its pages wait {wait / 60:.0f} minutes", flush=True)
             else:
                 fails[0] = 0 if res in ("submitted", "saved", "recent") else fails[0] + 1
                 if ask and job:
